@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-and-dragons/static/css/main.ba7ea3ea.chunk.css",
+    "main.css": "/react-and-dragons/static/css/main.aa646c18.chunk.css",
     "main.js": "/react-and-dragons/static/js/main.c3ff2c11.chunk.js",
     "main.js.map": "/react-and-dragons/static/js/main.c3ff2c11.chunk.js.map",
     "runtime-main.js": "/react-and-dragons/static/js/runtime-main.2d6605ec.js",
@@ -10,13 +10,13 @@
     "static/js/3.e610fc18.chunk.js": "/react-and-dragons/static/js/3.e610fc18.chunk.js",
     "static/js/3.e610fc18.chunk.js.map": "/react-and-dragons/static/js/3.e610fc18.chunk.js.map",
     "index.html": "/react-and-dragons/index.html",
-    "static/css/main.ba7ea3ea.chunk.css.map": "/react-and-dragons/static/css/main.ba7ea3ea.chunk.css.map",
+    "static/css/main.aa646c18.chunk.css.map": "/react-and-dragons/static/css/main.aa646c18.chunk.css.map",
     "static/js/2.720a62d4.chunk.js.LICENSE.txt": "/react-and-dragons/static/js/2.720a62d4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2d6605ec.js",
     "static/js/2.720a62d4.chunk.js",
-    "static/css/main.ba7ea3ea.chunk.css",
+    "static/css/main.aa646c18.chunk.css",
     "static/js/main.c3ff2c11.chunk.js"
   ]
 }
