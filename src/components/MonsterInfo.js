@@ -12,7 +12,7 @@ function MonsterInfo({ monsterInfo }) {
 
   return (
     <section id="monster-info">
-      {monsterInfo ? <h2>Name: {monsterInfo.name}</h2> : ""}
+      {monsterInfo ? <h2 id="monster-name">{monsterInfo.name}</h2> : ""}
       {monsterInfo ? <h4>Alignment: {monsterInfo.alignment}</h4> : ""}
       {monsterInfo ? <h4>Type: {monsterInfo.type}</h4> : ""}
       {monsterInfo ? (
@@ -28,7 +28,7 @@ function MonsterInfo({ monsterInfo }) {
       ) : (
         ""
       )}
-      <ul className="monster-info-list">
+      <ul className="monster-skills-list">
         {monsterInfo ? (
           <li>
             Strength: {monsterInfo.strength} (

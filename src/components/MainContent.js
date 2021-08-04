@@ -7,7 +7,7 @@ function MainContent({ monsterList, monsterInfo, onClick }) {
       {monsterList.length > 0 ? (
         <MonsterList monsterList={monsterList} onClick={onClick} />
       ) : (
-        <h3>^ Find a monster by letter ^</h3>
+        ""
       )}
       {monsterList.length > 0 ? <MonsterInfo monsterInfo={monsterInfo} /> : ""}
     </main>
