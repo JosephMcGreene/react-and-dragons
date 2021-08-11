@@ -38,7 +38,6 @@ function App() {
   ];
   const dndAPI = "https://www.dnd5eapi.co/api/";
   const monstersUrl = "monsters/";
-  // const imgAPI = "https://www.aidedd.org/dnd/images/";
 
   /**
    * fetches monster data from the The 5th Edition Dungeons and Dragons API -- https://www.dnd5eapi.co/ -- to be used in Letter.js to filter out all of the monsters whose names do not start with the letter the user clicks on.
@@ -87,7 +86,7 @@ function App() {
     <div className="App">
       <h1>5th Edition Dungeons & Dragons Monster Guide</h1>
       <LetterList letters={alphabet} onClick={getMonstersByLetterName} />
-      <FilterForm />
+      <FilterForm onCRChange={getMonstersByCR} />
       <MainContent
         monsterList={monsterList}
         onClick={getMonsterInfo}

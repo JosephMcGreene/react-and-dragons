@@ -7,11 +7,11 @@ import SizeSelect from "./filters/SizeSelect";
 import TypeSelect from "./filters/TypeSelect";
 import VulnerSelect from "./filters/VulnerSelect";
 
-function FilterForm() {
+function FilterForm({ onCRChange }) {
   return (
     <form>
       <AlignmentSelect />
-      <ChallengeSelect />
+      <ChallengeSelect onChange={onCRChange} />
       <LanguageSelect />
       <SizeSelect />
       <TypeSelect />
