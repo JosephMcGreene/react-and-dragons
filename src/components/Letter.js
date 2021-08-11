@@ -1,5 +1,9 @@
 function Letter({ text, onClick }) {
-  return <li onClick={() => onClick(text.toLowerCase())}>{text}</li>;
+  return (
+    <li>
+      <button onClick={() => onClick(text.toLowerCase())}>{text}</button>
+    </li>
+  );
 }
 
 export default Letter;

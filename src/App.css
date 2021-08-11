@@ -54,9 +54,9 @@ li {
   top: 0;
   left: 0;
 }
-.letter-list li {
+.letter-list li button {
   padding: 4vw;
-  box-shadow: inset 0 0 6px red;
+  box-shadow: inset 0 0 10px red;
 }
 .monster-list {
   padding: 0;
@@ -98,8 +98,8 @@ li {
     max-width: 100vw;
     padding: 1vw;
   }
-  .letter-list li {
-    padding: 15px;
+  .letter-list li button {
+    padding: 16px;
   }
 
   #monster-info {
