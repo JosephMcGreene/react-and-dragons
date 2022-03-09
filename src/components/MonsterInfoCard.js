@@ -17,7 +17,6 @@ function MonsterInfoCard({ monsterInfo }) {
 
   return (
     <>
-      {/* The sole purpose of this div is to provide a place for the user to be directed to when they render a monster's info for the first time since refresh, the anchor for which is in the MonsterListItem component. I'm sure there are other things I can do with some fancy JavaScript, but this is a benign, simple JSX solution, so sue me. */}
       <div id="monsterScrollTo"></div>
       <section id="monster-info">
         {monsterInfo ? <h2 id="monster-name">{monsterInfo.name}</h2> : ""}

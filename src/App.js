@@ -1,4 +1,10 @@
-// TODO Styles: get it lookin' good
+// TODO Styles, get it lookin' good:
+// TODO   - conditional classNames?
+// TODO   - UI QoL updates
+// TODO   - Figure out Monster Card Info layout
+// TODO   - fonts
+// TODO   - animations?
+
 // TODO Add more information to the monsters' info card
 // TODO Add Search bar + more filter options
 
@@ -73,7 +79,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1>5th Edition Dungeons & Dragons Monster Guide</h1>
+      <h1>
+        5th Edition Dungeons & Dragons <br /> Monster Guide
+      </h1>
       <LetterList
         letters={alphabet}
         monsterData={monsterData}
@@ -81,7 +89,11 @@ function App() {
       />
 
       {/* <FilterForm /> */}
-      <MainContent filteredMonList={filteredMonsters} dndAPI={dndAPI} />
+      <MainContent
+        filteredMonList={filteredMonsters}
+        dndAPI={dndAPI}
+        monstersUrl={monstersUrl}
+      />
     </div>
   );
 }

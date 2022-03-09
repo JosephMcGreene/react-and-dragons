@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./MonsterInfoCard";
 
-function MainContent({ filteredMonList, dndAPI }) {
+function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
   const [monsterDetails, setMonsterDetails] = useState({});
-
+  /**
+   * Fetches individual monster data from the D&D 5th Edition API and stores the info as state in monsterDetails
+   * @param  {String} monsterIndex A reference to the "index" key within any given item in the filteredMonList array
+   */
   async function getMonsterDetails(monsterIndex) {
-    const response = await fetch(`${dndAPI}/api/monsters/${monsterIndex}`);
+    const response = await fetch(`${dndAPI}${monstersUrl}${monsterIndex}`);
     const details = await response.json();
 
     console.log(details);
     setMonsterDetails(details);
-    return monsterDetails;
   }
 
   return (
