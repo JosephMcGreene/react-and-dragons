@@ -1,8 +1,8 @@
-function MonsterInfo({ monsterInfo }) {
+function MonsterInfoCard({ monsterInfo }) {
   /**
-   * calculates and returns the modifier for each skill present in the monster-skills-list ul
-   * @param   skill    A number corresponding to the value of the skill in question, arguments derived from API data.
-   * @return  string    A positive or negative integer corresponding to the modifier indicated by the raw skill number, represented as a string in case a + needs to be added to the number.
+   * calculates and returns the modifier for each of the nosnter's skills
+   * @param   {Number} skill    A number corresponding to the value of the skill in question, arguments derived from API data.
+   * @return  {String} A positive or negative integer (or 0) corresponding to the modifier indicated by the raw skill number, represented as a string in case a plus sign needs to be visually added to the number.
    */
   function calculateModifier(skill) {
     let modifier = Math.floor((skill - 10) / 2);
@@ -17,7 +17,7 @@ function MonsterInfo({ monsterInfo }) {
 
   return (
     <>
-      {/* The sole purpose of this div is to provide a place for the user to be directed to when they render a monster's info for the first time since refresh, the anchor for which is in the MonsterListItem component. I'm sure there are other things I can do with some fancy JavaScript, but this is a benign, simple HTML solution, so sue me. */}
+      {/* The sole purpose of this div is to provide a place for the user to be directed to when they render a monster's info for the first time since refresh, the anchor for which is in the MonsterListItem component. I'm sure there are other things I can do with some fancy JavaScript, but this is a benign, simple JSX solution, so sue me. */}
       <div id="monsterScrollTo"></div>
       <section id="monster-info">
         {monsterInfo ? <h2 id="monster-name">{monsterInfo.name}</h2> : ""}
@@ -92,4 +92,4 @@ function MonsterInfo({ monsterInfo }) {
   );
 }
 
-export default MonsterInfo;
+export default MonsterInfoCard;

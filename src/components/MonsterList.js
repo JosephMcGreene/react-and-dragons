@@ -1,11 +1,10 @@
 import MonsterListItem from "./MonsterListItem";
 
-function MonsterList({ monsterList, onClick }) {
+function MonsterList({ filteredMonList, onClick }) {
   return (
     <section>
       <ul className="monster-list">
-        {/* The following map renders a list of the monsters whose names begin with the letter the user clicked on. */}
-        {monsterList.map((item) => {
+        {filteredMonList.map((item) => {
           return (
             <MonsterListItem
               key={item.index}

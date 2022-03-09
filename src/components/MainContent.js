@@ -1,15 +1,34 @@
+import React, { useState } from "react";
 import MonsterList from "./MonsterList";
-import MonsterInfo from "./MonsterInfo";
+import MonsterInfoCard from "./MonsterInfoCard";
 
-function MainContent({ monsterList, monsterInfo, onClick }) {
+function MainContent({ filteredMonList, dndAPI }) {
+  const [monsterDetails, setMonsterDetails] = useState({});
+
+  async function getMonsterDetails(monsterIndex) {
+    const response = await fetch(`${dndAPI}/api/monsters/${monsterIndex}`);
+    const details = await response.json();
+
+    console.log(details);
+    setMonsterDetails(details);
+    return monsterDetails;
+  }
+
   return (
     <main>
-      {monsterList.length > 0 ? (
-        <MonsterList monsterList={monsterList} onClick={onClick} />
+      {filteredMonList.length > 0 ? (
+        <MonsterList
+          filteredMonList={filteredMonList}
+          onClick={getMonsterDetails}
+        />
       ) : (
         ""
       )}
-      {monsterList.length > 0 ? <MonsterInfo monsterInfo={monsterInfo} /> : ""}
+      {filteredMonList.length > 0 ? (
+        <MonsterInfoCard monsterInfo={monsterDetails} />
+      ) : (
+        ""
+      )}
     </main>
   );
 }

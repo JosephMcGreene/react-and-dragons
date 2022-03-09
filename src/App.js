@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+// TODO Styles: get it lookin' good
+// TODO Add more information to the monsters' info card
+// TODO Add Search bar + more filter options
+
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import LetterList from "./components/LetterList";
-import FilterForm from "./components/FilterForm";
+// import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
 function App() {
-  const [monsterList, setMonsterList] = useState("");
-  const [monsterInfo, setMonsterInfo] = useState("");
-
+  const [monsterData, setMonsterData] = useState("");
+  const [filteredMonsters, setFilteredMonsters] = useState([]);
   const alphabet = [
     "A",
     "B",
@@ -36,62 +39,49 @@ function App() {
     "Y",
     "Z",
   ];
-  const dndAPI = "https://www.dnd5eapi.co/api/";
-  const monstersUrl = "monsters/";
+  const dndAPI = "https://www.dnd5eapi.co";
+  const monstersUrl = "/api/monsters/";
+
+  useEffect(() => {
+    /**
+     * Fetches a list of monsters from the D&D 5th Edition API and stores the info in state as monsterData
+     */
+    async function getMonsters() {
+      const response = await fetch(`${dndAPI}${monstersUrl}`);
+      let monstersList = await response.json();
+
+      setMonsterData(monstersList.results);
+    }
+
+    getMonsters();
+  }, []);
 
   /**
-   * fetches monster data from the The 5th Edition Dungeons and Dragons API -- https://www.dnd5eapi.co/ -- to be used in Letter.js to filter out all of the monsters whose names do not start with the letter the user clicks on.
-   * @param   letter     String containing the letter used to filter out the appropriate monster names, argument derived from a prop dictating the text of the li in the LetterList
-   * @return  [Array]    An array containing objects of the monster data (index, name, and url) of the filtered monster list
+   * Filters out and returns an array of monsters that start with the letter the user clicks on in LetterList
+   *
+   * @param  {String} letter The letter that the names of the monsters in the new array will start with
+   * @return  {Array} An array containing the filtered monsters
    */
-  async function getMonstersByLetterName(letter) {
-    const response = await fetch(`${dndAPI}${monstersUrl}`);
-    const monstersData = await response.json();
-
-    let filteredMonsters = monstersData.results.filter(
+  function filterByLetter(letter) {
+    let monsByLetter = monsterData.filter(
       (item) => item.index.charAt(0) === letter
     );
 
-    // console.log(filteredMonsters);
-    setMonsterList(filteredMonsters);
-    return monsterList;
-  }
-
-  async function getMonstersByCR(challengeRating) {
-    const response = await fetch(
-      `${dndAPI}${monstersUrl}?challenge_rating=${challengeRating}`
-    );
-    const crData = await response.json();
-
-    console.log(crData);
-    setMonsterList(crData);
-    return monsterList;
-  }
-
-  /**
-   * fetches monster data from the The 5th Edition Dungeons and Dragons API -- https://www.dnd5eapi.co/ -- to be used in MonsterList.js to get detailed information about the monster the user specifies. The API provides a useful 'index' key for each of the monsters whose value matches the specific url of the corresponding monster, so this function uses that index to find the appropriate monster url.
-   * @param   monsterIndex     String containing the index of the monster in question, argument derived from MonsterList.js's index prop which is taken from aforementioned monster index
-   * @return  {object}    An object corresponding to the monster that was fetched from the API
-   */
-  async function getMonsterInfo(monsterIndex) {
-    const infoResponse = await fetch(`${dndAPI}${monstersUrl}${monsterIndex}`);
-    const monsterData = await infoResponse.json();
-
-    console.log(monsterData);
-    setMonsterInfo(monsterData);
-    return monsterInfo;
+    setFilteredMonsters(monsByLetter);
+    return filteredMonsters;
   }
 
   return (
     <div className="App">
       <h1>5th Edition Dungeons & Dragons Monster Guide</h1>
-      <LetterList letters={alphabet} onClick={getMonstersByLetterName} />
-      <FilterForm onCRChange={getMonstersByCR} />
-      <MainContent
-        monsterList={monsterList}
-        onClick={getMonsterInfo}
-        monsterInfo={monsterInfo}
+      <LetterList
+        letters={alphabet}
+        monsterData={monsterData}
+        onClick={filterByLetter}
       />
+
+      {/* <FilterForm /> */}
+      <MainContent filteredMonList={filteredMonsters} dndAPI={dndAPI} />
     </div>
   );
 }
