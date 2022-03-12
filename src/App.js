@@ -2,7 +2,6 @@
 // TODO   - conditional classNames?
 // TODO   - Figure out Monster Card Info layout
 // TODO   - animations?
-// TODO   - add Sass??
 
 // TODO Add more information to the monsters' info card
 // TODO Add Search bar + more filter options
