@@ -12,25 +12,25 @@ li {
 .letter-list {
   padding: 0;
   margin: 0;
-  max-width: 15vw;
-  font-size: 1.3rem;
-  text-decoration: underline;
   text-align: center;
 
-  position: absolute;
-  top: 0;
-  left: 0;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
 
   li {
     button {
+      padding: 1.2rem;
+      margin: 0 3px;
       font-family: "eczarmedium";
       color: white;
       background-color: $dark-bg;
-      font-size: 1.25rem;
-      padding: 4vw;
+      font-size: 1.5rem;
       border-radius: 3px;
       border: none;
       cursor: pointer;
+      line-height: 2ch;
 
       &:hover {
         background-color: white;
