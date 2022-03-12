@@ -1,9 +1,8 @@
-// TODO Styles, get it lookin' good:
+// TODO Styles:
 // TODO   - conditional classNames?
-// TODO   - Figure out Monster Card Info layout
 // TODO   - animations?
 
-// TODO Add more information to the monsters' info card
+// TODO See MonsterInfoCard.js
 // TODO Add Search bar + more filter options
 
 import React, { useState, useEffect } from "react";
@@ -61,7 +60,7 @@ function App() {
   }, []);
 
   /**
-   * Filters out and returns an array of monsters that start with the letter the user clicks on in LetterList
+   * Filters out and returns an array of monsters whose names start with the letter the user clicks on in LetterList
    *
    * @param  {String} letter The letter that the names of the monsters in the new array will start with
    * @return  {Array} An array containing the filtered monsters

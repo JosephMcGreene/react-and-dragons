@@ -1,3 +1,5 @@
+// TODO Figure out this component's layout, split into smaller components
+
 function MonsterInfoCard({ monsterInfo }) {
   /**
    * calculates and returns the modifier for each of the nosnter's skills
@@ -24,6 +26,13 @@ function MonsterInfoCard({ monsterInfo }) {
         {monsterInfo ? <h4>Type: {monsterInfo.type}</h4> : ""}
         {monsterInfo ? (
           <h4>Challenge Rating: {monsterInfo.challenge_rating}</h4>
+        ) : (
+          ""
+        )}
+        {monsterInfo ? (
+          <h4>
+            Hit Points: {monsterInfo.hit_points} ({monsterInfo.hit_dice})
+          </h4>
         ) : (
           ""
         )}
