@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MonsterList from "./MonsterList";
-import MonsterInfoCard from "./MonsterInfoCard";
+import MonsterInfoCard from "./info-card/MonsterInfoCard";
 
 function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
   const [monsterDetails, setMonsterDetails] = useState({});

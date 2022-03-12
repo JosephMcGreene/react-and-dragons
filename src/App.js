@@ -1,4 +1,5 @@
 // TODO Styles:
+// TODO   - !! Move mobile-sized LetterList to a different place, too much screen real estate right now
 // TODO   - conditional classNames?
 // TODO   - animations?
 
