@@ -1,0 +1,18 @@
+@use "../abstracts/index" as *;
+
+#monster-info {
+  margin-left: 15vw;
+  letter-spacing: 1.5px;
+  color: white;
+  background-color: $dark-bg;
+}
+.monster-skills-list {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  font-weight: 400;
+}
+.skills-heading {
+  margin-bottom: 0;
+  margin-left: 10vw;
+}

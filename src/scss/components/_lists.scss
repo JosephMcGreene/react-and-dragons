@@ -1,0 +1,65 @@
+@use "../abstracts/index" as *;
+
+ul {
+  font-size: 1.2rem;
+  list-style: none;
+  font-weight: bold;
+}
+li {
+  cursor: pointer;
+}
+
+.letter-list {
+  padding: 0;
+  margin: 0;
+  max-width: 15vw;
+  font-size: 1.3rem;
+  text-decoration: underline;
+  text-align: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  li {
+    button {
+      font-family: "eczarmedium";
+      color: white;
+      background-color: $dark-bg;
+      font-size: 1.25rem;
+      padding: 4vw;
+      border-radius: 3px;
+      border: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: white;
+        color: $dark-bg;
+        transition: 0.2s;
+      }
+    }
+  }
+}
+
+.monster-list {
+  padding: 0;
+  margin-left: 12vw;
+  margin-bottom: 35px;
+  font-size: 1.5rem;
+
+  li {
+    border-radius: 3px;
+    padding: 7%;
+
+    &:hover {
+      background-color: $dark-bg;
+      transform: skewX(-10deg);
+      transition: 0.5s;
+
+      a {
+        color: white;
+        transition: 0.5s;
+      }
+    }
+  }
+}

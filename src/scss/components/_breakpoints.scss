@@ -1,0 +1,34 @@
+@use "../abstracts/index" as *;
+
+@media screen and (min-width: 900px) {
+  h1 {
+    margin: 25px auto;
+  }
+
+  .letter-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    position: static;
+    max-width: 100vw;
+    padding: 1vw;
+  }
+  .letter-list li button {
+    padding: 16px;
+  }
+
+  #monster-info {
+    flex-grow: 2;
+    padding-left: 15px;
+    margin: 0 3vw 10px 100px;
+    border-radius: 5px;
+  }
+  #monster-info h2 {
+    text-align: center;
+  }
+  .monster-list {
+    margin-left: 5vw;
+    flex-grow: 1;
+  }
+}

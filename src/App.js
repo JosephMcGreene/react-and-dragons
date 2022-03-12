@@ -1,15 +1,14 @@
 // TODO Styles, get it lookin' good:
 // TODO   - conditional classNames?
-// TODO   - UI QoL updates
 // TODO   - Figure out Monster Card Info layout
-// TODO   - fonts
 // TODO   - animations?
+// TODO   - add Sass??
 
 // TODO Add more information to the monsters' info card
 // TODO Add Search bar + more filter options
 
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./scss/App.scss";
 import LetterList from "./components/LetterList";
 // import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
