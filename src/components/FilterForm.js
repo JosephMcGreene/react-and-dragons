@@ -1,6 +1,34 @@
 import FilterSelect from "./FilterSelect";
 
 function FilterForm({ onChange }) {
+  const alphabet = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
   const challengeRatings = [
     "0.125",
     "0.25",
@@ -96,6 +124,7 @@ function FilterForm({ onChange }) {
 
   return (
     <form>
+      <FilterSelect filterName="Alphabetical" filters={alphabet} />
       <FilterSelect filterName="Challenge Rating" filters={challengeRatings} />
       <FilterSelect filterName="Alignment" filters={alignments} />
       <FilterSelect filterName="Language" filters={languages} />

@@ -1,5 +1,5 @@
 // TODO Styles:
-// TODO   - !! Move mobile-sized LetterList to a different place, too much screen real estate right now
+// TODO   - !! Remake LetterList.js as a FilterSelect.js
 // TODO   - conditional classNames?
 // TODO   - animations?
 
@@ -8,41 +8,14 @@
 
 import React, { useState, useEffect } from "react";
 import "./scss/App.scss";
-import LetterList from "./components/LetterList";
-// import FilterForm from "./components/FilterForm";
+// import LetterList from "./components/LetterList";
+import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
 function App() {
   const [monsterData, setMonsterData] = useState("");
   const [filteredMonsters, setFilteredMonsters] = useState([]);
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+
   const dndAPI = "https://www.dnd5eapi.co";
   const monstersUrl = "/api/monsters/";
 
@@ -80,13 +53,14 @@ function App() {
       <h1>
         5th Edition Dungeons & Dragons <br /> Monster Guide
       </h1>
-      <LetterList
+      {/* <LetterList
         letters={alphabet}
         monsterData={monsterData}
         onClick={filterByLetter}
-      />
+      /> */}
+      <p>(Search Bar to go here)</p>
 
-      {/* <FilterForm /> */}
+      <FilterForm monsterData={monsterData} onClick={filterByLetter} />
       <MainContent
         filteredMonList={filteredMonsters}
         dndAPI={dndAPI}

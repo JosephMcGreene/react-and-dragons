@@ -1,3 +1,5 @@
+@use "../abstracts/index" as *;
+
 /* ========== Fonts ========== */
 @font-face {
   font-family: "intruder_alertregular";
@@ -27,13 +29,16 @@ body {
   line-height: 1.25rem;
 }
 
+p {
+  text-align: center;
+  border: 1px $dark-bg solid;
+}
+
 h1 {
   font-family: "intruder_alertregular";
   font-size: 2.75rem;
   line-height: normal;
   text-align: center;
-  margin-left: 15vw;
-  margin-right: 2.5vw;
 }
 h2 {
   text-decoration: underline;
