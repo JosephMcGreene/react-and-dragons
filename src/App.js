@@ -1,3 +1,8 @@
+// ! Overall Goals:
+// !   - [X]Responsive
+// !   - [ ]All filters up and functional
+// !   - [ ]Intuitive layout
+// !   - [/]Reasonably visually appealing
 // TODO Styles:
 // TODO   - !! Remake LetterList.js as a FilterSelect.js
 // TODO   - conditional classNames?
@@ -25,7 +30,7 @@ function App() {
      */
     async function getMonsters() {
       const response = await fetch(`${dndAPI}${monstersUrl}`);
-      let monstersList = await response.json();
+      const monstersList = await response.json();
 
       setMonsterData(monstersList.results);
     }
@@ -40,7 +45,7 @@ function App() {
    */
   function filterByLetter(letter) {
     let monsByLetter = monsterData.filter(
-      (item) => item.index.charAt(0) === letter
+      (item) => item.index.charAt(0) === letter.toLowerCase()
     );
 
     setFilteredMonsters(monsByLetter);
@@ -53,7 +58,7 @@ function App() {
       </h1>
 
       <SearchBar />
-      <FilterForm monsterData={monsterData} onChange={filterByLetter} />
+      <FilterForm monsterData={monsterData} onFilter={filterByLetter} />
       <MainContent
         filteredMonList={filteredMonsters}
         dndAPI={dndAPI}

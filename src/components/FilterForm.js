@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function FilterForm({ onChange }) {
+export default function FilterForm({ onFilter }) {
   const [selectedLetter, setSelectedLetter] = useState("");
   const alphabet = [
     "A",
@@ -123,32 +123,35 @@ export default function FilterForm({ onChange }) {
     "Thunder",
   ];
 
-  function onSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
+    console.log(selectedLetter);
+    onFilter(selectedLetter);
   }
 
   return (
-    <form className="filter-form" onSubmit={onSubmit}>
+    <form className="filter-form" onSubmit={handleSubmit}>
       <FilterSelect
         filterName="Alphabetical"
         filters={alphabet}
+        value={selectedLetter}
         onChange={(event) => setSelectedLetter(event.target.value)}
       />
-      <FilterSelect filterName="Challenge Rating" filters={challengeRatings} />
+      {/* <FilterSelect filterName="Challenge Rating" filters={challengeRatings} />
       <FilterSelect filterName="Alignment" filters={alignments} />
       <FilterSelect filterName="Language" filters={languages} />
       <FilterSelect filterName="Size" filters={sizes} />
       <FilterSelect filterName="Type" filters={types} />
-      <FilterSelect filterName="Vulnerabilities" filters={damageTypes} />
+      <FilterSelect filterName="Vulnerabilities" filters={damageTypes} /> */}
 
       <input type="submit" value="Apply Filters" className="button" />
     </form>
   );
 }
 
-function FilterSelect({ filterName, filters }) {
+function FilterSelect({ filterName, filters, value, onChange }) {
   return (
-    <select className="input-and-select">
+    <select value={value} onChange={onChange} className="input-and-select">
       <option value="">-- {filterName} --</option>
 
       {filters.map((filterItem) => (
