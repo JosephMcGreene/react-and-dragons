@@ -1,6 +1,7 @@
-import FilterSelect from "./FilterSelect";
+import { useState } from "react";
 
-function FilterForm({ onChange }) {
+export default function FilterForm({ onChange }) {
+  const [selectedLetter, setSelectedLetter] = useState("");
   const alphabet = [
     "A",
     "B",
@@ -122,17 +123,39 @@ function FilterForm({ onChange }) {
     "Thunder",
   ];
 
+  function onSubmit(event) {
+    event.preventDefault();
+  }
+
   return (
-    <form className="filter-form">
-      <FilterSelect filterName="Alphabetical" filters={alphabet} />
+    <form className="filter-form" onSubmit={onSubmit}>
+      <FilterSelect
+        filterName="Alphabetical"
+        filters={alphabet}
+        onChange={(event) => setSelectedLetter(event.target.value)}
+      />
       <FilterSelect filterName="Challenge Rating" filters={challengeRatings} />
       <FilterSelect filterName="Alignment" filters={alignments} />
       <FilterSelect filterName="Language" filters={languages} />
       <FilterSelect filterName="Size" filters={sizes} />
       <FilterSelect filterName="Type" filters={types} />
       <FilterSelect filterName="Vulnerabilities" filters={damageTypes} />
+
+      <input type="submit" value="Apply Filters" className="button" />
     </form>
   );
 }
 
-export default FilterForm;
+function FilterSelect({ filterName, filters }) {
+  return (
+    <select className="input-and-select">
+      <option value="">-- {filterName} --</option>
+
+      {filters.map((filterItem) => (
+        <option key={filterItem} value={filterItem}>
+          {filterItem}
+        </option>
+      ))}
+    </select>
+  );
+}

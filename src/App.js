@@ -29,7 +29,6 @@ function App() {
 
       setMonsterData(monstersList.results);
     }
-
     getMonsters();
   }, []);
 
@@ -45,7 +44,6 @@ function App() {
     );
 
     setFilteredMonsters(monsByLetter);
-    return filteredMonsters;
   }
 
   return (

@@ -1,6 +1,4 @@
-import MonsterListItem from "./MonsterListItem";
-
-function MonsterList({ filteredMonList, onClick }) {
+export default function MonsterList({ filteredMonList, onClick }) {
   return (
     <section>
       <ul className="monster-list">
@@ -19,4 +17,10 @@ function MonsterList({ filteredMonList, onClick }) {
   );
 }
 
-export default MonsterList;
+function MonsterListItem({ text, index, onClick }) {
+  return (
+    <li onClick={() => onClick(index)}>
+      <a href="#monsterScrollTo">{text}</a>
+    </li>
+  );
+}
