@@ -1,6 +1,6 @@
 function FilterSelect({ filterName, filters }) {
   return (
-    <select>
+    <select className="input-and-select">
       <option value="">-- {filterName} --</option>
 
       {filters.map((filterItem) => (

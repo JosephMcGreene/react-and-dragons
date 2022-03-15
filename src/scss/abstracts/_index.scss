@@ -1,1 +1,17 @@
-$dark-bg: rgb(60, 60, 60);
+$dark-bg: hsl(250, 15%, 25%);
+$placeholder-text: hsl(0, 0%, 87%);
+
+@font-face {
+  font-family: "intruder_alertregular";
+  src: url("../../fonts/Intruder-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+$header-font: "intruder_alertregular";
+@font-face {
+  font-family: "eczarmedium";
+  src: url("../../fonts/Eczar-Medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+$main-font: "eczarmedium";

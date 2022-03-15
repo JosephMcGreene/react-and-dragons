@@ -8,7 +8,7 @@
 
 import React, { useState, useEffect } from "react";
 import "./scss/App.scss";
-// import LetterList from "./components/LetterList";
+import SearchBar from "./components/SearchBar";
 import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
@@ -51,16 +51,11 @@ function App() {
   return (
     <div className="App">
       <h1>
-        5th Edition Dungeons & Dragons <br /> Monster Guide
+        Dungeons & Dragons 5th Edition <br /> Monster Guide
       </h1>
-      {/* <LetterList
-        letters={alphabet}
-        monsterData={monsterData}
-        onClick={filterByLetter}
-      /> */}
-      <p>(Search Bar to go here)</p>
 
-      <FilterForm monsterData={monsterData} onClick={filterByLetter} />
+      <SearchBar />
+      <FilterForm monsterData={monsterData} onChange={filterByLetter} />
       <MainContent
         filteredMonList={filteredMonsters}
         dndAPI={dndAPI}

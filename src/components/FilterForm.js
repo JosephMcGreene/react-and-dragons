@@ -123,7 +123,7 @@ function FilterForm({ onChange }) {
   ];
 
   return (
-    <form>
+    <form className="filter-form">
       <FilterSelect filterName="Alphabetical" filters={alphabet} />
       <FilterSelect filterName="Challenge Rating" filters={challengeRatings} />
       <FilterSelect filterName="Alignment" filters={alignments} />
