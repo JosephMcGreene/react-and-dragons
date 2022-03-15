@@ -19,7 +19,6 @@ span {
   display: block;
   margin: 1rem auto;
   text-align: center;
-  border: 1px $dark-bg solid;
 }
 
 h1 {
@@ -30,13 +29,6 @@ h1 {
   font-size: 2.75rem;
   line-height: normal;
   text-align: center;
-}
-h2 {
-  text-decoration: underline;
-  font-size: 2.25rem;
-}
-h4 {
-  font-size: 1.2rem;
 }
 
 a {

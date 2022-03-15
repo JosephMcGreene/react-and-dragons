@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./info-card/MonsterInfoCard";
 
-function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
+export default function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
   const [monsterDetails, setMonsterDetails] = useState({});
   /**
    * Fetches individual monster data from the D&D 5th Edition API and stores the info as state in monsterDetails
@@ -29,10 +29,8 @@ function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
       {filteredMonList.length > 0 ? (
         <MonsterInfoCard monsterInfo={monsterDetails} />
       ) : (
-        ""
+        <span>Let's look up some Monsters!</span>
       )}
     </main>
   );
 }
-
-export default MainContent;

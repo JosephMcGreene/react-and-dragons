@@ -1,4 +1,4 @@
-function SkillsList({ monsterInfo }) {
+export default function SkillsList({ monsterInfo }) {
   /**
    * calculates and returns the modifier for each of the nosnter's skills
    * @param   {Number} skillValue    A number corresponding to the value of the skill in question, arguments derived from API data.
@@ -16,66 +16,54 @@ function SkillsList({ monsterInfo }) {
   }
 
   return (
-    <>
+    <ul className="monster-skills-list">
       {monsterInfo ? (
-        <h4 className="skills-heading">
-          <u>Skills</u>
-        </h4>
+        <li>
+          Strength: {monsterInfo.strength} (
+          {calculateModifier(monsterInfo.strength)})
+        </li>
       ) : (
         ""
       )}
-      <ul className="monster-skills-list">
-        {monsterInfo ? (
-          <li>
-            Strength: {monsterInfo.strength} (
-            {calculateModifier(monsterInfo.strength)})
-          </li>
-        ) : (
-          ""
-        )}
-        {monsterInfo ? (
-          <li>
-            Dexterity: {monsterInfo.dexterity} (
-            {calculateModifier(monsterInfo.dexterity)})
-          </li>
-        ) : (
-          ""
-        )}
-        {monsterInfo ? (
-          <li>
-            Constitution: {monsterInfo.constitution} (
-            {calculateModifier(monsterInfo.constitution)})
-          </li>
-        ) : (
-          ""
-        )}
-        {monsterInfo ? (
-          <li>
-            Intelligence: {monsterInfo.intelligence} (
-            {calculateModifier(monsterInfo.intelligence)})
-          </li>
-        ) : (
-          ""
-        )}
-        {monsterInfo ? (
-          <li>
-            Wisdom: {monsterInfo.wisdom} (
-            {calculateModifier(monsterInfo.wisdom)})
-          </li>
-        ) : (
-          ""
-        )}
-        {monsterInfo ? (
-          <li>
-            Charisma: {monsterInfo.charisma} (
-            {calculateModifier(monsterInfo.charisma)})
-          </li>
-        ) : (
-          ""
-        )}
-      </ul>
-    </>
+      {monsterInfo ? (
+        <li>
+          Dexterity: {monsterInfo.dexterity} (
+          {calculateModifier(monsterInfo.dexterity)})
+        </li>
+      ) : (
+        ""
+      )}
+      {monsterInfo ? (
+        <li>
+          Constitution: {monsterInfo.constitution} (
+          {calculateModifier(monsterInfo.constitution)})
+        </li>
+      ) : (
+        ""
+      )}
+      {monsterInfo ? (
+        <li>
+          Intelligence: {monsterInfo.intelligence} (
+          {calculateModifier(monsterInfo.intelligence)})
+        </li>
+      ) : (
+        ""
+      )}
+      {monsterInfo ? (
+        <li>
+          Wisdom: {monsterInfo.wisdom} ({calculateModifier(monsterInfo.wisdom)})
+        </li>
+      ) : (
+        ""
+      )}
+      {monsterInfo ? (
+        <li>
+          Charisma: {monsterInfo.charisma} (
+          {calculateModifier(monsterInfo.charisma)})
+        </li>
+      ) : (
+        ""
+      )}
+    </ul>
   );
 }
-
-export default SkillsList;

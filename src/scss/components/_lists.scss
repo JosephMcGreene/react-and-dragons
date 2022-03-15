@@ -9,42 +9,10 @@ li {
   cursor: pointer;
 }
 
-.letter-list {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-
-  display: flex;
-  flex-direction: row;
-  overflow: auto;
-  white-space: nowrap;
-
-  li {
-    button {
-      padding: 1.2rem;
-      margin: 0 3px;
-      font-family: "eczarmedium";
-      color: white;
-      background-color: $dark-bg;
-      font-size: 1.5rem;
-      border-radius: 3px;
-      border: none;
-      cursor: pointer;
-      line-height: 2ch;
-
-      &:hover {
-        background-color: white;
-        color: $dark-bg;
-        transition: 0.2s;
-      }
-    }
-  }
-}
-
 .monster-list {
   padding: 0;
-  margin-left: 12vw;
-  margin-bottom: 35px;
+  margin-left: 5vw;
+  margin-bottom: 2rem;
   font-size: 1.5rem;
 
   li {
@@ -53,12 +21,11 @@ li {
 
     &:hover {
       background-color: $dark-bg;
-      transform: skewX(-10deg);
-      transition: 0.5s;
+      transition: 0.25s;
 
       a {
         color: white;
-        transition: 0.5s;
+        transition: 0.25s;
       }
     }
   }

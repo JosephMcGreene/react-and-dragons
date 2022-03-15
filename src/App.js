@@ -9,7 +9,7 @@
 // TODO   - animations?
 
 // TODO See MonsterInfoCard.js
-// TODO Add Search bar + more filter options
+// TODO Add more filter options
 
 import React, { useState, useEffect } from "react";
 import "./scss/App.scss";
@@ -17,7 +17,7 @@ import SearchBar from "./components/SearchBar";
 import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
-function App() {
+export default function App() {
   const [monsterData, setMonsterData] = useState("");
   const [filteredMonsters, setFilteredMonsters] = useState([]);
 
@@ -67,5 +67,3 @@ function App() {
     </div>
   );
 }
-
-export default App;

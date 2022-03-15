@@ -1,18 +1,32 @@
 @use "../abstracts/index" as *;
 
-#monster-info {
-  margin-left: 15vw;
+.monster-info {
+  border-radius: 4px;
+  width: 100%;
+  line-height: 3.5ch;
   letter-spacing: 1.5px;
   color: white;
   background-color: $dark-bg;
 }
+.main-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
 .monster-skills-list {
   display: flex;
+  padding: 0;
+  margin-left: 6vw;
   flex-direction: column;
-  padding-left: 0;
   font-weight: 400;
 }
-.skills-heading {
-  margin-bottom: 0;
-  margin-left: 10vw;
+
+h2 {
+  text-align: center;
+  text-decoration: underline;
+  font-size: 2rem;
+}
+h4 {
+  margin-left: 4vw;
+  font-size: 1.2rem;
 }

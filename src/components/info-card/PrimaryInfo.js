@@ -1,8 +1,8 @@
 import SkillsList from "./SkillsList";
 
-function PrimaryInfo({ monsterInfo }) {
+export default function PrimaryInfo({ monsterInfo }) {
   return (
-    <>
+    <article>
       {monsterInfo ? (
         <h4>
           Hit Points: {monsterInfo.hit_points} ({monsterInfo.hit_dice})
@@ -20,8 +20,6 @@ function PrimaryInfo({ monsterInfo }) {
       <SkillsList monsterInfo={monsterInfo} />
 
       {/* Add speed here */}
-    </>
+    </article>
   );
 }
-
-export default PrimaryInfo;

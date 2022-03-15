@@ -2,18 +2,18 @@
 // TODO Render immunities, resistances, vulernabilities, etc. better, traits that are presented as arrays in the json, See SecondaryInfo.js
 import PrimaryInfo from "./PrimaryInfo";
 import SecondaryInfo from "./SecondaryInfo";
+import ActionsInfo from "./ActionsInfo";
 
-function MonsterInfoCard({ monsterInfo }) {
+export default function MonsterInfoCard({ monsterInfo }) {
   return (
-    <>
+    <section className="monster-info">
       <div id="monsterScrollTo"></div>
-      <section id="monster-info">
-        {monsterInfo ? <h2 id="monster-name">{monsterInfo.name}</h2> : ""}
+      {monsterInfo ? <h2 id="monster-name">{monsterInfo.name}</h2> : ""}
+      <div className="main-info">
         <PrimaryInfo monsterInfo={monsterInfo} />
         <SecondaryInfo monsterInfo={monsterInfo} />
-      </section>
-    </>
+        <ActionsInfo monsterInfo={monsterInfo} />
+      </div>
+    </section>
   );
 }
-
-export default MonsterInfoCard;

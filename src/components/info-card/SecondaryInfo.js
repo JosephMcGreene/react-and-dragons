@@ -1,6 +1,6 @@
-function SecondaryInfo({ monsterInfo }) {
+export default function SecondaryInfo({ monsterInfo }) {
   return (
-    <>
+    <article>
       {monsterInfo ? <h4>Alignment: {monsterInfo.alignment}</h4> : ""}
       {monsterInfo ? <h4>Type: {monsterInfo.type}</h4> : ""}
       {monsterInfo.languages === "" ? (
@@ -32,8 +32,6 @@ function SecondaryInfo({ monsterInfo }) {
       ) : (
         <h4>Vulnerabilities: {monsterInfo.damage_vulnerabiliites}</h4>
       )}
-    </>
+    </article>
   );
 }
-
-export default SecondaryInfo;
