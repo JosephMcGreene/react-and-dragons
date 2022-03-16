@@ -4,6 +4,7 @@
 // !   - [ ]Intuitive layout
 // !   - [X]Reasonably visually appealing
 // TODO !! 1. Add all needed info to info card component
+// TODO !!    - Add proficiencies (probably to SecondaryInfo)
 // TODO !! 2. Format layout to suit the additional info (See MonsterInfoCard.js)
 // TODO Add functionality to all filters
 // TODO Styles:

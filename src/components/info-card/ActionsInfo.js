@@ -6,10 +6,26 @@ export default function ActionsInfo({ monsterInfo, parseDOMText }) {
           <h4>Actions:</h4>
           {monsterInfo.actions.map((action) => {
             return (
-              <>
+              <article key={action.name}>
                 <h5>{action.name}</h5>
                 <p>{action.desc}</p>
-              </>
+              </article>
+            );
+          })}
+        </>
+      ) : (
+        ""
+      )}
+
+      {monsterInfo.reactions.length > 0 ? (
+        <>
+          <h4>Reactions:</h4>
+          {monsterInfo.reactions.map((reaction) => {
+            return (
+              <article key={reaction.name}>
+                <h5>{reaction.name}</h5>
+                <p>{reaction.desc}</p>
+              </article>
             );
           })}
         </>
@@ -22,15 +38,15 @@ export default function ActionsInfo({ monsterInfo, parseDOMText }) {
           <h4>Special Abilities:</h4>
           {monsterInfo.special_abilities.map((ability) => {
             return (
-              <>
+              <article key={ability.name}>
                 <h5>{ability.name}</h5>
                 <p>{ability.desc}</p>
-              </>
+              </article>
             );
           })}
         </>
       ) : (
-        <h4>Special Abilities: None</h4>
+        ""
       )}
 
       {monsterInfo.legendary_actions.length > 0 ? (
@@ -38,15 +54,15 @@ export default function ActionsInfo({ monsterInfo, parseDOMText }) {
           <h4>Legendary Actions:</h4>
           {monsterInfo.legendary_actions.map((action) => {
             return (
-              <>
+              <article key={action.name}>
                 <h5>{action.name}</h5>
                 <p>{action.desc}</p>
-              </>
+              </article>
             );
           })}
         </>
       ) : (
-        <h4>Legendary Actions: None</h4>
+        ""
       )}
     </article>
   );
