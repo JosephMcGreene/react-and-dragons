@@ -1,6 +1,6 @@
 import SkillsList from "./SkillsList";
 
-export default function PrimaryInfo({ monsterInfo, parseObject, parseArray }) {
+export default function PrimaryInfo({ monsterInfo, parseDOMText }) {
   return (
     <article>
       {monsterInfo ? (
@@ -18,8 +18,6 @@ export default function PrimaryInfo({ monsterInfo, parseObject, parseArray }) {
       )}
 
       <SkillsList monsterInfo={monsterInfo} />
-
-      {monsterInfo ? <h4>Speed: {parseObject(monsterInfo.speed)}</h4> : ""}
     </article>
   );
 }

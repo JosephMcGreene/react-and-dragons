@@ -3,11 +3,12 @@
 // !   - [ ]All filters up and functional
 // !   - [ ]Intuitive layout
 // !   - [X]Reasonably visually appealing
-// TODO !! 1. Add more info to info card component
+// TODO !! 1. Add all needed info to info card component
 // TODO !! 2. Format layout to suit the additional info (See MonsterInfoCard.js)
 // TODO Add functionality to all filters
 // TODO Styles:
 // TODO   - conditional classNames?
+// TODO Error Handling
 
 import React, { useState, useEffect } from "react";
 import "./scss/App.scss";
