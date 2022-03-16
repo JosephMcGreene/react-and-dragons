@@ -3,15 +3,11 @@
 .monster-info {
   border-radius: 4px;
   width: 100%;
+  margin-top: 1rem;
   line-height: 3.5ch;
   letter-spacing: 1.5px;
   color: white;
   background-color: $dark-bg;
-}
-@media screen and (min-width: 800px) {
-  .monster-info {
-    margin: 0 3vw;
-  }
 }
 
 .main-info {
@@ -23,7 +19,7 @@
 .monster-skills-list {
   display: flex;
   padding: 0;
-  margin-left: 6vw;
+  margin-left: 5vw;
   flex-direction: column;
   font-weight: 400;
 }
@@ -34,6 +30,6 @@ h2 {
   font-size: 2rem;
 }
 h4 {
-  margin-left: 4vw;
+  margin: 0 2vw;
   font-size: 1.2rem;
 }

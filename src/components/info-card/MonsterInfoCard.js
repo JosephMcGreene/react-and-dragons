@@ -8,12 +8,16 @@ export default function MonsterInfoCard({ monsterInfo }) {
   return (
     <section className="monster-info">
       <div id="monsterScrollTo"></div>
-      {monsterInfo ? <h2 id="monster-name">{monsterInfo.name}</h2> : ""}
-      <div className="main-info">
-        <PrimaryInfo monsterInfo={monsterInfo} />
-        <SecondaryInfo monsterInfo={monsterInfo} />
-        <ActionsInfo monsterInfo={monsterInfo} />
-      </div>
+      <h2 id="monster-name">{monsterInfo.name}</h2>
+      {monsterInfo.index ? (
+        <div className="main-info">
+          <PrimaryInfo monsterInfo={monsterInfo} />
+          <SecondaryInfo monsterInfo={monsterInfo} />
+          <ActionsInfo monsterInfo={monsterInfo} />
+        </div>
+      ) : (
+        ""
+      )}
     </section>
   );
 }

@@ -42,6 +42,7 @@ a {
 
 main {
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
@@ -69,7 +70,7 @@ main {
 }
 ::placeholder {
   color: $placeholder-text;
-  text-shadow: 0 0 2px $placeholder-text;
+  text-shadow: 0 0 1px $placeholder-text;
 }
 .button {
   font-family: $main-font;
