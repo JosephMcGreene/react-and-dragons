@@ -16,15 +16,17 @@ export default function MonsterInfoCard({ monsterInfo }) {
       domText = "None";
       return domText;
     }
-    if (json.length) {
-      for (let index in json) {
-        domText += ` ${json[index]};`;
+    // Speed and Senses are presented as objects, not arrays:
+    if (!json.length) {
+      for (let prop in json) {
+        let newProp = prop.replaceAll("_", " ");
+        domText += ` ${newProp}, ${json[prop]};`;
       }
       return domText;
     }
 
-    for (let prop in json) {
-      domText += ` ${prop}, ${json[prop]};`;
+    for (let index in json) {
+      domText += ` ${json[index]};`;
     }
     return domText;
   }
