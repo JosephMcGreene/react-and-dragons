@@ -17,7 +17,7 @@ export default function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
   }
 
   return (
-    <main>
+    <main className="list-and-info">
       {filteredMonList.length > 0 ? (
         <MonsterList
           filteredMonList={filteredMonList}

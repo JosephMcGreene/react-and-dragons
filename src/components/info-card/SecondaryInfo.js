@@ -1,4 +1,4 @@
-export default function SecondaryInfo({ monsterInfo }) {
+export default function SecondaryInfo({ monsterInfo, parseArray }) {
   return (
     <article>
       {monsterInfo ? <h4>Alignment: {monsterInfo.alignment}</h4> : ""}
@@ -25,7 +25,7 @@ export default function SecondaryInfo({ monsterInfo }) {
       {monsterInfo.damage_resistances === [] ? (
         <h4>Resistances: None</h4>
       ) : (
-        <h4>Resistances: {monsterInfo.damage_resistances}</h4>
+        <h4>Resistances: {parseArray(monsterInfo.damage_resistances)}</h4>
       )}
       {monsterInfo.damage_vulnerabiliites === [] ? (
         <h4>Vulnerabilities: None</h4>

@@ -125,7 +125,7 @@ export default function FilterForm({ onFilter }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(selectedLetter);
+
     onFilter(selectedLetter);
   }
 

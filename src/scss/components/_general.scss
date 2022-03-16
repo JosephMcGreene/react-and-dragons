@@ -16,6 +16,7 @@ body {
 }
 
 span {
+  color: $dark-bg;
   display: block;
   margin: 1rem auto;
   text-align: center;
@@ -40,7 +41,7 @@ a {
   }
 }
 
-main {
+.list-and-info {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -70,7 +71,8 @@ main {
 }
 ::placeholder {
   color: $placeholder-text;
-  text-shadow: 0 0 1px $placeholder-text;
+  letter-spacing: 1px;
+  text-shadow: 0 0 2px $placeholder-text;
 }
 .button {
   font-family: $main-font;

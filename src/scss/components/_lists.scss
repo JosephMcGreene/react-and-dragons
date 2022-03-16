@@ -1,24 +1,21 @@
 @use "../abstracts/index" as *;
 
 ul {
-  font-size: 1.2rem;
   list-style: none;
-  font-weight: bold;
-}
-li {
-  cursor: pointer;
 }
 
 .monster-list {
+  font-weight: bold;
+  color: $dark-bg;
   padding: 0;
-  margin-left: 2vw;
-  margin-bottom: 2rem;
+  margin-left: 1vw;
   font-size: 1.5rem;
 
   li {
     border-radius: 3px;
-    padding: 7% 0;
-    max-width: max-content;
+    padding: 0.75rem 0.75rem;
+    cursor: pointer;
+    width: fit-content;
 
     &:hover {
       background-color: $dark-bg;

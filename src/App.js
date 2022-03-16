@@ -2,14 +2,12 @@
 // !   - [X]Responsive
 // !   - [ ]All filters up and functional
 // !   - [ ]Intuitive layout
-// !   - [/]Reasonably visually appealing
+// !   - [X]Reasonably visually appealing
+// TODO !! 1. Add more info to info card component
+// TODO !! 2. Format layout to suit the additional info (See MonsterInfoCard.js)
+// TODO Add functionality to all filters
 // TODO Styles:
-// TODO   - !! Remake LetterList.js as a FilterSelect.js
 // TODO   - conditional classNames?
-// TODO   - animations?
-
-// TODO See MonsterInfoCard.js
-// TODO Add more filter options
 
 import React, { useState, useEffect } from "react";
 import "./scss/App.scss";
