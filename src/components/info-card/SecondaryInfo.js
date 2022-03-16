@@ -16,14 +16,19 @@ export default function SecondaryInfo({ monsterInfo, parseDOMText }) {
       <h4>
         Vulnerabilities: {parseDOMText(monsterInfo.damage_vulnerabilities)}
       </h4>
-      <h4>Condition Immunities:</h4>
-      <ul>
-        {monsterInfo.condition_immunities.length > 0
-          ? monsterInfo.condition_immunities.map((immunity) => {
-              return <li>{immunity.name}</li>;
-            })
-          : "None"}
-      </ul>
+
+      {monsterInfo.condition_immunities.length > 0 ? (
+        <>
+          <h4>Condition Immunities:</h4>
+          <ul>
+            {monsterInfo.condition_immunities.map((immunity) => {
+              return <li key={immunity.name}>{immunity.name}</li>;
+            })}
+          </ul>
+        </>
+      ) : (
+        <h4>Condition Immunities: None</h4>
+      )}
     </article>
   );
 }
