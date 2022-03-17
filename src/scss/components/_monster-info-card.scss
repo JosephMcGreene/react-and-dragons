@@ -6,30 +6,45 @@
   margin-top: 1rem;
   line-height: 3.5ch;
   letter-spacing: 1.5px;
-  color: white;
+  color: $light-bg;
   background-color: $dark-bg;
-}
 
-.main-info {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
+  .monster-name {
+    text-align: center;
+    text-decoration: underline;
+    font-size: 2rem;
+  }
 
-.monster-skills-list {
-  display: flex;
-  padding: 0;
-  margin-left: 5vw;
-  flex-direction: column;
-  font-weight: 400;
-}
+  .main-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
-h2 {
-  text-align: center;
-  text-decoration: underline;
-  font-size: 2rem;
-}
-h4 {
-  margin: 1.25rem 2vw;
-  font-size: 1.2rem;
+    .info-block {
+      display: flex;
+      flex-direction: column;
+      margin: 0 2.5vw;
+
+      h4 {
+        margin: 0.75rem 0;
+        font-size: 1.2rem;
+        display: inline-block;
+        font-weight: normal;
+      }
+      .info-span {
+        color: $light-bg;
+        font-size: 1.2rem;
+        display: inline;
+        font-weight: normal;
+      }
+
+      .monster-skills-list {
+        display: flex;
+        padding: 0;
+        margin-left: 5vw;
+        flex-direction: column;
+        font-weight: 400;
+      }
+    }
+  }
 }

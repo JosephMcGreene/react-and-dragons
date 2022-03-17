@@ -58,7 +58,7 @@ a {
   padding: 0.15rem 0.5rem;
   text-align: center;
   font-family: $main-font;
-  color: white;
+  color: $light-bg;
   background-color: $dark-bg;
   border: none;
   border-radius: 3px;
@@ -77,7 +77,7 @@ a {
 .button {
   font-family: $main-font;
   color: $dark-bg;
-  background-color: white;
+  background-color: $light-bg;
   border: 1px solid $dark-bg;
   border-radius: 3px;
   cursor: pointer;

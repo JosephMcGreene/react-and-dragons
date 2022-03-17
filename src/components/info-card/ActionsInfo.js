@@ -1,15 +1,21 @@
-export default function ActionsInfo({ monsterInfo, parseDOMText }) {
+export default function ActionsInfo({ monsterInfo }) {
   return (
-    <article>
+    <article className="info-block">
       {monsterInfo ? (
         <>
-          <h4>Actions:</h4>
+          <h4>
+            <strong>
+              <u>Actions:</u>
+            </strong>
+          </h4>
           {monsterInfo.actions.map((action) => {
             return (
-              <article key={action.name}>
-                <h5>{action.name}</h5>
-                <p>{action.desc}</p>
-              </article>
+              <p key={action.name}>
+                <strong>
+                  <em>{action.name}.</em>
+                </strong>{" "}
+                {action.desc}
+              </p>
             );
           })}
         </>
@@ -19,13 +25,19 @@ export default function ActionsInfo({ monsterInfo, parseDOMText }) {
 
       {monsterInfo.reactions.length > 0 ? (
         <>
-          <h4>Reactions:</h4>
+          <h4>
+            <strong>
+              <u>Reactions:</u>
+            </strong>
+          </h4>
           {monsterInfo.reactions.map((reaction) => {
             return (
-              <article key={reaction.name}>
-                <h5>{reaction.name}</h5>
-                <p>{reaction.desc}</p>
-              </article>
+              <p key={reaction.name}>
+                <strong>
+                  <em>{reaction.name}.</em>
+                </strong>{" "}
+                {reaction.desc}
+              </p>
             );
           })}
         </>
@@ -35,13 +47,19 @@ export default function ActionsInfo({ monsterInfo, parseDOMText }) {
 
       {monsterInfo.special_abilities.length > 0 ? (
         <>
-          <h4>Special Abilities:</h4>
+          <h4>
+            <strong>
+              <u>Special Abilities:</u>
+            </strong>
+          </h4>
           {monsterInfo.special_abilities.map((ability) => {
             return (
-              <article key={ability.name}>
-                <h5>{ability.name}</h5>
-                <p>{ability.desc}</p>
-              </article>
+              <p key={ability.name}>
+                <strong>
+                  <em>{ability.name}.</em>
+                </strong>{" "}
+                {ability.desc}
+              </p>
             );
           })}
         </>
@@ -51,13 +69,19 @@ export default function ActionsInfo({ monsterInfo, parseDOMText }) {
 
       {monsterInfo.legendary_actions.length > 0 ? (
         <>
-          <h4>Legendary Actions:</h4>
+          <h4>
+            <strong>
+              <u>Legendary Actions:</u>
+            </strong>
+          </h4>
           {monsterInfo.legendary_actions.map((action) => {
             return (
-              <article key={action.name}>
-                <h5>{action.name}</h5>
-                <p>{action.desc}</p>
-              </article>
+              <p key={action.name}>
+                <strong>
+                  <em>{action.name}.</em>
+                </strong>{" "}
+                {action.desc}
+              </p>
             );
           })}
         </>
