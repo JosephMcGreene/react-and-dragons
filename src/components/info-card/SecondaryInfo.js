@@ -1,3 +1,5 @@
+import InfoHeader from "./InfoHeader";
+
 export default function SecondaryInfo({ monsterInfo }) {
   /**
    * takes an array or object from a nested key/value pair in the monsterInfo object and parses its info to be rendered to the user.
@@ -29,99 +31,51 @@ export default function SecondaryInfo({ monsterInfo }) {
   return (
     <article className="info-block">
       {monsterInfo ? (
-        <h4>
-          <strong>
-            <u>Speed:</u>
-          </strong>{" "}
-          {parseDOMText(monsterInfo.speed)}
-        </h4>
+        <InfoHeader title="Speed:" text={parseDOMText(monsterInfo.speed)} />
       ) : (
         ""
       )}
 
       {monsterInfo ? (
-        <h4>
-          <strong>
-            <u>Senses:</u>
-          </strong>{" "}
-          {parseDOMText(monsterInfo.senses)}
-        </h4>
+        <InfoHeader title="Senses:" text={parseDOMText(monsterInfo.senses)} />
       ) : (
         ""
       )}
 
       {monsterInfo ? (
-        <h4>
-          <strong>
-            <u>Alignment:</u>
-          </strong>{" "}
-          {monsterInfo.alignment}
-        </h4>
+        <InfoHeader title="Alignment:" text={monsterInfo.alignment} />
       ) : (
         ""
       )}
 
-      {monsterInfo ? (
-        <h4>
-          <strong>
-            <u>Type:</u>
-          </strong>{" "}
-          {monsterInfo.type}
-        </h4>
+      {monsterInfo ? <InfoHeader title="Type:" text={monsterInfo.type} /> : ""}
+
+      {monsterInfo.languages ? (
+        <InfoHeader title="Languages:" text={monsterInfo.languages} />
       ) : (
-        ""
+        <InfoHeader title="Languages:" text="None" />
       )}
 
-      {!monsterInfo.languages ? (
-        <h4>Languages: None</h4>
-      ) : (
-        <h4>
-          <strong>
-            <u>Languages:</u>
-          </strong>{" "}
-          {monsterInfo.languages}
-        </h4>
-      )}
+      {monsterInfo ? <InfoHeader title="Size:" text={monsterInfo.size} /> : ""}
 
-      {monsterInfo ? (
-        <h4>
-          <strong>
-            <u>Size:</u>
-          </strong>{" "}
-          {monsterInfo.size}
-        </h4>
-      ) : (
-        ""
-      )}
+      <InfoHeader
+        title="Damage Immunities:"
+        text={parseDOMText(monsterInfo.damage_immunities)}
+      />
 
-      <h4>
-        <strong>
-          <u>Damage Immunities:</u>
-        </strong>{" "}
-        {parseDOMText(monsterInfo.damage_immunities)}
-      </h4>
+      <InfoHeader
+        title="Resistances:"
+        text={parseDOMText(monsterInfo.damage_resistances)}
+      />
 
-      <h4>
-        <strong>
-          <u>Resistances:</u>
-        </strong>{" "}
-        {parseDOMText(monsterInfo.damage_resistances)}
-      </h4>
-
-      <h4>
-        <strong>
-          <u>Vulnerabilities:</u>
-        </strong>{" "}
-        {parseDOMText(monsterInfo.damage_vulnerabilities)}
-      </h4>
+      <InfoHeader
+        title="Vulnerabilities:"
+        text={parseDOMText(monsterInfo.damage_vulnerabilities)}
+      />
 
       {monsterInfo.condition_immunities.length > 0 ? (
         <>
-          <h4>
-            <strong>
-              <u>Condition Immunities:</u>
-            </strong>
-          </h4>
+          <InfoHeader title="Condition Immunities:" text="" />
           <ul>
             {monsterInfo.condition_immunities.map((immunity) => {
               return <li key={immunity.name}>{immunity.name}</li>;
@@ -129,21 +83,12 @@ export default function SecondaryInfo({ monsterInfo }) {
           </ul>
         </>
       ) : (
-        <h4>
-          <strong>
-            <u>Condition Immunities:</u>
-          </strong>{" "}
-          None
-        </h4>
+        <InfoHeader title="Condition Immunities:" text="None" />
       )}
 
       {monsterInfo.proficiencies.length > 0 ? (
         <>
-          <h4>
-            <strong>
-              <u>Proficiencies:</u>
-            </strong>
-          </h4>
+          <InfoHeader title="Proficiencies:" text="" />
           <ul>
             {monsterInfo.proficiencies.map((pro) => {
               return (
@@ -155,12 +100,7 @@ export default function SecondaryInfo({ monsterInfo }) {
           </ul>
         </>
       ) : (
-        <h4>
-          <strong>
-            <u>Proficiencies:</u>
-          </strong>{" "}
-          None
-        </h4>
+        <InfoHeader title="Proficiencies:" text="None" />
       )}
     </article>
   );

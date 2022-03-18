@@ -1,35 +1,27 @@
 import SkillsList from "./SkillsList";
+import InfoHeader from "./InfoHeader";
 
 export default function PrimaryInfo({ monsterInfo }) {
   return (
     <article className="info-block">
       {monsterInfo ? (
-        <h4 className="info-header">
-          <strong>
-            <u>Hit Points:</u>
-          </strong>{" "}
-          {monsterInfo.hit_points} ({monsterInfo.hit_dice}
-        </h4>
+        <InfoHeader
+          title="Hit Points:"
+          text={monsterInfo.hit_points + " (" + monsterInfo.hit_dice + ")"}
+        />
       ) : (
         ""
       )}
       {monsterInfo ? (
-        <h4 className="info-header">
-          <strong>
-            <u>Armor Class:</u>
-          </strong>{" "}
-          {monsterInfo.armor_class}
-        </h4>
+        <InfoHeader title="Armor Class:" text={monsterInfo.armor_class} />
       ) : (
         ""
       )}
       {monsterInfo ? (
-        <h4 className="info-header">
-          <strong>
-            <u>Challenge Rating:</u>
-          </strong>{" "}
-          {monsterInfo.challenge_rating}
-        </h4>
+        <InfoHeader
+          title="Challenge Rating:"
+          text={monsterInfo.challenge_rating}
+        />
       ) : (
         ""
       )}
