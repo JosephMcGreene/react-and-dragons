@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-and-dragons/static/css/main.85b386b9.css",
-    "main.js": "/react-and-dragons/static/js/main.edc7739c.js",
+    "main.css": "/react-and-dragons/static/css/main.c8407548.css",
+    "main.js": "/react-and-dragons/static/js/main.43f49c69.js",
     "static/js/787.0f4139a9.chunk.js": "/react-and-dragons/static/js/787.0f4139a9.chunk.js",
     "static/media/Eczar-Medium-webfont.woff": "/react-and-dragons/static/media/Eczar-Medium-webfont.e39a6ef148492797e691.woff",
     "static/media/Intruder-webfont.woff": "/react-and-dragons/static/media/Intruder-webfont.d83c134532fd2376a9bd.woff",
     "index.html": "/react-and-dragons/index.html",
-    "main.85b386b9.css.map": "/react-and-dragons/static/css/main.85b386b9.css.map",
-    "main.edc7739c.js.map": "/react-and-dragons/static/js/main.edc7739c.js.map",
+    "main.c8407548.css.map": "/react-and-dragons/static/css/main.c8407548.css.map",
+    "main.43f49c69.js.map": "/react-and-dragons/static/js/main.43f49c69.js.map",
     "787.0f4139a9.chunk.js.map": "/react-and-dragons/static/js/787.0f4139a9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.85b386b9.css",
-    "static/js/main.edc7739c.js"
+    "static/css/main.c8407548.css",
+    "static/js/main.43f49c69.js"
   ]
 }
