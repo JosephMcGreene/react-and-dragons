@@ -13,6 +13,7 @@ export default function MonsterList({ filteredMonList, onClick }) {
           );
         })}
       </ul>
+      <div id="monsterScrollTo"></div>
     </section>
   );
 }

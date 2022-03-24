@@ -56,7 +56,7 @@ function Action({ monsterInfo, title, index }) {
       <InfoHeader title={title} />
       {monsterInfo[index].map((action) => {
         return (
-          <p key={action.name}>
+          <p key={action.name} className="actions-description">
             <strong>
               <em>{action.name}.</em>
             </strong>{" "}

@@ -31,12 +31,6 @@
         display: inline-block;
         font-weight: normal;
       }
-      .info-span {
-        color: $light-bg;
-        font-size: 1.2rem;
-        display: inline;
-        font-weight: normal;
-      }
 
       .monster-skills-list {
         display: flex;
@@ -44,6 +38,10 @@
         margin-left: 5vw;
         flex-direction: column;
         font-weight: 400;
+      }
+
+      .actions-description {
+        margin-top: 0;
       }
     }
   }

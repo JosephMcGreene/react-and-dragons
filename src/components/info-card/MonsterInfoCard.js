@@ -6,7 +6,6 @@ import ActionsInfo from "./ActionsInfo";
 export default function MonsterInfoCard({ monsterInfo }) {
   return (
     <section className="monster-info">
-      <div id="monsterScrollTo"></div>
       <h2 className="monster-name">{monsterInfo.name}</h2>
       {monsterInfo.index ? (
         <div className="main-info">
