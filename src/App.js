@@ -3,7 +3,8 @@
 // !   - [ ]All filters up and functional
 // !   - [ ]Intuitive layout
 // !   - [X]Reasonably visually appealing
-// TODO !! 2. Format layout to suit the additional info (See MonsterInfoCard.js)
+// TODO !! 1. Format layout to suit the additional info (See MonsterInfoCard.js)
+// TODO Add functionality to Search Bar
 // TODO Add functionality to all filters
 // TODO Styles:
 // TODO   - conditional classNames?
@@ -36,7 +37,7 @@ export default function App() {
   }, []);
 
   /**
-   * Filters out and returns an array of monsters whose names start with the letter the user clicks on in LetterList
+   * Filters out and returns an array of monsters whose names start with the letter the user clicks on in the alphabet filter
    *
    * @param  {String} letter The letter that the names of the monsters in the new array will start with
    * @return  {Array} An array containing the filtered monsters

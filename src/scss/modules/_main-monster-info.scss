@@ -1,6 +1,11 @@
 @use "../abstracts/index" as *;
 
-.monster-info {
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.monster-info-card {
   border-radius: 4px;
   width: fit-content;
   margin-top: 1rem;
@@ -15,7 +20,7 @@
     font-size: 2rem;
   }
 
-  .main-info {
+  .core-info {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

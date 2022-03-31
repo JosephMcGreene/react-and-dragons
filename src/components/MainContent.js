@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./info-card/MonsterInfoCard";
 
@@ -17,7 +18,7 @@ export default function MainContent({ filteredMonList, dndAPI, monstersUrl }) {
   }
 
   return (
-    <main className="list-and-info">
+    <main className="main-content">
       {filteredMonList.length > 0 ? (
         <MonsterList
           filteredMonList={filteredMonList}

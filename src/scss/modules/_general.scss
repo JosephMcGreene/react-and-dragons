@@ -42,12 +42,6 @@ a {
   }
 }
 
-.list-and-info {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .filter-form {
   display: flex;
   flex-direction: row;
@@ -82,7 +76,6 @@ a {
   border: 1px solid $dark-bg;
   border-radius: 3px;
   cursor: pointer;
-
   box-shadow: 0 2px 3px $dark-bg;
 
   &:active {

@@ -5,10 +5,10 @@ import ActionsInfo from "./ActionsInfo";
 
 export default function MonsterInfoCard({ monsterInfo }) {
   return (
-    <section className="monster-info">
+    <section className="monster-info-card">
       <h2 className="monster-name">{monsterInfo.name}</h2>
       {monsterInfo.index ? (
-        <div className="main-info">
+        <div className="core-info">
           <PrimaryInfo monsterInfo={monsterInfo} />
           <SecondaryInfo monsterInfo={monsterInfo} />
           <ActionsInfo monsterInfo={monsterInfo} />
