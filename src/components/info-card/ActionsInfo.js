@@ -11,7 +11,7 @@ export default function ActionsInfo({ monsterInfo }) {
         ""
       )}
 
-      {monsterInfo.reactions.length > 0 ? (
+      {monsterInfo.reactions ? (
         <>
           <Action
             monsterInfo={monsterInfo}
@@ -42,6 +42,7 @@ export default function ActionsInfo({ monsterInfo }) {
             title="Legendary Actions:"
             index="legendary_actions"
           />
+          {console.log(monsterInfo.legendary_actions)}
         </>
       ) : (
         ""

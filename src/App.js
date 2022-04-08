@@ -3,7 +3,8 @@
 // !   - [ ]All filters up and functional
 // !   - [ ]Intuitive layout
 // !   - [X]Reasonably visually appealing
-// TODO !! 1. Format layout to suit the additional info (See MonsterInfoCard.js)
+// TODO !! 1. Fix it !!
+// TODO !! 2. Format layout to suit the additional info (See MonsterInfoCard.js)
 // TODO Add functionality to Search Bar
 // TODO Add functionality to all filters
 // TODO Styles:
