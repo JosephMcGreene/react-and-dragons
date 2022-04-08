@@ -4,7 +4,7 @@
 // !   - [ ]Intuitive layout
 // !   - [X]Reasonably visually appealing
 // TODO Add functionality to Search Bar
-// TODO Add functionality to all filters
+// TODO Add functionality to all filters, see FilterForm.js
 // TODO Styles:
 // TODO   - conditional classNames?
 // TODO Error Handling
@@ -55,11 +55,14 @@ export default function App() {
    * @return  {Array} An array containing the filtered monsters
    */
   function filter(filters) {
-    let newMonArray = monsterList.filter(
-      (item) => item.index.charAt(0) === filters.toLowerCase()
-    );
+    const { alignmentFilter, crFilter, letterFilter } = filters;
+    console.log(filters);
+    console.log(crFilter, letterFilter, alignmentFilter);
+    // let newMonArray = monsterData.filter(
+    //   (item) => item.index.charAt(0) === filters.toLowerCase()
+    // );
 
-    setFilteredMonsters(newMonArray);
+    // setFilteredMonsters(newMonArray);
   }
 
   return (
@@ -69,7 +72,7 @@ export default function App() {
       </h1>
 
       <SearchBar />
-      <FilterForm monsterList={monsterList} onFilter={filter} />
+      <FilterForm monsterData={monsterData} onFilter={filter} />
       {console.log(monsterData)}
       <MainContent
         filteredMonList={filteredMonsters}
