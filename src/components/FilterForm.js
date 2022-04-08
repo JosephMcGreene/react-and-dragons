@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function FilterForm({ onFilter }) {
-  const [selectedLetter, setSelectedLetter] = useState("");
+  const [selections, setSelections] = useState([]);
   const alphabet = [
     "A",
     "B",
@@ -59,86 +59,93 @@ export default function FilterForm({ onFilter }) {
     "24",
     "30",
   ];
-  const alignments = [
-    "Lawful Good",
-    "Neutral Good",
-    "Chaotic Good",
-    "Lawful Neutral",
-    "True Neutral",
-    "Chaotic Neutral",
-    "Lawful Evil",
-    "Neutral Evil",
-    "Chaotic Evil",
-  ];
-  const languages = [
-    "All",
-    "Abyssal",
-    "Celestial",
-    "Common",
-    "Deep Speech",
-    "Draconic",
-    "Dwarvish",
-    "Elvish",
-    "Giant",
-    "Gnomish",
-    "Goblin",
-    "Halfling",
-    "Infernal",
-    "Orc",
-    "Primodrial",
-    "Sylvan",
-    "Telepathy",
-    "Undercommon",
-  ];
-  const sizes = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
-  const types = [
-    "Aberration",
-    "Beast",
-    "Celestial",
-    "Construct",
-    "Dragon",
-    "Elemental",
-    "Fey",
-    "Fiend",
-    "Giant",
-    "Humanoid",
-    "Monstrosity",
-    "Ooze",
-    "Plant",
-    "Undead",
-  ];
-  const damageTypes = [
-    "Acid",
-    "Bludgeoning",
-    "Cold",
-    "Fire",
-    "Force",
-    "Lightning",
-    "Necrotic",
-    "Piercing",
-    "Poison",
-    "Psychic",
-    "Radiant",
-    "Slashing",
-    "Thunder",
-  ];
+  // const alignments = [
+  //   "Any",
+  //   "Lawful Good",
+  //   "Neutral Good",
+  //   "Chaotic Good",
+  //   "Lawful Neutral",
+  //   "True Neutral",
+  //   "Chaotic Neutral",
+  //   "Lawful Evil",
+  //   "Neutral Evil",
+  //   "Chaotic Evil",
+  //   "Unaligned",
+  // ];
+  // const languages = [
+  //   "All",
+  //   "Abyssal",
+  //   "Celestial",
+  //   "Common",
+  //   "Deep Speech",
+  //   "Draconic",
+  //   "Dwarvish",
+  //   "Elvish",
+  //   "Giant",
+  //   "Gnomish",
+  //   "Goblin",
+  //   "Halfling",
+  //   "Infernal",
+  //   "Orc",
+  //   "Primodrial",
+  //   "Sylvan",
+  //   "Telepathy",
+  //   "Undercommon",
+  // ];
+  // const sizes = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
+  // const types = [
+  //   "Aberration",
+  //   "Beast",
+  //   "Celestial",
+  //   "Construct",
+  //   "Dragon",
+  //   "Elemental",
+  //   "Fey",
+  //   "Fiend",
+  //   "Giant",
+  //   "Humanoid",
+  //   "Monstrosity",
+  //   "Ooze",
+  //   "Plant",
+  //   "Undead",
+  // ];
+  // const damageTypes = [
+  //   "Acid",
+  //   "Bludgeoning",
+  //   "Cold",
+  //   "Fire",
+  //   "Force",
+  //   "Lightning",
+  //   "Necrotic",
+  //   "Piercing",
+  //   "Poison",
+  //   "Psychic",
+  //   "Radiant",
+  //   "Slashing",
+  //   "Thunder",
+  // ];
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    onFilter(selectedLetter);
+    onFilter(selections);
   }
 
   return (
     <form className="filter-form" onSubmit={handleSubmit}>
       <FilterSelect
         filterName="Alphabetical"
-        filters={alphabet}
-        value={selectedLetter}
-        onChange={(event) => setSelectedLetter(event.target.value)}
+        filterOptions={alphabet}
+        value={selections}
+        onChange={(event) => setSelections([...selections, event.target.value])}
       />
-      {/* <FilterSelect filterName="Challenge Rating" filters={challengeRatings} />
-      <FilterSelect filterName="Alignment" filters={alignments} />
+      <FilterSelect
+        filterName="Challenge Rating"
+        filterOptions={challengeRatings}
+        value={selections}
+        onChange={(event) => setSelections([...selections, event.target.value])}
+      />
+      {/* <FilterSelect filterName="Alignment" filters={alignments} />
       <FilterSelect filterName="Language" filters={languages} />
       <FilterSelect filterName="Size" filters={sizes} />
       <FilterSelect filterName="Type" filters={types} />
@@ -149,12 +156,12 @@ export default function FilterForm({ onFilter }) {
   );
 }
 
-function FilterSelect({ filterName, filters, value, onChange }) {
+function FilterSelect({ filterName, filterOptions, value, onChange }) {
   return (
     <select value={value} onChange={onChange} className="input-and-select">
       <option value="">-- {filterName} --</option>
 
-      {filters.map((filterItem) => (
+      {filterOptions.map((filterItem) => (
         <option key={filterItem} value={filterItem}>
           {filterItem}
         </option>

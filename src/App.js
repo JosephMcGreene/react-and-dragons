@@ -3,8 +3,6 @@
 // !   - [ ]All filters up and functional
 // !   - [ ]Intuitive layout
 // !   - [X]Reasonably visually appealing
-// TODO !! 1. Fix it !!
-// TODO !! 2. Format layout to suit the additional info (See MonsterInfoCard.js)
 // TODO Add functionality to Search Bar
 // TODO Add functionality to all filters
 // TODO Styles:
@@ -18,37 +16,50 @@ import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
 export default function App() {
-  const [monsterData, setMonsterData] = useState("");
-  const [filteredMonsters, setFilteredMonsters] = useState([]);
-
   const dndAPI = "https://www.dnd5eapi.co";
-  const monstersUrl = "/api/monsters/";
+  const monstersUrl = "/api/monsters";
 
+  const [monsterList, setMonsterList] = useState([]);
   useEffect(() => {
     /**
-     * Fetches a list of monsters from the D&D 5th Edition API and stores the info in state as monsterData
+     * Fetches a list of monsters from the D&D 5th Edition API and stores the info in state as monsterList
      */
-    async function getMonsters() {
-      const response = await fetch(`${dndAPI}${monstersUrl}`);
-      const monstersList = await response.json();
-
-      setMonsterData(monstersList.results);
+    async function getMonsterList() {
+      const listResponse = await fetch(`${dndAPI}${monstersUrl}`);
+      const monsterJSON = await listResponse.json();
+      await setMonsterList(monsterJSON.results);
     }
-    getMonsters();
+    getMonsterList();
   }, []);
+
+  /**
+   * Uses the monsterList to fetch data for and create a master array of all detailed info for every monster on the API.
+   */
+  const [monsterData, setMonsterData] = useState([]);
+  useEffect(() => {
+    let bigMonArray = [];
+    monsterList.forEach(async (monster) => {
+      const response = await fetch(`${dndAPI}${monster.url}`);
+      const data = await response.json();
+      await bigMonArray.push(data);
+    });
+    setMonsterData(bigMonArray);
+  }, [monsterList]);
+
+  const [filteredMonsters, setFilteredMonsters] = useState([]);
 
   /**
    * Filters out and returns an array of monsters whose names start with the letter the user clicks on in the alphabet filter
    *
-   * @param  {String} letter The letter that the names of the monsters in the new array will start with
+   * @param  {Array} filters The letter that the names of the monsters in the new array will start with
    * @return  {Array} An array containing the filtered monsters
    */
-  function filterByLetter(letter) {
-    let monsByLetter = monsterData.filter(
-      (item) => item.index.charAt(0) === letter.toLowerCase()
+  function filter(filters) {
+    let newMonArray = monsterList.filter(
+      (item) => item.index.charAt(0) === filters.toLowerCase()
     );
 
-    setFilteredMonsters(monsByLetter);
+    setFilteredMonsters(newMonArray);
   }
 
   return (
@@ -58,7 +69,8 @@ export default function App() {
       </h1>
 
       <SearchBar />
-      <FilterForm monsterData={monsterData} onFilter={filterByLetter} />
+      <FilterForm monsterList={monsterList} onFilter={filter} />
+      {console.log(monsterData)}
       <MainContent
         filteredMonList={filteredMonsters}
         dndAPI={dndAPI}
