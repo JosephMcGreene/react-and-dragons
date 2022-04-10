@@ -120,13 +120,13 @@ export default function FilterForm({ monsterData, onFilter }) {
     event.preventDefault();
 
     setFilterSelections({
-      letterFilter: selectedLetter.toLowerCase(),
-      crFilter: selectedCR,
-      alignmentFilter: selectedAlignment,
-      languageFilter: selectedLanguage,
-      sizeFilter: selectedSize,
-      typeFilter: selectedType,
-      vulernabiityFilter: selectedVulnerabilities,
+      alignment: selectedAlignment.toLowerCase(),
+      challenge_rating: selectedCR,
+      language: selectedLanguage,
+      // index: selectedLetter.toLowerCase(),
+      size: selectedSize,
+      type: selectedType,
+      vulnerability: selectedVulnerabilities,
     });
 
     onFilter(filterSelections);
@@ -146,11 +146,36 @@ export default function FilterForm({ monsterData, onFilter }) {
         value={selectedCR}
         onChange={(event) => setSelectedCR(event.target.value)}
       />
-      {/* <FilterSelect filterName="Alignment" filterOptions={alignments} />
-      <FilterSelect filterName="Language" filterOptions={languages} />
-      <FilterSelect filterName="Size" filterOptions={sizes} />
-      <FilterSelect filterName="Type" filterOptions={types} />
-      <FilterSelect filterName="Vulnerabilities" filterOptions={vulnerabilities} /> */}
+      <FilterSelect
+        filterName="Alignment"
+        filterOptions={alignments}
+        value={selectedAlignment}
+        onChange={(event) => setSelectedAlignment(event.target.value)}
+      />
+      {/* <FilterSelect
+        filterName="Language"
+        filterOptions={languages}
+        value={selectedLanguage}
+        onChange={(event) => setSelectedLanguage(event.target.value)}
+      /> */}
+      <FilterSelect
+        filterName="Size"
+        filterOptions={sizes}
+        value={selectedSize}
+        onChange={(event) => setSelectedSize(event.target.value)}
+      />
+      <FilterSelect
+        filterName="Type"
+        filterOptions={types}
+        value={selectedType}
+        onChange={(event) => setSelectedType(event.target.value)}
+      />
+      <FilterSelect
+        filterName="Vulnerabilities"
+        filterOptions={vulnerabilities}
+        value={selectedVulnerabilities}
+        onChange={(event) => setSelectedVulnerabilities(event.target.value)}
+      />
 
       <input type="submit" value="Apply Filters" className="button" />
     </form>

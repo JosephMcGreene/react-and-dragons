@@ -55,10 +55,15 @@ export default function App() {
    * @return  {Array} An array containing the filtered monsters
    */
   function filter(filters) {
-    const { alignmentFilter, crFilter, letterFilter } = filters;
-    console.log(filters);
-    console.log(crFilter, letterFilter, alignmentFilter);
-    // let newMonArray = monsterData.filter(
+    let filtersArray = [filters];
+    console.log(filtersArray);
+    let newMonArray = [];
+    // for (const property in filters) {
+    //   newMonArray = monsterData.filter(
+    //     (item) =>
+    //   )
+    // }
+    // newMonArray = monsterData.filter(
     //   (item) => item.index.charAt(0) === filters.toLowerCase()
     // );
 
