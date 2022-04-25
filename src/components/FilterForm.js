@@ -2,42 +2,12 @@
 
 import { useState } from "react";
 
-export default function FilterForm({ monsterData, onFilter }) {
-  const [selectedLetter, setSelectedLetter] = useState("");
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
-
-  const [selectedCR, setSelectedCR] = useState();
-  const challengeRatings = [
-    0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
-    18, 19, 20, 21, 22, 23, 24, 30,
-  ];
+export default function FilterForm({ onFilter }) {
+  // const [selectedCR, setSelectedCR] = useState("");
+  // const challengeRatings = [
+  //   0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,
+  //   18, 19, 20, 21, 22, 23, 24, 30,
+  // ];
 
   const [selectedAlignment, setSelectedAlignment] = useState("");
   const alignments = [
@@ -54,27 +24,27 @@ export default function FilterForm({ monsterData, onFilter }) {
     "Unaligned",
   ];
 
-  const [selectedLanguage, setSelectedLanguage] = useState("");
-  const languages = [
-    "All",
-    "Abyssal",
-    "Celestial",
-    "Common",
-    "Deep Speech",
-    "Draconic",
-    "Dwarvish",
-    "Elvish",
-    "Giant",
-    "Gnomish",
-    "Goblin",
-    "Halfling",
-    "Infernal",
-    "Orc",
-    "Primodrial",
-    "Sylvan",
-    "Telepathy",
-    "Undercommon",
-  ];
+  // const [selectedLanguage, setSelectedLanguage] = useState("");
+  // const languages = [
+  //   "All",
+  //   "Abyssal",
+  //   "Celestial",
+  //   "Common",
+  //   "Deep Speech",
+  //   "Draconic",
+  //   "Dwarvish",
+  //   "Elvish",
+  //   "Giant",
+  //   "Gnomish",
+  //   "Goblin",
+  //   "Halfling",
+  //   "Infernal",
+  //   "Orc",
+  //   "Primodrial",
+  //   "Sylvan",
+  //   "Telepathy",
+  //   "Undercommon",
+  // ];
 
   const [selectedSize, setSelectedSize] = useState("");
   const sizes = ["Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"];
@@ -97,55 +67,50 @@ export default function FilterForm({ monsterData, onFilter }) {
     "Undead",
   ];
 
-  const [selectedVulnerabilities, setSelectedVulnerabilities] = useState("");
-  const vulnerabilities = [
-    "Acid",
-    "Bludgeoning",
-    "Cold",
-    "Fire",
-    "Force",
-    "Lightning",
-    "Necrotic",
-    "Piercing",
-    "Poison",
-    "Psychic",
-    "Radiant",
-    "Slashing",
-    "Thunder",
-  ];
+  // const [selectedVulnerabilities, setSelectedVulnerabilities] = useState("");
+  // const vulnerabilities = [
+  //   "Acid",
+  //   "Bludgeoning",
+  //   "Cold",
+  //   "Fire",
+  //   "Force",
+  //   "Lightning",
+  //   "Necrotic",
+  //   "Piercing",
+  //   "Poison",
+  //   "Psychic",
+  //   "Radiant",
+  //   "Slashing",
+  //   "Thunder",
+  // ];
 
   const [filterSelections, setFilterSelections] = useState({});
 
   function handleSubmit(event) {
     event.preventDefault();
 
-    setFilterSelections({
+    let filterTypes = {
       alignment: selectedAlignment.toLowerCase(),
-      challenge_rating: selectedCR,
-      language: selectedLanguage,
-      // index: selectedLetter.toLowerCase(),
+      // challenge_rating: selectedCR,
+      // language: selectedLanguage,
       size: selectedSize,
-      type: selectedType,
-      vulnerability: selectedVulnerabilities,
-    });
+      type: selectedType.toLowerCase(),
+      // vulnerability: selectedVulnerabilities,
+    };
+
+    setFilterSelections(filterTypes);
 
     onFilter(filterSelections);
   }
 
   return (
     <form className="filter-form" onSubmit={handleSubmit}>
-      <FilterSelect
-        filterName="Alphabetical"
-        filterOptions={alphabet}
-        value={selectedLetter}
-        onChange={(event) => setSelectedLetter(event.target.value)}
-      />
-      <FilterSelect
+      {/* <FilterSelect
         filterName="Challenge Rating"
         filterOptions={challengeRatings}
         value={selectedCR}
-        onChange={(event) => setSelectedCR(event.target.value)}
-      />
+        onChange={(event) => handleChange(event)}
+      /> */}
       <FilterSelect
         filterName="Alignment"
         filterOptions={alignments}
@@ -170,12 +135,14 @@ export default function FilterForm({ monsterData, onFilter }) {
         value={selectedType}
         onChange={(event) => setSelectedType(event.target.value)}
       />
-      <FilterSelect
+      {/* <FilterSelect
         filterName="Vulnerabilities"
         filterOptions={vulnerabilities}
         value={selectedVulnerabilities}
-        onChange={(event) => setSelectedVulnerabilities(event.target.value)}
-      />
+        onChange={(event) =>
+          setSelectedVulnerabilities(event.target.value.toLowerCase())
+        }
+      /> */}
 
       <input type="submit" value="Apply Filters" className="button" />
     </form>

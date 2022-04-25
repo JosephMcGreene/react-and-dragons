@@ -51,23 +51,28 @@ export default function App() {
   /**
    * Filters out and returns an array of monsters whose names start with the letter the user clicks on in the alphabet filter
    *
-   * @param  {Array} filters The letter that the names of the monsters in the new array will start with
+   * @param  {Object} filters The letter that the names of the monsters in the new array will start with
    * @return  {Array} An array containing the filtered monsters
    */
   function filter(filters) {
-    let filtersArray = [filters];
-    console.log(filtersArray);
     let newMonArray = [];
-    // for (const property in filters) {
-    //   newMonArray = monsterData.filter(
-    //     (item) =>
-    //   )
-    // }
-    // newMonArray = monsterData.filter(
-    //   (item) => item.index.charAt(0) === filters.toLowerCase()
-    // );
+    let monsterKeys = Object.keys(filters);
+    let monsterValues = Object.values(filters);
 
-    // setFilteredMonsters(newMonArray);
+    for (let i = 0; i <= monsterData.length; i++) {
+      for (const property in monsterData[i]) {
+        if (
+          monsterKeys.includes(property) &&
+          monsterValues.includes(monsterData[i][property]) &&
+          !newMonArray.includes(monsterData[i])
+        ) {
+          newMonArray.push(monsterData[i]);
+        }
+      }
+    }
+
+    setFilteredMonsters(newMonArray);
+    console.log(newMonArray);
   }
 
   return (
@@ -77,13 +82,8 @@ export default function App() {
       </h1>
 
       <SearchBar />
-      <FilterForm monsterData={monsterData} onFilter={filter} />
-      {console.log(monsterData)}
-      <MainContent
-        filteredMonList={filteredMonsters}
-        dndAPI={dndAPI}
-        monstersUrl={monstersUrl}
-      />
+      <FilterForm onFilter={filter} />
+      <MainContent filteredMonList={filteredMonsters} />
     </div>
   );
 }
