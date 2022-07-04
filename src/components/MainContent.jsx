@@ -3,11 +3,7 @@ import React, { useState } from "react";
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./info-card/MonsterInfoCard";
 
-export default function MainContent({
-	filteredMonsters,
-	addAccumulatedMonster,
-	accumulatedMonsters,
-}) {
+export default function MainContent({ filteredMonsters, accumulatedMonsters }) {
 	const dndAPI = "https://www.dnd5eapi.co";
 	const monstersUrl = "/api/monsters";
 
@@ -20,11 +16,11 @@ export default function MainContent({
 	 */
 	async function getMonsterDetails(monsterIndex) {
 		let existingMon;
-		if (accumulatedMonsters.length > 0) {
-			existingMon = accumulatedMonsters.find((element, i) => {
-				return element[i].index === monsterIndex;
-			});
-		}
+
+		existingMon = accumulatedMonsters.find((element, i) => {
+			return element[i].index === monsterIndex;
+		});
+
 		if (existingMon.index === monsterIndex) {
 			return setMonsterDetails(existingMon);
 		}
@@ -32,12 +28,11 @@ export default function MainContent({
 		const response = await fetch(`${dndAPI}${monstersUrl}/${monsterIndex}`);
 		const details = await response.json();
 		await setMonsterDetails(details);
-		await addAccumulatedMonster(details);
 	}
 
 	return (
 		<main className="main-content">
-			{filteredMonsters.length > 0 ? (
+			{filteredMonsters.length !== 0 ? (
 				<MonsterList
 					filteredMonsters={filteredMonsters}
 					onClick={getMonsterDetails}

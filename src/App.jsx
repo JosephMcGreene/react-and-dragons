@@ -19,10 +19,10 @@ import MainContent from "./components/MainContent";
 export default function App() {
 	const dndAPI = "https://www.dnd5eapi.co";
 	const monstersUrl = "/api/monsters";
+	let accumulatedMonsters = [];
 
 	const [monsterList, setMonsterList] = useState([]);
 	const [filteredMonsters, setFilteredMonsters] = useState([]);
-	const [accumulatedMonsters, setAccumulatedMonsters] = useState([]);
 
 	useEffect(() => {
 		/**
@@ -56,10 +56,6 @@ export default function App() {
 		setFilteredMonsters(searchedMonsters);
 	}
 
-	function addAccumulatedMonster(monster) {
-		setAccumulatedMonsters([...accumulatedMonsters, monster]);
-	}
-
 	return (
 		<div className="App">
 			<h1>
@@ -69,7 +65,6 @@ export default function App() {
 			<FilterForm onSearch={search} />
 			<MainContent
 				filteredMonsters={filteredMonsters}
-				addAccumulatedMonster={addAccumulatedMonster}
 				accumulatedMonsters={accumulatedMonsters}
 			/>
 		</div>
