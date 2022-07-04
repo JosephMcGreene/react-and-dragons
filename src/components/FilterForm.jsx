@@ -136,7 +136,7 @@ export default function FilterForm({ onSearch }) {
           setSelectedVulnerabilities(event.target.value.toLowerCase())
         }
       /> */}
-			<input type="submit" value="Search" className="button" />
+			<input type="submit" value="Search" className="submit-button" />
 		</form>
 	);
 }
