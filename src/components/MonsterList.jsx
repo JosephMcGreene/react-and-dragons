@@ -1,4 +1,4 @@
-export default function MonsterList({ filteredMonsters, onClick }) {
+export default function MonsterList({ filteredMonsters, openDetails }) {
   return (
     <section>
       <ul className="monster-list">
@@ -7,18 +7,17 @@ export default function MonsterList({ filteredMonsters, onClick }) {
             // declared in this file, below
             <MonsterListItem
               key={item.index}
-              index={item.index}
               text={item.name}
-              onClick={onClick}
+              url={item.url}
+              openDetails={openDetails}
             />
           );
         })}
       </ul>
-      <div id="monsterScrollTo"></div>
     </section>
   );
 }
 
-function MonsterListItem({ text, index, onClick }) {
-  return <li onClick={() => onClick(index)}>{text}</li>;
+function MonsterListItem({ text, url, openDetails }) {
+  return <li onClick={() => openDetails(url)}>{text}</li>;
 }

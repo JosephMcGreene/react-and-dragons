@@ -1,6 +1,8 @@
 $dark-bg: hsl(250, 15%, 20%);
 $light-bg: whitesmoke;
 $placeholder-text: hsl(0, 0%, 87%);
+//z-index
+$top: 1000;
 
 @font-face {
   font-family: "intruder_alertregular";

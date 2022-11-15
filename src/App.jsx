@@ -21,6 +21,7 @@ export default function App() {
   const monstersUrl = "/api/monsters";
 
   const [monsterList, setMonsterList] = useState([]);
+  const [monsterDetails, setMonsterDetails] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -28,9 +29,17 @@ export default function App() {
   }, []);
 
   async function getMonsterList() {
+    setLoading(true);
     const monsterData = await fetch(`${dndAPI}${monstersUrl}`);
     const monstersJSON = await monsterData.json();
     setMonsterList(monstersJSON.results);
+    setLoading(false);
+  }
+
+  async function getMonsterDetails(url) {
+    const response = await fetch(`${dndAPI}${url}`);
+    const details = await response.json();
+    setMonsterDetails(details);
   }
 
   return (
@@ -43,7 +52,11 @@ export default function App() {
         monsterList={monsterList}
         onSearch={(filteredMonsters) => setMonsterList(filteredMonsters)}
       />
-      <MainContent monsterList={monsterList} />
+      <MainContent
+        filteredMonsters={monsterList}
+        monsterDetails={monsterDetails}
+        getMonsterDetails={(url) => getMonsterDetails(url)}
+      />
     </div>
   );
 }

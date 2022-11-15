@@ -5,48 +5,77 @@
   flex-direction: row;
   flex-wrap: wrap;
 }
-.monster-info-card {
-  border-radius: 4px;
-  width: fit-content;
-  margin-top: 1rem;
-  line-height: 3.5ch;
-  letter-spacing: 1.5px;
-  color: $light-bg;
-  background-color: $dark-bg;
 
-  .monster-name {
-    text-align: center;
-    text-decoration: underline;
-    font-size: 2rem;
-  }
+.modal {
+  z-index: $top;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 
-  .core-info {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .info-block {
+  .monster-info-card {
+    border-radius: 5px;
+    color: $dark-bg;
+    background-color: $light-bg;
+
+    .modal-header {
+      border-radius: 5px;
       display: flex;
-      flex-direction: column;
-      margin: 0 2.5vw;
+      justify-content: end;
+      align-items: flex-start;
+      background-color: $dark-bg;
 
-      h4 {
-        margin: 0.75rem 0;
-        font-size: 1.2rem;
-        display: inline-block;
-        font-weight: normal;
+      .close-x {
+        cursor: pointer;
+        color: $light-bg;
+        font-size: 5ch;
+      }
+    }
+
+    .modal-content {
+      padding: 1rem;
+
+      .monster-name {
+        text-align: center;
+        text-decoration: underline;
+        font-size: 2rem;
       }
 
-      .monster-skills-list {
+      .core-info {
         display: flex;
-        padding: 0;
-        margin-left: 5vw;
-        flex-direction: column;
-        font-weight: 400;
-      }
+        flex-direction: row;
+        flex-wrap: wrap;
 
-      .actions-description {
-        margin-top: 0;
+        .info-block {
+          display: flex;
+          flex-direction: column;
+          margin: 0 2.5vw;
+
+          h4 {
+            margin: 0.75rem 0;
+            font-size: 1.2rem;
+            display: inline-block;
+            font-weight: normal;
+          }
+
+          .monster-skills-list {
+            display: flex;
+            padding: 0;
+            margin-left: 5vw;
+            flex-direction: column;
+            font-weight: 400;
+          }
+
+          .actions-description {
+            margin-top: 0;
+          }
+        }
       }
     }
   }
