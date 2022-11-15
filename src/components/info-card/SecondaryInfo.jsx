@@ -2,8 +2,8 @@ import InfoHeader from "./InfoHeader";
 
 export default function SecondaryInfo({ monsterDetails }) {
 	/**
-	 * takes an array or object from a nested key/value pair in the monsterInfo object and parses its info to be rendered to the user.
-	 * @param  {Object} json Detailed info about the monster that is nested as an item in the monsterInfo object
+	 * takes an array or object from a nested key/value pair in the monsterDetails object and parses its info to be rendered to the user.
+	 * @param  {Object} json Detailed info about the monster that is nested as an item in the monsterDetails object
 	 * @return {String} The text to be rendered
 	 */
 	function parseDOMText(json) {

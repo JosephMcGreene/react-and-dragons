@@ -12,61 +12,38 @@
 import React, { useState, useEffect } from "react";
 //Internal
 import "./scss/App.scss";
-// Components
+//Components
 import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
 export default function App() {
-	const dndAPI = "https://www.dnd5eapi.co";
-	const monstersUrl = "/api/monsters";
-	let accumulatedMonsters = [];
+  const dndAPI = "https://www.dnd5eapi.co";
+  const monstersUrl = "/api/monsters";
 
-	const [monsterList, setMonsterList] = useState([]);
-	const [filteredMonsters, setFilteredMonsters] = useState([]);
+  const [monsterList, setMonsterList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-	useEffect(() => {
-		/**
-		 * Fetches a list of monsters from the D&D 5th Edition API and stores the info in state as monsterList
-		 */
-		async function getMonsterList() {
-			const listResponse = await fetch(`${dndAPI}${monstersUrl}`);
-			const monsterJSON = await listResponse.json();
-			await setMonsterList(monsterJSON.results);
-		}
-		try {
-			getMonsterList();
-		} catch (error) {
-			console.error(error.message);
-		}
-	}, []);
+  useEffect(() => {
+    getMonsterList();
+  }, []);
 
-	function search(searchInput) {
-		let searchedMonsters = [];
+  async function getMonsterList() {
+    const monsterData = await fetch(`${dndAPI}${monstersUrl}`);
+    const monstersJSON = await monsterData.json();
+    setMonsterList(monstersJSON.results);
+  }
 
-		if (searchInput.length === 1) {
-			searchedMonsters = monsterList.filter((listItem) => {
-				return listItem.index.charAt(0) === searchInput.toLowerCase();
-			});
-		} else {
-			searchedMonsters = monsterList.filter((listItem) => {
-				return listItem.index === searchInput.toLowerCase();
-			});
-		}
+  return (
+    <div className="App">
+      <h1>
+        Dungeons & Dragons 5th Edition <br /> Monster Guide
+      </h1>
 
-		setFilteredMonsters(searchedMonsters);
-	}
-
-	return (
-		<div className="App">
-			<h1>
-				Dungeons & Dragons 5th Edition <br /> Monster Guide
-			</h1>
-
-			<FilterForm onSearch={search} />
-			<MainContent
-				filteredMonsters={filteredMonsters}
-				accumulatedMonsters={accumulatedMonsters}
-			/>
-		</div>
-	);
+      <FilterForm
+        monsterList={monsterList}
+        onSearch={(filteredMonsters) => setMonsterList(filteredMonsters)}
+      />
+      <MainContent monsterList={monsterList} />
+    </div>
+  );
 }
