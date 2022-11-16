@@ -11,58 +11,55 @@
   position: fixed;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 
   display: flex;
   justify-content: center;
-  align-items: center;
 
   .monster-info-card {
+    z-index: 1000;
+    position: absolute;
     border-radius: 5px;
+    width: min(92%, 650px);
     color: $dark-bg;
     background-color: $light-bg;
 
     .modal-header {
       border-radius: 5px;
+      padding: 0.25rem;
       display: flex;
-      justify-content: end;
-      align-items: flex-start;
-      background-color: $dark-bg;
+      align-items: center;
 
+      .monster-name {
+        margin: 0 auto;
+      }
       .close-x {
         cursor: pointer;
-        color: $light-bg;
-        font-size: 5ch;
+        margin-right: 0;
       }
     }
 
     .modal-content {
-      padding: 1rem;
-
-      .monster-name {
-        text-align: center;
-        text-decoration: underline;
-        font-size: 2rem;
-      }
+      padding: 0 0.75rem 1rem;
 
       .core-info {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
 
+        .info-heading {
+          margin: 0.75rem 0;
+          font-size: 1.2rem;
+          display: inline-block;
+          font-weight: normal;
+        }
+
         .info-block {
           display: flex;
           flex-direction: column;
-          margin: 0 2.5vw;
-
-          h4 {
-            margin: 0.75rem 0;
-            font-size: 1.2rem;
-            display: inline-block;
-            font-weight: normal;
-          }
 
           .monster-skills-list {
             display: flex;
