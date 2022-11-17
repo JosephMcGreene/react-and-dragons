@@ -6,20 +6,20 @@ export default function MonsterInfoCard({ monsterDetails, closeModal }) {
   return (
     <div className="modal">
       <section className="monster-info-card">
-        <div className="modal-header">
+        <header className="modal-header">
           <h2 className="monster-name">{monsterDetails.name}</h2>
-          <div className="close-x" onClick={() => closeModal()}>
+          <span className="close-x" onClick={() => closeModal()}>
             &times;
-          </div>
-        </div>
-        <div className="modal-content">
-          <div className="core-info">
+          </span>
+        </header>
+        <article className="modal-content">
+          <dl className="core-info">
             <PrimaryInfo monsterDetails={monsterDetails} />
             <SecondaryInfo monsterDetails={monsterDetails} />
-            {/* <ActionsInfo monsterInfo={monsterDetails} /> */}
-          </div>
+            <ActionsInfo monsterDetails={monsterDetails} />
+          </dl>
           {console.log(monsterDetails)}
-        </div>
+        </article>
       </section>
     </div>
   );

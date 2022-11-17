@@ -19,5 +19,9 @@ export default function MonsterList({ filteredMonsters, openDetails }) {
 }
 
 function MonsterListItem({ text, monsterURL, openDetails }) {
-  return <li onClick={() => openDetails(monsterURL)}>{text}</li>;
+  return (
+    <li className="monster-list-item" onClick={() => openDetails(monsterURL)}>
+      {text}
+    </li>
+  );
 }

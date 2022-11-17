@@ -18,34 +18,44 @@ export default function SkillsList({ monsterDetails }) {
   }
 
   return (
-    <>
+    <div>
       <InfoHeader title="Skills" />
-      <ul className="monster-skills-list">
-        <li>
-          Strength: {monsterDetails.strength} (
+      <dl className="monster-skills-list">
+        <dt>Strength: </dt>
+        <dd>
+          {monsterDetails.strength} (
           {calculateModifier(monsterDetails.strength)})
-        </li>
-        <li>
-          Dexterity: {monsterDetails.dexterity} (
+        </dd>
+        <br />
+        <dt>Dexterity: </dt>
+        <dd>
+          {monsterDetails.dexterity} (
           {calculateModifier(monsterDetails.dexterity)})
-        </li>
-        <li>
-          Constitution: {monsterDetails.constitution} (
+        </dd>
+        <br />
+        <dt>Constitution: </dt>
+        <dd>
+          {monsterDetails.constitution} (
           {calculateModifier(monsterDetails.constitution)})
-        </li>
-        <li>
-          Intelligence: {monsterDetails.intelligence} (
+        </dd>
+        <br />
+        <dt>Intelligence: </dt>
+        <dd>
+          {monsterDetails.intelligence} (
           {calculateModifier(monsterDetails.intelligence)})
-        </li>
-        <li>
-          Wisdom: {monsterDetails.wisdom} (
-          {calculateModifier(monsterDetails.wisdom)})
-        </li>
-        <li>
-          Charisma: {monsterDetails.charisma} (
+        </dd>
+        <br />
+        <dt>Wisdom: </dt>
+        <dd>
+          {monsterDetails.wisdom} ({calculateModifier(monsterDetails.wisdom)})
+        </dd>
+        <br />
+        <dt>Charisma: </dt>
+        <dd>
+          {monsterDetails.charisma} (
           {calculateModifier(monsterDetails.charisma)})
-        </li>
-      </ul>
-    </>
+        </dd>
+      </dl>
+    </div>
   );
 }

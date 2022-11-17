@@ -32,13 +32,6 @@ code {
     monospace;
 }
 
-span {
-  color: $dark-bg;
-  display: block;
-  margin: 1rem auto;
-  text-align: center;
-}
-
 h1 {
   margin-block-start: 0.5em;
   margin-block-end: 0.25em;
@@ -47,15 +40,6 @@ h1 {
   font-size: 2.75rem;
   line-height: normal;
   text-align: center;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-
-  &:visited {
-    color: black;
-  }
 }
 
 .filter-form {

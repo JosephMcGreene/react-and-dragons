@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./info-card/MonsterInfoCard";
 
-export default function MainContent({ dndAPI, filteredMonsters }) {
+export default function MainContent({ filteredMonsters }) {
   const [showModal, setShowModal] = useState(false);
   const [monsterDetails, setMonsterDetails] = useState({});
 
@@ -26,9 +26,7 @@ export default function MainContent({ dndAPI, filteredMonsters }) {
     <main className="main-content">
       <MonsterList
         filteredMonsters={filteredMonsters}
-        openDetails={(monsterURL) => {
-          getMonsterDetails(monsterURL);
-        }}
+        openDetails={(monsterURL) => getMonsterDetails(monsterURL)}
       />
 
       {showModal && (

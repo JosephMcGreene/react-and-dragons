@@ -1,14 +1,3 @@
-// ! Overall Goals:
-// !   - [X]Responsive
-// !   - [ ]All filters up and functional
-// !   - [ ]Intuitive layout
-// !   - [X]Reasonably visually appealing
-// TODO Add functionality to Search Bar
-// TODO Add functionality to all filters, see FilterForm.js
-// TODO Styles:
-// TODO   - conditional classNames?
-// TODO Error Handling
-
 import React, { useState, useEffect } from "react";
 //Internal
 import "./scss/App.scss";
@@ -17,11 +6,9 @@ import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
 export default function App() {
-  const dndAPI = "https://www.dnd5eapi.co";
-  const monstersEndpoint = "/api/monsters";
-
   const [monsterList, setMonsterList] = useState([]);
-  const [loading, setLoading] = useState(false);
+
+  const monstersEndpoint = "/api/monsters";
 
   useEffect(() => {
     const controller = new AbortController();
@@ -34,9 +21,12 @@ export default function App() {
      */
     async function getMonsterList() {
       try {
-        const monsterData = await fetch(`${dndAPI}${monstersEndpoint}`, {
-          signal: controller.signal,
-        });
+        const monsterData = await fetch(
+          `https://www.dnd5eapi.co${monstersEndpoint}`,
+          {
+            signal: controller.signal,
+          }
+        );
         const monstersJSON = await monsterData.json();
 
         setMonsterList(monstersJSON.results);
@@ -65,7 +55,7 @@ export default function App() {
         monsterList={monsterList}
         onSearch={(filteredMonsters) => setMonsterList(filteredMonsters)}
       />
-      <MainContent dndApi={dndAPI} filteredMonsters={monsterList} />
+      <MainContent filteredMonsters={monsterList} />
     </div>
   );
 }

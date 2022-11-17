@@ -1,10 +1,9 @@
-export default function InfoHeader({ title, text }) {
+export default function InfoHeader({ title }) {
   return (
-    <h4 className="info-heading">
+    <dt className="info-heading">
       <strong>
         <u>{title}</u>
-      </strong>{" "}
-      {text}
-    </h4>
+      </strong>
+    </dt>
   );
 }

@@ -29,67 +29,78 @@ export default function SecondaryInfo({ monsterDetails }) {
   }
 
   return (
-    <article className="info-block">
-      <InfoHeader title="Speed:" text={parseDOMText(monsterDetails.speed)} />
+    <>
+      <InfoHeader title="Speed:" />
+      <dd>{parseDOMText(monsterDetails.speed)}</dd>
 
-      <InfoHeader title="Senses:" text={parseDOMText(monsterDetails.senses)} />
+      <InfoHeader title="Senses:" />
+      <dd>{parseDOMText(monsterDetails.senses)}</dd>
 
-      <InfoHeader title="Alignment:" text={monsterDetails.alignment} />
+      <InfoHeader title="Alignment:" />
+      <dd>{monsterDetails.alignment}</dd>
 
-      <InfoHeader title="Type:" text={monsterDetails.type} />
+      <InfoHeader title="Type:" />
+      <dd>{monsterDetails.type}</dd>
 
       {monsterDetails.languages ? (
-        <InfoHeader title="Languages:" text={monsterDetails.languages} />
+        <>
+          <InfoHeader title="Languages:" />
+          <dd>{monsterDetails.languages}</dd>
+        </>
       ) : (
-        <InfoHeader title="Languages:" text="None" />
+        <>
+          <InfoHeader title="Languages:" />
+          <dd>"None"</dd>
+        </>
       )}
 
-      <InfoHeader title="Size:" text={monsterDetails.size} />
+      <InfoHeader title="Size:" />
+      <dd>{monsterDetails.size}</dd>
 
-      <InfoHeader
-        title="Damage Immunities:"
-        text={parseDOMText(monsterDetails.damage_immunities)}
-      />
+      <InfoHeader title="Damage Immunities:" />
+      <dd>{parseDOMText(monsterDetails.damage_immunities)}</dd>
 
-      <InfoHeader
-        title="Resistances:"
-        text={parseDOMText(monsterDetails.damage_resistances)}
-      />
+      <InfoHeader title="Resistances:" />
+      <dd>{parseDOMText(monsterDetails.damage_resistances)}</dd>
 
-      <InfoHeader
-        title="Vulnerabilities:"
-        text={parseDOMText(monsterDetails.damage_vulnerabilities)}
-      />
+      <InfoHeader title="Vulnerabilities:" />
+      <dd>{parseDOMText(monsterDetails.damage_vulnerabilities)}</dd>
 
       {monsterDetails.condition_immunities.length > 0 ? (
         <>
-          <InfoHeader title="Condition Immunities:" text="" />
+          <InfoHeader title="Condition Immunities:" />
           <ul>
             {monsterDetails.condition_immunities.map((immunity) => {
-              return <li key={immunity.name}>{immunity.name}</li>;
+              return <dd key={immunity.name}>{immunity.name}</dd>;
             })}
           </ul>
         </>
       ) : (
-        <InfoHeader title="Condition Immunities:" text="None" />
+        <>
+          <InfoHeader title="Condition Immunities:" />
+          <dd>"None"</dd>
+        </>
       )}
 
       {monsterDetails.proficiencies.length > 0 ? (
         <>
-          <InfoHeader title="Proficiencies:" text="" />
+          <InfoHeader title="Proficiencies:" />
           <ul>
             {monsterDetails.proficiencies.map((pro) => {
               return (
-                <li key={pro.proficiency.index}>
+                <dd key={pro.proficiency.index}>
                   {pro.proficiency.name} +{pro.value}
-                </li>
+                </dd>
               );
             })}
           </ul>
         </>
       ) : (
-        <InfoHeader title="Proficiencies:" text="None" />
+        <>
+          <InfoHeader title="Proficiencies:" />
+          <dd>"None"</dd>
+        </>
       )}
-    </article>
+    </>
   );
 }

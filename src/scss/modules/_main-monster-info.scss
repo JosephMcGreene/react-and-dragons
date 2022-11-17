@@ -22,15 +22,16 @@
   .monster-info-card {
     z-index: 1000;
     position: absolute;
-    border-radius: 5px;
+    border-radius: 12px;
     margin-top: 0.5rem;
-    width: min(92%, 650px);
+    width: min(93%, 750px);
     font-family: $main-font;
     color: $dark-bg;
     background-color: $light-bg;
+    box-shadow: 0 0 10px $dark-bg;
 
     .modal-header {
-      border-radius: 5px 5px 0 0;
+      border-radius: 12px 12px 0 0;
       padding: 0.75rem;
       display: flex;
       align-items: center;
@@ -52,35 +53,16 @@
     }
 
     .modal-content {
-      padding: 0 0.75rem 1rem;
+      padding: 1.25ch;
 
-      .core-info {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
+      .info-heading {
+        font-size: 1.2rem;
+      }
 
-        .info-heading {
-          margin: 0.75rem 0;
-          font-size: 1.2rem;
-          display: inline-block;
-          font-weight: normal;
-        }
-
-        .info-block {
-          display: flex;
-          flex-direction: column;
-
-          .monster-skills-list {
-            display: flex;
-            padding: 0;
-            margin-left: 5vw;
-            flex-direction: column;
-            font-weight: 400;
-          }
-
-          .actions-description {
-            margin-top: 0;
-          }
+      .monster-skills-list {
+        dt,
+        dd {
+          display: inline;
         }
       }
     }

@@ -3,20 +3,19 @@ import InfoHeader from "./InfoHeader";
 
 export default function PrimaryInfo({ monsterDetails }) {
   return (
-    <article className="info-block">
-      <InfoHeader
-        title="Hit Points:"
-        text={monsterDetails.hit_points + " (" + monsterDetails.hit_dice + ")"}
-      />
+    <>
+      <InfoHeader title="Hit Points:" />
+      <dd>
+        {monsterDetails.hit_points + " (" + monsterDetails.hit_dice + ")"}
+      </dd>
 
-      <InfoHeader title="Armor Class:" text={monsterDetails.armor_class} />
+      <InfoHeader title="Armor Class:" />
+      <dd>{monsterDetails.armor_class}</dd>
 
-      <InfoHeader
-        title="Challenge Rating:"
-        text={monsterDetails.challenge_rating}
-      />
+      <InfoHeader title="Challenge Rating:" />
+      <dd>{monsterDetails.challenge_rating}</dd>
 
       <SkillsList monsterDetails={monsterDetails} />
-    </article>
+    </>
   );
 }
