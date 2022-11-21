@@ -1,11 +1,5 @@
 @use "../abstracts/index" as *;
 
-.main-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
 .modal {
   z-index: $top;
   position: fixed;
@@ -24,7 +18,7 @@
     position: absolute;
     border-radius: 12px;
     margin-top: 0.5rem;
-    width: min(93%, 750px);
+    width: min(93%, 600px);
     font-family: $main-font;
     color: $dark-bg;
     background-color: $light-bg;
@@ -53,15 +47,67 @@
     }
 
     .modal-content {
-      padding: 1.25ch;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
 
       .info-heading {
         font-size: 1.2rem;
+        font-weight: bold;
       }
 
-      .monster-skills-list {
+      .info-block {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+      }
+
+      .info-item-column {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        padding: $card-padding;
+        width: fit-content;
+
         dt,
         dd {
+          display: inline;
+          white-space: pre-wrap;
+        }
+      }
+
+      .info-item {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        padding: $card-padding;
+        width: fit-content;
+
+        dt,
+        dd {
+          display: inline;
+          white-space: pre;
+        }
+      }
+
+      .action-heading {
+        font-size: 1.4rem;
+        font-weight: bold;
+        text-decoration: underline;
+        padding: $card-padding;
+      }
+
+      .action-body {
+        display: inline;
+        padding: 0.2ch 1.25ch;
+
+        .action-title {
+          font-weight: bold;
+          font-style: italic;
+          display: inline;
+        }
+        .action-description {
           display: inline;
         }
       }

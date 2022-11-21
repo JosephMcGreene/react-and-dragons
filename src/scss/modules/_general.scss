@@ -42,6 +42,12 @@ h1 {
   text-align: center;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
 .filter-form {
   .submit-button {
     display: block;

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./info-card/MonsterInfoCard";
 
 export default function MainContent({ filteredMonsters }) {
-  const [showModal, setShowModal] = useState(false);
+  const [showMonsterCard, setShowMonsterCard] = useState(false);
   const [monsterDetails, setMonsterDetails] = useState({});
 
   /**
@@ -16,7 +16,7 @@ export default function MainContent({ filteredMonsters }) {
       const response = await fetch(`https://www.dnd5eapi.co${monsterURL}`);
       const details = await response.json();
       setMonsterDetails(details);
-      setShowModal(true);
+      setShowMonsterCard(true);
     } catch (err) {
       console.error(err);
     }
@@ -29,10 +29,10 @@ export default function MainContent({ filteredMonsters }) {
         openDetails={(monsterURL) => getMonsterDetails(monsterURL)}
       />
 
-      {showModal && (
+      {showMonsterCard && (
         <MonsterInfoCard
           monsterDetails={monsterDetails}
-          closeModal={() => setShowModal(false)}
+          closeMonsterCard={() => setShowMonsterCard(false)}
         />
       )}
     </main>

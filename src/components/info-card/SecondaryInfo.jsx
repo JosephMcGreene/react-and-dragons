@@ -1,4 +1,4 @@
-import InfoHeader from "./InfoHeader";
+import SkillsList from "./SkillsList";
 
 export default function SecondaryInfo({ monsterDetails }) {
   /**
@@ -17,89 +17,120 @@ export default function SecondaryInfo({ monsterDetails }) {
     if (!json.length) {
       for (let prop in json) {
         let newProp = prop.replaceAll("_", " ");
-        domText += ` ${newProp}, ${json[prop]};`;
+        domText += `${newProp}, ${json[prop]}\n`;
       }
       return domText;
     }
 
+    if (typeof json === "string") {
+      let lineBreak = json.replaceAll(", ", "\n");
+      domText = `${lineBreak}`;
+      return domText;
+    }
+
     for (let index in json) {
-      domText += ` ${json[index]};`;
+      domText += `${json[index]}\n`;
     }
     return domText;
   }
 
   return (
     <>
-      <InfoHeader title="Speed:" />
-      <dd>{parseDOMText(monsterDetails.speed)}</dd>
+      <div className="info-block">
+        <SkillsList monsterDetails={monsterDetails} />
 
-      <InfoHeader title="Senses:" />
-      <dd>{parseDOMText(monsterDetails.senses)}</dd>
+        <span className="info-item">
+          <dt className="info-heading">Alignment: </dt>
+          <dd>{monsterDetails.alignment}</dd>
+        </span>
 
-      <InfoHeader title="Alignment:" />
-      <dd>{monsterDetails.alignment}</dd>
+        <span className="info-item-column">
+          <dt className="info-heading">Speed </dt>
+          <dd>{parseDOMText(monsterDetails.speed)}</dd>
+        </span>
 
-      <InfoHeader title="Type:" />
-      <dd>{monsterDetails.type}</dd>
+        <span className="info-item-column">
+          <dt className="info-heading">Senses </dt>
+          <dd>{parseDOMText(monsterDetails.senses)}</dd>
+        </span>
 
-      {monsterDetails.languages ? (
-        <>
-          <InfoHeader title="Languages:" />
-          <dd>{monsterDetails.languages}</dd>
-        </>
-      ) : (
-        <>
-          <InfoHeader title="Languages:" />
-          <dd>"None"</dd>
-        </>
-      )}
+        <span className="info-item">
+          <dt className="info-heading">Type: </dt>
+          <dd>{monsterDetails.type}</dd>
+        </span>
 
-      <InfoHeader title="Size:" />
-      <dd>{monsterDetails.size}</dd>
+        {monsterDetails.languages ? (
+          <span className="info-item-column">
+            <dt className="info-heading">Languages </dt>
+            <dd>{parseDOMText(monsterDetails.languages)}</dd>
+          </span>
+        ) : (
+          <span className="info-item">
+            <dt className="info-heading">Languages: </dt> <dd>None</dd>
+          </span>
+        )}
 
-      <InfoHeader title="Damage Immunities:" />
-      <dd>{parseDOMText(monsterDetails.damage_immunities)}</dd>
+        <span className="info-item">
+          <dt className="info-heading">Size: </dt>
+          <dd>{monsterDetails.size}</dd>
+        </span>
+      </div>
 
-      <InfoHeader title="Resistances:" />
-      <dd>{parseDOMText(monsterDetails.damage_resistances)}</dd>
+      <span className="info-item-column">
+        <dt className="info-heading">Damage Immunities: </dt>
+        <dd>{parseDOMText(monsterDetails.damage_immunities)}</dd>
+      </span>
 
-      <InfoHeader title="Vulnerabilities:" />
-      <dd>{parseDOMText(monsterDetails.damage_vulnerabilities)}</dd>
+      <span className="info-item-column">
+        <dt className="info-heading">Resistances: </dt>
+        <dd>{parseDOMText(monsterDetails.damage_resistances)}</dd>
+      </span>
+
+      <span className="info-item-column">
+        <dt className="info-heading">Vulnerabilities: </dt>
+        <dd>{parseDOMText(monsterDetails.damage_vulnerabilities)}</dd>
+      </span>
 
       {monsterDetails.condition_immunities.length > 0 ? (
-        <>
-          <InfoHeader title="Condition Immunities:" />
-          <ul>
+        <span className="info-item-column">
+          <dt className="info-heading">Condition Immunities: </dt>
+          <dl>
             {monsterDetails.condition_immunities.map((immunity) => {
-              return <dd key={immunity.name}>{immunity.name}</dd>;
+              return (
+                <span key={immunity.name}>
+                  <dd>{immunity.name}</dd>
+                  <br />
+                </span>
+              );
             })}
-          </ul>
-        </>
+          </dl>
+        </span>
       ) : (
-        <>
-          <InfoHeader title="Condition Immunities:" />
-          <dd>"None"</dd>
-        </>
+        <span className="info-item-column">
+          <dt className="info-heading">Condition Immunities: </dt> <dd>None</dd>
+        </span>
       )}
 
       {monsterDetails.proficiencies.length > 0 ? (
-        <>
-          <InfoHeader title="Proficiencies:" />
-          <ul>
+        <span className="info-item-column">
+          <dt className="info-heading">Proficiences: </dt>
+          <dl>
             {monsterDetails.proficiencies.map((pro) => {
               return (
-                <dd key={pro.proficiency.index}>
-                  {pro.proficiency.name} +{pro.value}
-                </dd>
+                <span key={pro.proficiency.name}>
+                  <dt>{pro.proficiency.name}: </dt>
+                  <dd>+{pro.value}</dd>
+                  <br />
+                </span>
               );
             })}
-          </ul>
-        </>
+          </dl>
+        </span>
       ) : (
-        <>
-          <InfoHeader title="Proficiencies:" />
-          <dd>"None"</dd>
-        </>
+        <span className="info-item-column">
+          <dt className="info-heading">Proficiences: </dt>
+          <dd>None</dd>
+        </span>
       )}
     </>
   );

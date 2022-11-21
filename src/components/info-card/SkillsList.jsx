@@ -1,5 +1,3 @@
-import InfoHeader from "./InfoHeader";
-
 export default function SkillsList({ monsterDetails }) {
   /**
    * calculates and returns the modifier for each of the monster's skills
@@ -18,9 +16,9 @@ export default function SkillsList({ monsterDetails }) {
   }
 
   return (
-    <div>
-      <InfoHeader title="Skills" />
-      <dl className="monster-skills-list">
+    <span className="info-item-column">
+      <dt className="info-heading">Skills </dt>
+      <dl>
         <dt>Strength: </dt>
         <dd>
           {monsterDetails.strength} (
@@ -56,6 +54,6 @@ export default function SkillsList({ monsterDetails }) {
           {calculateModifier(monsterDetails.charisma)})
         </dd>
       </dl>
-    </div>
+    </span>
   );
 }

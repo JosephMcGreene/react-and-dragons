@@ -1,5 +1,3 @@
-import InfoHeader from "./InfoHeader";
-
 export default function ActionsInfo({ monsterDetails }) {
   return (
     <>
@@ -46,17 +44,13 @@ export default function ActionsInfo({ monsterDetails }) {
 function Action({ monsterDetails, title, index }) {
   return (
     <>
-      <InfoHeader title={title} />
+      <dt className="action-heading">{title} </dt>
       {monsterDetails[index].map((action) => {
         return (
-          <>
-            <dt key={action.name} className="actions-description">
-              <strong>
-                <em>{action.name}.</em>
-              </strong>{" "}
-            </dt>
-            <dd>{action.desc}</dd>
-          </>
+          <span key={action.name} className="action-body">
+            <dt className="action-title">{action.name}. </dt>
+            <dd className="action-description">{action.desc}</dd>
+          </span>
         );
       })}
     </>

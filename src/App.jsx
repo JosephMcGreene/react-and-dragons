@@ -15,9 +15,9 @@ export default function App() {
 
     /**
      * Retrieves an array of JSON objects with basic data on all DnD 5th edition base rulebook monsters. Object key-value pairs include
-     * index: {String}, monster name, but all lower case
-     * name: {String}, monster name
-     * url: {String} ext used to retrieve further details on the monster
+     * index: {String} monster name, but all lower case
+     * name: {String} monster name
+     * url: {String} endpoint extension used to retrieve further details on the monster
      */
     async function getMonsterList() {
       try {
@@ -43,7 +43,7 @@ export default function App() {
     return () => {
       controller.abort();
     };
-  }, [monstersEndpoint]);
+  }, []);
 
   return (
     <div className="App">
