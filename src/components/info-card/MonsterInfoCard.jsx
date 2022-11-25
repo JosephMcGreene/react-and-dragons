@@ -17,7 +17,6 @@ export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
           <SecondaryInfo monsterDetails={monsterDetails} />
           <ActionsInfo monsterDetails={monsterDetails} />
         </dl>
-        {console.log(monsterDetails)}
       </section>
     </div>
   );

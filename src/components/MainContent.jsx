@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+//Internal
 import MonsterList from "./MonsterList";
 import MonsterInfoCard from "./info-card/MonsterInfoCard";
 

@@ -4,24 +4,16 @@ export default function MonsterList({ filteredMonsters, openDetails }) {
       <ul className="monster-list">
         {filteredMonsters.map((monster) => {
           return (
-            // declared in this file, below
-            <MonsterListItem
+            <li
               key={monster.index}
-              text={monster.name}
-              monsterURL={monster.url}
-              openDetails={openDetails}
-            />
+              className="monster-list-item"
+              onClick={() => openDetails(monster.url)}
+            >
+              {monster.name}
+            </li>
           );
         })}
       </ul>
     </section>
-  );
-}
-
-function MonsterListItem({ text, monsterURL, openDetails }) {
-  return (
-    <li className="monster-list-item" onClick={() => openDetails(monsterURL)}>
-      {text}
-    </li>
   );
 }

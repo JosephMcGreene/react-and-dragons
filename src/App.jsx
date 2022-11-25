@@ -6,7 +6,8 @@ import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 
 export default function App() {
-  const [monsterList, setMonsterList] = useState([]);
+  const [masterMonsterList, setMasterMonsterList] = useState([]);
+  const [filteredMonsters, setFilteredMonsters] = useState([]);
 
   const monstersEndpoint = "/api/monsters";
 
@@ -29,7 +30,9 @@ export default function App() {
         );
         const monstersJSON = await monsterData.json();
 
-        setMonsterList(monstersJSON.results);
+        //filteredMonsters is used to render the list, and the master list is used as reference, so both need the monster info
+        setMasterMonsterList(monstersJSON.results);
+        setFilteredMonsters(monstersJSON.results);
       } catch (err) {
         if (err.name === "AbortError") {
           console.log("successfully aborted");
@@ -45,6 +48,27 @@ export default function App() {
     };
   }, []);
 
+  async function filterMonsters(filterType, filterValue) {
+    if (filterType === "alphabet") {
+      setFilteredMonsters(
+        masterMonsterList.filter(
+          (item) => item.index.charAt(0) === filterValue.toLowerCase()
+        )
+      );
+      return;
+    }
+
+    if (filterType === "challenge_rating") {
+      const response = await fetch(
+        `https://www.dnd5eapi.co${monstersEndpoint}?${filterType}=${filterValue}`
+      );
+      const gottenMonsters = await response.json();
+
+      setFilteredMonsters(gottenMonsters.results);
+      return;
+    }
+  }
+
   return (
     <div className="App">
       <h1>
@@ -52,10 +76,11 @@ export default function App() {
       </h1>
 
       <FilterForm
-        monsterList={monsterList}
-        onSearch={(filteredMonsters) => setMonsterList(filteredMonsters)}
+        onSubmit={(filterType, filterValue) =>
+          filterMonsters(filterType, filterValue)
+        }
       />
-      <MainContent filteredMonsters={monsterList} />
+      <MainContent filteredMonsters={filteredMonsters} />
     </div>
   );
 }
