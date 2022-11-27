@@ -48,28 +48,30 @@ export default function FilterForm({ onSubmit }) {
         onSubmit(filterType, filterValue);
       }}
     >
-      <FilterSelect
-        filterName="Alphabetical"
-        placeholder="--Alphabetical--"
-        options={alphabet}
-        value={selectedLetter}
-        onChange={(event) => {
-          setFilterType("alphabet");
-          setFilterValue(event.target.value);
-          setSelectedLetter(event.target.value);
-        }}
-      />
-      <FilterSelect
-        filterName="Challenge Rating"
-        placeholder="--Challenge Rating--"
-        options={challengeRatings}
-        value={challengeRating}
-        onChange={(event) => {
-          setFilterType("challenge_rating");
-          setFilterValue(event.target.value);
-          setChallengeRating(event.target.value);
-        }}
-      />
+      <div className="filter-container">
+        <FilterSelect
+          filterName="Alphabetical"
+          placeholder="--Alphabetical--"
+          options={alphabet}
+          value={selectedLetter}
+          onChange={(event) => {
+            setFilterType("alphabet");
+            setFilterValue(event.target.value);
+            setSelectedLetter(event.target.value);
+          }}
+        />
+        <FilterSelect
+          filterName="Challenge Rating"
+          placeholder="--Challenge Rating--"
+          options={challengeRatings}
+          value={challengeRating}
+          onChange={(event) => {
+            setFilterType("challenge_rating");
+            setFilterValue(event.target.value);
+            setChallengeRating(event.target.value);
+          }}
+        />
+      </div>
 
       <button type="submit" className="submit-button">
         Search

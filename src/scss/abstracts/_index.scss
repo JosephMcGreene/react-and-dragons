@@ -7,13 +7,21 @@ $top: 1000;
 //paddings
 $card-padding: 0.75ch 1.25ch;
 
+// @font-face {
+//   font-family: "intruder_alertregular";
+//   src: url("../../fonts/Intruder-webfont.woff") format("woff");
+//   font-weight: normal;
+//   font-style: normal;
+// }
+// $header-font: "intruder_alertregular";
+
 @font-face {
-  font-family: "intruder_alertregular";
-  src: url("../../fonts/Intruder-webfont.woff") format("woff");
+  font-family: "immortalregular";
+  src: url("../../fonts/immortal-webfont.woff") format("woff");
   font-weight: normal;
   font-style: normal;
 }
-$header-font: "intruder_alertregular";
+$header-font: "immortalregular";
 
 @font-face {
   font-family: "eczarmedium";

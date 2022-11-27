@@ -71,7 +71,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <h1>
+      <h1 className="main-heading">
         Dungeons & Dragons 5th Edition <br /> Monster Guide
       </h1>
 
@@ -80,6 +80,9 @@ export default function App() {
           filterMonsters(filterType, filterValue)
         }
       />
+
+      <hr />
+
       <MainContent filteredMonsters={filteredMonsters} />
     </div>
   );
