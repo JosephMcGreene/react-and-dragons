@@ -1,0 +1,39 @@
+@use "../abstracts/index" as *;
+
+.loading-spinner-big {
+  position: relative;
+  display: flex;
+  aspect-ratio: 1;
+  width: 12%;
+  border-radius: 50%;
+  margin: 0 auto;
+  background-color: $dark-bg;
+  animation: spin 1.5s linear infinite;
+
+  .loading-spinner-small {
+    margin: auto;
+    aspect-ratio: 1;
+    width: 65%;
+    border-radius: 50%;
+    background-color: $light-bg;
+  }
+
+  .block-square {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    border-radius: 100% 0 0 0;
+    background-color: $light-bg;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

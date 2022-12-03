@@ -4,10 +4,12 @@ import "./scss/App.scss";
 //Components
 import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
+import LoadingSpinner from "./components/LoadingSpinner";
 
 export default function App() {
   const [masterMonsterList, setMasterMonsterList] = useState([]);
   const [filteredMonsters, setFilteredMonsters] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const monstersEndpoint = "/api/monsters";
 
@@ -22,6 +24,7 @@ export default function App() {
      */
     async function getMonsterList() {
       try {
+        setLoading(true);
         const monsterData = await fetch(
           `https://www.dnd5eapi.co${monstersEndpoint}`,
           {
@@ -33,6 +36,7 @@ export default function App() {
         //filteredMonsters is used to render the list, and the master list is used as reference, so both need the monster info
         setMasterMonsterList(monstersJSON.results);
         setFilteredMonsters(monstersJSON.results);
+        setLoading(false);
       } catch (err) {
         if (err.name === "AbortError") {
           console.log("successfully aborted");
@@ -50,21 +54,25 @@ export default function App() {
 
   async function filterMonsters(filterType, filterValue) {
     if (filterType === "alphabet") {
+      setLoading(true);
       setFilteredMonsters(
         masterMonsterList.filter(
           (item) => item.index.charAt(0) === filterValue.toLowerCase()
         )
       );
+      setLoading(false);
       return;
     }
 
     if (filterType === "challenge_rating") {
+      setLoading(true);
       const response = await fetch(
         `https://www.dnd5eapi.co${monstersEndpoint}?${filterType}=${filterValue}`
       );
       const gottenMonsters = await response.json();
 
       setFilteredMonsters(gottenMonsters.results);
+      setLoading(false);
       return;
     }
   }
@@ -82,6 +90,7 @@ export default function App() {
       />
 
       <hr />
+      {loading && <LoadingSpinner />}
 
       <MainContent filteredMonsters={filteredMonsters} />
     </div>

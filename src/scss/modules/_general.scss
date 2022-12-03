@@ -40,7 +40,7 @@ code {
   font-size: 2.75rem;
   line-height: 1.75ch;
   text-align: center;
-  text-shadow: 0 4px 10px $dark-bg;
+  text-shadow: 0 2px 5px $dark-bg;
 }
 
 .main-content {
@@ -81,8 +81,9 @@ code {
     font-size: 1.2rem;
     display: block;
     margin: 0 auto;
-    padding: 0 2rem;
-    font-family: $main-font;
+    padding: 0.75ch 2ch;
+    font-family: $header-font;
+    font-weight: 600;
     color: $dark-bg;
     background-color: $light-bg;
     border: 1px solid $dark-bg;
@@ -101,5 +102,4 @@ hr {
   display: block;
   margin: 1.5rem auto 0;
   max-width: 60vw;
-  // color: $dark-bg;
 }
