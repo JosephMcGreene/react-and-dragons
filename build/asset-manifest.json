@@ -8,5 +8,8 @@
     "main.0f3864df.css.map": "/react-and-dragons/static/css/main.0f3864df.css.map",
     "main.a57fdf0d.js.map": "/react-and-dragons/static/js/main.a57fdf0d.js.map"
   },
-  "entrypoints": ["static/css/main.0f3864df.css", "static/js/main.a57fdf0d.js"]
+  "entrypoints": [
+    "static/css/main.0f3864df.css",
+    "static/js/main.a57fdf0d.js"
+  ]
 }
