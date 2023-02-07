@@ -1,4 +1,4 @@
-$dark-bg: hsl(275, 20%, 20%);
+$dark-bg: hsl(276, 20%, 20%);
 $tertiary-color: hsl(275, 20%, 75%);
 $light-bg: whitesmoke;
 $placeholder-text: hsl(0, 0%, 87%);
@@ -22,3 +22,8 @@ $header-font: "immortalregular";
   font-style: normal;
 }
 $main-font: "eczarmedium";
+
+@mixin transition($properties) {
+  transition-property: $properties;
+  transition-duration: 0.2s;
+}
