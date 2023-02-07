@@ -28,11 +28,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
 .main-heading {
   margin-block-start: 0.5em;
   font-family: $header-font;
@@ -41,12 +36,6 @@ code {
   line-height: 1.75ch;
   text-align: center;
   text-shadow: 0 2px 5px $dark-bg;
-}
-
-.main-content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .filter-form {
@@ -69,6 +58,12 @@ code {
     border-radius: 3px;
     box-shadow: 0 2px 3px $dark-bg;
     cursor: pointer;
+
+    @include transition(background-color color);
+    &:hover {
+      background-color: $light-bg;
+      color: $dark-bg;
+    }
   }
 
   ::placeholder {
@@ -91,9 +86,10 @@ code {
     cursor: pointer;
     box-shadow: 0 2px 3px $dark-bg;
 
-    &:active {
-      box-shadow: inset 0 0 15px $dark-bg;
-      text-shadow: 0 0 1px $dark-bg;
+    @include transition(background-color color);
+    &:hover {
+      background-color: $dark-bg;
+      color: $light-bg;
     }
   }
 }

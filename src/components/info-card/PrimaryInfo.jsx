@@ -10,7 +10,8 @@ export default function PrimaryInfo({ monsterDetails }) {
         </span>
         <span className="info-item">
           <dt className="info-heading">Armor Class: </dt>
-          <dd>{monsterDetails.armor_class}</dd>
+          {/* {console.log(monsterDetails.armor_class)} */}
+          <dd>{monsterDetails.armor_class[0].value}</dd>
         </span>
         <span className="info-item">
           <dt className="info-heading">Challenge Rating: </dt>

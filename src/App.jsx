@@ -17,7 +17,7 @@ export default function App() {
     const controller = new AbortController();
 
     /**
-     * Retrieves an array of JSON objects with basic data on all DnD 5th edition base rulebook monsters. Object key-value pairs include
+     * Retrieves an array of JSON objects with basic data on all DnD 5th edition base rulebook monsters. Each object's key-value pairs include
      * index: {String} monster name, but all lower case
      * name: {String} monster name
      * url: {String} endpoint extension used to retrieve further details on the monster
@@ -52,6 +52,12 @@ export default function App() {
     };
   }, []);
 
+  /**
+   * takes in user-specified details about the monsters they want and filters the monsters that correspond to those details out of the master list of monsters
+   * @param {String} filterType             the type of filter the user is searching, either alphabetical or challenge rating
+   * @param {String || Number} filterValue  the value of the filter type, a letter for alphabetical or number for challenge rating
+   * @returns
+   */
   async function filterMonsters(filterType, filterValue) {
     if (filterType === "alphabet") {
       setLoading(true);
@@ -66,12 +72,17 @@ export default function App() {
 
     if (filterType === "challenge_rating") {
       setLoading(true);
-      const response = await fetch(
-        `https://www.dnd5eapi.co${monstersEndpoint}?${filterType}=${filterValue}`
-      );
-      const gottenMonsters = await response.json();
+      try {
+        const response = await fetch(
+          `https://www.dnd5eapi.co${monstersEndpoint}?${filterType}=${filterValue}`
+        );
+        const gottenMonsters = await response.json();
 
-      setFilteredMonsters(gottenMonsters.results);
+        setFilteredMonsters(gottenMonsters.results);
+      } catch (err) {
+        console.error(err);
+      }
+
       setLoading(false);
       return;
     }
