@@ -1,7 +1,7 @@
 @use "../abstracts/index" as *;
 
 .modal {
-  z-index: $top;
+  z-index: $z-modal;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,7 +14,6 @@
   justify-content: center;
 
   .modal-content {
-    z-index: 1000;
     position: absolute;
     border-radius: 12px;
     margin-top: 0.5rem;
@@ -33,9 +32,9 @@
 
       .monster-name {
         margin: 0 auto;
+        font-family: $header-font;
         color: $light-bg;
         align-self: flex-end;
-        text-decoration: underline;
         letter-spacing: 1.5px;
       }
       .close-x {

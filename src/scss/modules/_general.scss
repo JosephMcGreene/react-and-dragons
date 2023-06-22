@@ -61,8 +61,7 @@ body {
 
     @include transition(background-color color);
     &:hover {
-      background-color: $light-bg;
-      color: $dark-bg;
+      @include onHover($light-bg, $dark-bg);
     }
   }
 
@@ -88,8 +87,7 @@ body {
 
     @include transition(background-color color);
     &:hover {
-      background-color: $dark-bg;
-      color: $light-bg;
+      @include onHover($dark-bg, $light-bg);
     }
   }
 }

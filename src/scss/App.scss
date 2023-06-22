@@ -1,4 +1,5 @@
-@use "./modules/monster-list";
-@use "./modules/main-monster-info";
+@use "./modules/encounter-panel";
 @use "./modules/general";
 @use "./modules/loading-spinner";
+@use "./modules/main-monster-info";
+@use "./modules/monster-list";

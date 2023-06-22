@@ -3,9 +3,11 @@ $tertiary-color: hsl(275, 20%, 75%);
 $light-bg: whitesmoke;
 $placeholder-text: hsl(0, 0%, 87%);
 //z-index
-$top: 1000;
+$z-encounter-panel: 1000;
+$z-modal: 100;
 //paddings
 $card-padding: 0.75ch 1.25ch;
+$encounter-width: 250px;
 
 @font-face {
   font-family: "immortalregular";
@@ -26,4 +28,9 @@ $main-font: "eczarmedium";
 @mixin transition($properties) {
   transition-property: $properties;
   transition-duration: 0.2s;
+}
+
+@mixin onHover($background-color, $color) {
+  background-color: $background-color;
+  color: $color;
 }

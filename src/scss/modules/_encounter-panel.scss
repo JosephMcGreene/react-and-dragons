@@ -1,0 +1,50 @@
+@use "../abstracts/index" as *;
+
+.encounter-panel {
+  z-index: $z-encounter-panel;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: $encounter-width;
+  left: calc($encounter-width - (2 * $encounter-width));
+
+  background-color: $light-bg;
+  box-shadow: 0 0 5px $dark-bg;
+
+  transition-property: left;
+  transition-duration: 250ms;
+  transition-timing-function: ease-out;
+
+  .panel-extender {
+    position: absolute;
+    top: 0.5rem;
+    right: -100%;
+
+    cursor: pointer;
+    font-family: $header-font;
+    color: $dark-bg;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 0 5px black;
+    border-radius: 100vw;
+    padding: 0.75rem;
+
+    transition-property: right;
+    transition-duration: 250ms;
+
+    @include transition(background-color color);
+    &:hover {
+      @include onHover($dark-bg, $light-bg);
+    }
+  }
+}
+
+.extended {
+  left: 0;
+
+  .panel-extender {
+    right: -60px;
+  }
+}
