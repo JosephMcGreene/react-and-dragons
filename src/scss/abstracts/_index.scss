@@ -2,12 +2,13 @@ $dark-bg: hsl(276, 20%, 20%);
 $tertiary-color: hsl(275, 20%, 75%);
 $light-bg: whitesmoke;
 $placeholder-text: hsl(0, 0%, 87%);
+$encounter-width: 255px;
+$border-radius: 12px;
 //z-index
 $z-encounter-panel: 1000;
 $z-modal: 100;
 //paddings
 $card-padding: 0.75ch 1.25ch;
-$encounter-width: 250px;
 
 @font-face {
   font-family: "immortalregular";

@@ -4,32 +4,115 @@
   z-index: $z-encounter-panel;
 
   position: fixed;
-  top: 0;
-  bottom: 0;
+  top: 0.35rem;
+  bottom: 0.35rem;
   width: $encounter-width;
-  left: calc($encounter-width - (2 * $encounter-width));
+  left: calc($encounter-width - (2 * $encounter-width) - 1px);
 
-  background-color: $light-bg;
+  font-family: $main-font;
+  color: $light-bg;
+  background-color: $dark-bg;
+  padding: 0.75rem;
   box-shadow: 0 0 5px $dark-bg;
+  border-radius: 0 $border-radius $border-radius 0;
 
   transition-property: left;
   transition-duration: 250ms;
-  transition-timing-function: ease-out;
+
+  .encounter-monster-name {
+    font-family: $header-font;
+    letter-spacing: 1px;
+    text-decoration: underline;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .encounter-hit-points {
+    @include transition(transform);
+
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .encounter-actions-heading {
+    margin-bottom: 0.5ch;
+    text-decoration: underline;
+  }
+
+  .encounter-action-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    margin-bottom: 1.5rem;
+
+    .action-btn {
+      @include transition(transform box-shadow);
+
+      font-family: $main-font;
+      font-size: 1rem;
+      color: $dark-bg;
+      padding: 0.35ch 1ch;
+      border: none;
+      border-radius: calc($border-radius / 2);
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+      &:active {
+        transform: scale(1);
+      }
+    }
+  }
+
+  .encounter-legendary-actions {
+    display: flex;
+    margin-bottom: 1.5rem;
+
+    h3 {
+      letter-spacing: 1px;
+    }
+    .leg-actions-heading {
+      @include transition(transform);
+
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    .leg-actions-number {
+      @include transition(transform);
+
+      cursor: pointer;
+      padding: 0.75ch 0 0.75ch 0.75ch;
+
+      &:hover {
+        transform: scale(1.25);
+      }
+    }
+  }
 
   .panel-extender {
     position: absolute;
     top: 0.5rem;
-    right: -100%;
+    right: -65%;
 
     cursor: pointer;
     font-family: $header-font;
     color: $dark-bg;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: bold;
     border: none;
     box-shadow: 0 0 5px black;
     border-radius: 100vw;
-    padding: 0.75rem;
+    padding: 0.75rem 1rem;
 
     transition-property: right;
     transition-duration: 250ms;
@@ -46,5 +129,11 @@
 
   .panel-extender {
     right: -60px;
+    background-color: $dark-bg;
+    color: $light-bg;
+
+    &:hover {
+      @include onHover($light-bg, $dark-bg);
+    }
   }
 }

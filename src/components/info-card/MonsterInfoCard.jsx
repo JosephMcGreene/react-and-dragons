@@ -1,6 +1,7 @@
 import PrimaryInfo from "./PrimaryInfo";
 import SecondaryInfo from "./SecondaryInfo";
 import ActionsInfo from "./ActionsInfo";
+import EncounterPanel from "../encounter-panel/EncounterPanel";
 
 export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
   return (
@@ -18,6 +19,8 @@ export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
           <ActionsInfo monsterDetails={monsterDetails} />
         </dl>
       </section>
+
+      <EncounterPanel monsterDetails={monsterDetails} />
     </div>
   );
 }

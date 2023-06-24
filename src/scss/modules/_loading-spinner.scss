@@ -2,9 +2,11 @@
 
 .loading-spinner-big {
   position: relative;
+
   display: flex;
+
   aspect-ratio: 1;
-  width: 12%;
+  width: 10%;
   border-radius: 50%;
   margin: 0 auto;
   background-color: $dark-bg;
@@ -24,6 +26,7 @@
     left: 0;
     width: 50%;
     height: 50%;
+
     border-radius: 100% 0 0 0;
     background-color: $light-bg;
   }

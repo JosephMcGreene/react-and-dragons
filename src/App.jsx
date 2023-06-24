@@ -5,7 +5,6 @@ import "./scss/App.scss";
 import FilterForm from "./components/FilterForm";
 import MainContent from "./components/MainContent";
 import LoadingSpinner from "./components/LoadingSpinner";
-import EncounterPanel from "./components/encounter-panel/EncounterPanel";
 import MonsterInfoCard from "./components/info-card/MonsterInfoCard";
 
 export default function App() {
@@ -120,14 +119,10 @@ export default function App() {
       />
 
       <hr />
-      {loading && <LoadingSpinner />}
 
-      <EncounterPanel />
       <MainContent
         filteredMonsters={filteredMonsters}
         openDetails={(monsterURL) => getMonsterDetails(monsterURL)}
-        showMonsterCard={showMonsterCard}
-        monsterDetails={monsterDetails}
       />
 
       {showMonsterCard && (
@@ -136,6 +131,8 @@ export default function App() {
           closeMonsterCard={() => setShowMonsterCard(false)}
         />
       )}
+
+      {loading && <LoadingSpinner />}
     </div>
   );
 }

@@ -43,6 +43,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -72,8 +73,9 @@ body {
   }
 
   .submit-button {
-    font-size: 1.2rem;
     display: block;
+
+    font-size: 1.2rem;
     margin: 0 auto;
     padding: 0.75ch 2ch;
     font-family: $header-font;
@@ -81,9 +83,9 @@ body {
     color: $dark-bg;
     background-color: $light-bg;
     border: 1px solid $dark-bg;
-    border-radius: 6px;
+    border-radius: calc($border-radius / 2);
     cursor: pointer;
-    box-shadow: 0 2px 3px $dark-bg;
+    box-shadow: 0 0 5px $dark-bg;
 
     @include transition(background-color color);
     &:hover {
@@ -95,5 +97,6 @@ body {
 hr {
   display: block;
   margin: 1.5rem auto 0;
+
   max-width: 60vw;
 }
