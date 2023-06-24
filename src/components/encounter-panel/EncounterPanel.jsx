@@ -6,6 +6,24 @@ import LegendaryActions from "./LegendaryActions";
 export default function EncounterPanel({ monsterDetails }) {
   const [panelExtended, setPanelExtended] = useState(false);
   const [damageModalShown, setDamageModalShown] = useState(false);
+  const [currentHitPoints, setCurrentHitPoints] = useState(
+    monsterDetails.hit_points
+  );
+
+  function isImmune(damageType) {
+    for (let i = 0; i < monsterDetails.damage_immunities.length; i++) {
+      if (monsterDetails.damage_immunities[i].includes(damageType)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function doDamage(damageInfo) {
+    if (!damageInfo.weaponIsMagical) {
+      isImmune(damageInfo.damageType);
+    }
+  }
 
   return (
     <>
@@ -20,9 +38,9 @@ export default function EncounterPanel({ monsterDetails }) {
           className="encounter-hit-points"
           onClick={() => setDamageModalShown(!damageModalShown)}
         >
-          Hit Points: {monsterDetails.hit_points} / {monsterDetails.hit_points}
+          Hit Points: {currentHitPoints} / {monsterDetails.hit_points}
         </h3>
-        {damageModalShown && <DamageModal />}
+        {damageModalShown && <DamageModal onDamage={doDamage} />}
 
         <h3 className="encounter-actions-heading">Actions:</h3>
         <ul className="encounter-action-list">

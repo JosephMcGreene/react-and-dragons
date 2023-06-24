@@ -1,4 +1,10 @@
-export default function DamageModal() {
+import { useState } from "react";
+
+export default function DamageModal({ onDamage }) {
+  const [damage, setDamage] = useState("");
+  const [damageType, setDamageType] = useState("");
+  const [isMagical, setIsMagical] = useState(false);
+
   const damageTypes = [
     "acid",
     "bludgeoning",
@@ -15,20 +21,38 @@ export default function DamageModal() {
     "thunder",
   ];
 
+  function applyDamage(e) {
+    e.preventDefault();
+    onDamage({ damage, damageType, weaponIsMagical: isMagical });
+  }
+
   return (
-    <form className="modal-content damage-modal">
+    <form
+      className="modal-content damage-modal"
+      onSubmit={(e) => applyDamage(e)}
+    >
       <label htmlFor="damageNumber">
         Damage Given:
-        <input type="number" id="damageNumber" placeholder="Damage applied" />
+        <input
+          value={damage}
+          onChange={(e) => setDamage(e.target.value)}
+          type="number"
+          id="damageNumber"
+          placeholder="Damage applied"
+        />
       </label>
 
       <label htmlFor="damageType">
         Damage Type:
-        <select id="damageType">
+        <select
+          value={damageType}
+          onChange={(e) => setDamageType(e.target.value)}
+          id="damageType"
+        >
           <option value="">-- Select Type --</option>
           {damageTypes.map((type, index) => {
             return (
-              <option key={type + index} value="type">
+              <option key={type + index} value={type}>
                 {type}
               </option>
             );
@@ -37,7 +61,14 @@ export default function DamageModal() {
       </label>
 
       <label htmlFor="magical">
-        <input type="checkbox" name="magical" id="magical" /> Magical
+        <input
+          type="checkbox"
+          value={isMagical}
+          onChange={(e) => setIsMagical(e.target.value)}
+          name="magical"
+          id="magical"
+        />{" "}
+        Magical
       </label>
 
       <button type="submit">Deal Damage</button>
