@@ -1,8 +1,9 @@
 import { useState } from "react";
+//Components
+import LegendaryActions from "./LegendaryActions";
 
 export default function EncounterPanel({ monsterDetails }) {
   const [panelExtended, setPanelExtended] = useState(false);
-  const [availableLegendaryActions, setAvailableLegendaryActions] = useState(3);
 
   return (
     <div
@@ -36,27 +37,7 @@ export default function EncounterPanel({ monsterDetails }) {
         })}
       </ul>
 
-      {monsterDetails.legendary_actions.length > 0 && (
-        <div className="encounter-legendary-actions">
-          <h3
-            className="leg-actions-heading"
-            onClick={() => setAvailableLegendaryActions(3)}
-          >
-            Legendary Actions Available:{" "}
-          </h3>
-          <h3
-            className="leg-actions-number"
-            onClick={() =>
-              setAvailableLegendaryActions((prevCount) =>
-                prevCount > 0 ? prevCount - 1 : prevCount
-              )
-            }
-          >
-            {availableLegendaryActions}
-            {console.log(availableLegendaryActions)}
-          </h3>
-        </div>
-      )}
+      {monsterDetails.legendary_actions.length > 0 && <LegendaryActions />}
 
       <button
         className="panel-extender"
