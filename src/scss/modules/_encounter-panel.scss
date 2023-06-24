@@ -15,6 +15,7 @@
   padding: 0.75rem;
   box-shadow: 0 0 5px $dark-bg;
   border-radius: 0 $border-radius $border-radius 0;
+  overflow-y: scroll;
 
   transition-property: left;
   transition-duration: 250ms;
@@ -50,24 +51,26 @@
     gap: 0.5rem;
 
     margin-bottom: 1.5rem;
+  }
 
-    .action-btn {
-      @include transition(transform box-shadow);
+  .action-btn {
+    @include transition(transform box-shadow);
 
-      font-family: $main-font;
-      font-size: 1rem;
-      color: $dark-bg;
-      padding: 0.35ch 1ch;
-      border: none;
-      border-radius: calc($border-radius / 2);
-      cursor: pointer;
+    font-family: $main-font;
+    font-size: 1rem;
+    font-weight: bold;
+    color: $dark-bg;
+    padding: 0.35ch 1.75ch;
+    border: none;
+    box-shadow: 0 0 10px inset $dark-bg;
+    border-radius: calc($border-radius / 2);
+    cursor: pointer;
 
-      &:hover {
-        transform: scale(1.1);
-      }
-      &:active {
-        transform: scale(1);
-      }
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(1);
     }
   }
 
@@ -75,65 +78,55 @@
     display: flex;
     margin-bottom: 1.5rem;
 
-    h3 {
-      letter-spacing: 1px;
-    }
     .leg-actions-heading {
-      @include transition(transform);
+      @include transition(transform filter);
 
+      letter-spacing: 1px;
       cursor: pointer;
 
       &:hover {
         transform: scale(1.1);
-      }
-    }
-    .leg-actions-number {
-      @include transition(transform);
-
-      cursor: pointer;
-      padding: 0.75ch 0 0.75ch 0.75ch;
-
-      &:hover {
-        transform: scale(1.25);
+        filter: drop-shadow(0 0 5px $light-bg);
       }
     }
   }
+}
 
-  .panel-extender {
-    position: absolute;
-    top: 0.5rem;
-    right: -65%;
+.panel-extender {
+  position: fixed;
+  top: 0.75rem;
+  left: $extender-pos-left;
 
-    cursor: pointer;
-    font-family: $header-font;
-    color: $dark-bg;
-    font-size: 1.25rem;
-    font-weight: bold;
-    border: none;
-    box-shadow: 0 0 5px black;
-    border-radius: 100vw;
-    padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-family: $header-font;
+  color: $dark-bg;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 0 5px black;
+  border-radius: 100vw;
+  padding: 0.75rem 1rem;
 
-    transition-property: right;
-    transition-duration: 250ms;
+  transition-property: left;
+  transition-duration: 250ms;
 
-    @include transition(background-color color);
-    &:hover {
-      @include onHover($dark-bg, $light-bg);
-    }
+  @include transition(background-color color);
+  &:hover {
+    @include onHover($dark-bg, $light-bg);
+  }
+}
+
+.extender-extended {
+  left: calc($extender-pos-left + $encounter-width);
+
+  background-color: $dark-bg;
+  color: $light-bg;
+
+  &:hover {
+    @include onHover($light-bg, $dark-bg);
   }
 }
 
 .extended {
   left: 0;
-
-  .panel-extender {
-    right: -60px;
-    background-color: $dark-bg;
-    color: $light-bg;
-
-    &:hover {
-      @include onHover($light-bg, $dark-bg);
-    }
-  }
 }

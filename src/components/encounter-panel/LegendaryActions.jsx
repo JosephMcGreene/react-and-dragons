@@ -11,8 +11,8 @@ export default function LegendaryActions() {
       >
         Legendary Actions Available:{" "}
       </h3>
-      <h3
-        className="leg-actions-number"
+      <button
+        className="action-btn"
         onClick={() =>
           setAvailableLegendaryActions((prevCount) =>
             prevCount > 0 ? prevCount - 1 : prevCount
@@ -21,7 +21,7 @@ export default function LegendaryActions() {
       >
         {availableLegendaryActions}
         {console.log(availableLegendaryActions)}
-      </h3>
+      </button>
     </div>
   );
 }

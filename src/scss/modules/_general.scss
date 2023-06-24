@@ -100,3 +100,23 @@ hr {
 
   max-width: 60vw;
 }
+
+//Scrollbar
+::-webkit-scrollbar {
+  width: 0.75rem;
+}
+::-webkit-scrollbar-track {
+  border-radius: $border-radius;
+  background-color: $dark-bg;
+  margin-block: 0.25rem;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: $border-radius;
+  background-color: $light-bg;
+}
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: $dark-bg $light-bg;
+    scrollbar-width: auto;
+  }
+}
