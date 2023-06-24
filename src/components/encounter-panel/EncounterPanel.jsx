@@ -1,9 +1,11 @@
 import { useState } from "react";
 //Components
+import DamageModal from "./DamageModal";
 import LegendaryActions from "./LegendaryActions";
 
 export default function EncounterPanel({ monsterDetails }) {
   const [panelExtended, setPanelExtended] = useState(false);
+  const [damageModalShown, setDamageModalShown] = useState(false);
 
   return (
     <>
@@ -14,9 +16,13 @@ export default function EncounterPanel({ monsterDetails }) {
       >
         <h2 className="encounter-monster-name">{monsterDetails.name}</h2>
 
-        <h3 className="encounter-hit-points">
+        <h3
+          className="encounter-hit-points"
+          onClick={() => setDamageModalShown(!damageModalShown)}
+        >
           Hit Points: {monsterDetails.hit_points} / {monsterDetails.hit_points}
         </h3>
+        {damageModalShown && <DamageModal />}
 
         <h3 className="encounter-actions-heading">Actions:</h3>
         <ul className="encounter-action-list">

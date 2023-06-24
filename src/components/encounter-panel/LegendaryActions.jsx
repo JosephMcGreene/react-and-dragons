@@ -20,7 +20,6 @@ export default function LegendaryActions() {
         }
       >
         {availableLegendaryActions}
-        {console.log(availableLegendaryActions)}
       </button>
     </div>
   );
