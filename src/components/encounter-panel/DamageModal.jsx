@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function DamageModal({ onDamage }) {
+export default function DamageModal({ onDamage, onResetHP }) {
   const [damage, setDamage] = useState("");
   const [damageType, setDamageType] = useState("");
   const [isMagical, setIsMagical] = useState(false);
@@ -38,7 +38,7 @@ export default function DamageModal({ onDamage }) {
           onChange={(e) => setDamage(e.target.value)}
           type="number"
           id="damageNumber"
-          placeholder="Damage applied"
+          placeholder="Negative Numbers Heal"
         />
       </label>
 
@@ -71,7 +71,10 @@ export default function DamageModal({ onDamage }) {
         Magical Weapon
       </label>
 
-      <button type="submit">Deal Damage</button>
+      <button type="submit">Apply Damage/Heal</button>
+      <button type="button" onClick={() => onResetHP()}>
+        Reset Hit Points
+      </button>
     </form>
   );
 }

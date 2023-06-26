@@ -1,4 +1,6 @@
 import { useState } from "react";
+//Hooks
+import useEncounterFeatures from "../../hooks/useEncounterFeatures";
 //Components
 import DamageModal from "./DamageModal";
 import LegendaryActions from "./LegendaryActions";
@@ -6,61 +8,8 @@ import LegendaryActions from "./LegendaryActions";
 export default function EncounterPanel({ monsterDetails }) {
   const [panelExtended, setPanelExtended] = useState(false);
   const [damageModalShown, setDamageModalShown] = useState(false);
-  const [currentHitPoints, setCurrentHitPoints] = useState(
-    monsterDetails.hit_points
-  );
-
-  function isDamageModified(modifierType, damageType, weaponIsMagical) {
-    for (let i = 0; i < modifierType.length; i++) {
-      if (!weaponIsMagical && modifierType[i].includes(damageType)) {
-        return true;
-      }
-
-      if (weaponIsMagical && modifierType[i].includes("from nonmagical")) {
-        if (modifierType[i].includes(damageType)) {
-          return false;
-        }
-      }
-
-      if (modifierType[i].includes(damageType)) return true;
-    }
-
-    return false;
-  }
-
-  function dealDamage(damageInfo) {
-    const damageModifiers = {
-      isImmune: isDamageModified(
-        monsterDetails.damage_immunities,
-        damageInfo.damageType,
-        damageInfo.weaponIsMagical
-      ),
-      isResistant: isDamageModified(
-        monsterDetails.damage_resistances,
-        damageInfo.damageType,
-        damageInfo.weaponIsMagical
-      ),
-      isVulnerable: isDamageModified(
-        monsterDetails.damage_vulnerabilities,
-        damageInfo.damageType,
-        damageInfo.weaponIsMagical
-      ),
-    };
-
-    if (damageModifiers.isImmune) {
-      return;
-    }
-    if (damageModifiers.isResistant) {
-      return setCurrentHitPoints(
-        (prevHitPoints) => prevHitPoints - Math.floor(damageInfo.damage / 2 + 1)
-      );
-    }
-    if (damageModifiers.isVulnerable) {
-      return setCurrentHitPoints(
-        (prevHitPoints) => prevHitPoints - damageInfo.damage * 2
-      );
-    }
-  }
+  const [currentHitPoints, setCurrentHitPoints, dealDamage] =
+    useEncounterFeatures(monsterDetails);
 
   return (
     <>
@@ -78,7 +27,16 @@ export default function EncounterPanel({ monsterDetails }) {
           Hit Points: {currentHitPoints} / {monsterDetails.hit_points}
         </h3>
         {damageModalShown && (
-          <DamageModal onDamage={(damageInfo) => dealDamage(damageInfo)} />
+          <DamageModal
+            onDamage={(damageInfo) => {
+              dealDamage(damageInfo);
+              setDamageModalShown(!damageModalShown);
+            }}
+            onResetHP={() => {
+              setCurrentHitPoints(monsterDetails.hit_points);
+              setDamageModalShown(!damageModalShown);
+            }}
+          />
         )}
 
         <h3 className="encounter-actions-heading">Actions:</h3>
@@ -93,9 +51,8 @@ export default function EncounterPanel({ monsterDetails }) {
         </ul>
 
         {monsterDetails.legendary_actions.length > 0 && <LegendaryActions />}
-
-        {console.log(monsterDetails)}
       </div>
+
       <button
         className={
           panelExtended ? "panel-extender extender-extended" : "panel-extender"
