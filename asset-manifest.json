@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/react-and-dragons/static/css/main.0f3864df.css",
-    "main.js": "/react-and-dragons/static/js/main.a57fdf0d.js",
+    "main.css": "/react-and-dragons/static/css/main.ecd4a59a.css",
+    "main.js": "/react-and-dragons/static/js/main.74e8836f.js",
     "static/media/immortal-webfont.woff": "/react-and-dragons/static/media/immortal-webfont.cedd1941687bac9e48f7.woff",
     "static/media/Eczar-Medium-webfont.woff": "/react-and-dragons/static/media/Eczar-Medium-webfont.e39a6ef148492797e691.woff",
     "index.html": "/react-and-dragons/index.html",
-    "main.0f3864df.css.map": "/react-and-dragons/static/css/main.0f3864df.css.map",
-    "main.a57fdf0d.js.map": "/react-and-dragons/static/js/main.a57fdf0d.js.map"
+    "main.ecd4a59a.css.map": "/react-and-dragons/static/css/main.ecd4a59a.css.map",
+    "main.74e8836f.js.map": "/react-and-dragons/static/js/main.74e8836f.js.map"
   },
   "entrypoints": [
-    "static/css/main.0f3864df.css",
-    "static/js/main.a57fdf0d.js"
+    "static/css/main.ecd4a59a.css",
+    "static/js/main.74e8836f.js"
   ]
 }
