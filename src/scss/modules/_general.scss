@@ -108,11 +108,12 @@ hr {
 ::-webkit-scrollbar-track {
   border-radius: $border-radius;
   background-color: $dark-bg;
-  margin-block: 0.25rem;
+  margin-block: 0.2rem;
 }
 ::-webkit-scrollbar-thumb {
   border-radius: $border-radius;
   background-color: $light-bg;
+  border: 3px solid $dark-bg;
 }
 @supports (scrollbar-color: red blue) {
   * {

@@ -21,7 +21,7 @@ export default function DamageModal({ onDamage }) {
     "thunder",
   ];
 
-  function applyDamage(e) {
+  function handleDamageSubmit(e) {
     e.preventDefault();
     onDamage({ damage, damageType, weaponIsMagical: isMagical });
   }
@@ -29,7 +29,7 @@ export default function DamageModal({ onDamage }) {
   return (
     <form
       className="modal-content damage-modal"
-      onSubmit={(e) => applyDamage(e)}
+      onSubmit={(e) => handleDamageSubmit(e)}
     >
       <label htmlFor="damageNumber">
         Damage Given:
@@ -63,12 +63,12 @@ export default function DamageModal({ onDamage }) {
       <label htmlFor="magical">
         <input
           type="checkbox"
-          value={isMagical}
-          onChange={(e) => setIsMagical(e.target.value)}
+          checked={isMagical}
+          onChange={(e) => setIsMagical(e.target.checked)}
           name="magical"
           id="magical"
         />{" "}
-        Magical
+        Magical Weapon
       </label>
 
       <button type="submit">Deal Damage</button>
