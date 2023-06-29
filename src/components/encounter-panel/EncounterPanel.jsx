@@ -26,6 +26,7 @@ export default function EncounterPanel({ monsterDetails }) {
         >
           Hit Points: {currentHitPoints} / {monsterDetails.hit_points}
         </h3>
+
         {damageModalShown && (
           <DamageModal
             onDamage={(damageInfo) => {
