@@ -23,6 +23,7 @@ export default function DamageModal({ onDamage, onResetHP }) {
 
   function handleDamageSubmit(e) {
     e.preventDefault();
+    if (damageType === "") return alert("Don't forget a damage type");
     onDamage({ damage, damageType, weaponIsMagical: isMagical });
   }
 
