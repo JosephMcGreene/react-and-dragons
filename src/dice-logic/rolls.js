@@ -1,7 +1,8 @@
 /**
- * Returns a random number representing the result a single roll of a single die
- * @param  {Number} numOfSides The number of sides of the specified die to roll
- * @returns A randomly generated number representing the roll of the die
+ * Returns a random number representing the result a single roll of a single die.
+ *
+ * @param   {number} numOfSides The number of sides of the specified die to roll.
+ * @returns                     A randomly generated number representing the roll of the die.
  */
 export function singleDieRoll(numOfSides) {
   return Math.floor(Math.random() * numOfSides) + 1;
@@ -10,9 +11,10 @@ export function singleDieRoll(numOfSides) {
 let rollResults = [];
 /**
  * Rolls the specified number of dice with the specified number of sides to each die and returns the individual roll results.
- * @param {number} numOfDice The total number of dice to be rolled
- * @param {number} numOfSides THe number of sides of each individual die
- * @returns An array containing the results of all dice rolls.
+ *
+ * @param   {number} numOfDice   The total number of dice to be rolled
+ * @param   {number} numOfSides  The number of sides of each individual die
+ * @returns                      Array containing the results of all dice rolls.
  */
 export function rollDice(numOfDice, numOfSides) {
   rollResults = [];

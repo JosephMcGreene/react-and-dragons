@@ -1,59 +1,52 @@
-export default function SkillsList({ monsterDetails }) {
-  /**
-   * calculates and returns the modifier for each of the monster's skills
-   * @param   {Number} skillValue    A number corresponding to the value of the skill in question, arguments derived from API data.
-   * @return  {String} A positive or negative integer (or 0) corresponding to the modifier indicated by the raw skill number, represented as a string in case a plus sign needs to be visually added to the number.
-   */
-  function calculateModifier(skillValue) {
-    let modifier = Math.floor((skillValue - 10) / 2);
+import { modifierFor } from "../../helpers";
 
-    if (modifier > 0) {
-      return `+${modifier}`;
-    }
-    if (modifier <= 0) {
-      return `${modifier}`;
-    }
-  }
+export default function SkillsList({ monsterDetails }) {
+  const { strength, dexterity, constitution, intelligence, wisdom, charisma } =
+    monsterDetails;
 
   return (
-    <span className="info-item-column">
-      <dt className="info-heading">Skills </dt>
-      <dl>
-        <dt>Strength: </dt>
+    <dl className="skills-list">
+      <span>
+        <dt className="info-term">STR: </dt>
         <dd>
-          {monsterDetails.strength} (
-          {calculateModifier(monsterDetails.strength)})
+          {strength} ({modifierFor(strength)})
         </dd>
-        <br />
-        <dt>Dexterity: </dt>
+      </span>
+
+      <span>
+        <dt className="info-term">DEX: </dt>
         <dd>
-          {monsterDetails.dexterity} (
-          {calculateModifier(monsterDetails.dexterity)})
+          {dexterity} ({modifierFor(dexterity)})
         </dd>
-        <br />
-        <dt>Constitution: </dt>
+      </span>
+
+      <span>
+        <dt className="info-term">CON: </dt>
         <dd>
-          {monsterDetails.constitution} (
-          {calculateModifier(monsterDetails.constitution)})
+          {constitution} ({modifierFor(constitution)})
         </dd>
-        <br />
-        <dt>Intelligence: </dt>
+      </span>
+
+      <span>
+        <dt className="info-term">INT: </dt>
         <dd>
-          {monsterDetails.intelligence} (
-          {calculateModifier(monsterDetails.intelligence)})
+          {intelligence} ({modifierFor(intelligence)})
         </dd>
-        <br />
-        <dt>Wisdom: </dt>
+      </span>
+
+      <span>
+        <dt className="info-term">WIS: </dt>
         <dd>
-          {monsterDetails.wisdom} ({calculateModifier(monsterDetails.wisdom)})
+          {wisdom} ({modifierFor(wisdom)})
         </dd>
-        <br />
-        <dt>Charisma: </dt>
+      </span>
+
+      <span>
+        <dt className="info-term">CHA: </dt>
         <dd>
-          {monsterDetails.charisma} (
-          {calculateModifier(monsterDetails.charisma)})
+          {charisma} ({modifierFor(charisma)})
         </dd>
-      </dl>
-    </span>
+      </span>
+    </dl>
   );
 }

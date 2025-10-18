@@ -1,6 +1,13 @@
-export default function MonsterList({ filteredMonsters, openDetails }) {
+import LoadingSpinner from "./LoadingSpinner";
+
+export default function MonsterList({
+  loading,
+  filteredMonsters,
+  openDetails,
+}) {
+  if (loading) return <LoadingSpinner />;
   return (
-    <section>
+    <article>
       <ul className="monster-list">
         {filteredMonsters.map((monster) => {
           return (
@@ -14,6 +21,6 @@ export default function MonsterList({ filteredMonsters, openDetails }) {
           );
         })}
       </ul>
-    </section>
+    </article>
   );
 }

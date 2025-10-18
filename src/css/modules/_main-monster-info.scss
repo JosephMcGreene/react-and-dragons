@@ -52,50 +52,64 @@
     }
 
     .modal-body {
+      padding: 1.5rem 1rem 1rem;
       display: flex;
       flex-direction: column;
-      flex-wrap: wrap;
+      gap: 1rem;
 
-      .info-heading {
+      dt,
+      dd {
+        display: inline;
+      }
+
+      .info-term {
         font-size: 1.2rem;
         font-weight: bold;
       }
 
-      .info-block {
+      .primary-info {
         display: flex;
         flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: flex-start;
-      }
+        justify-content: space-around;
+        gap: 1rem;
 
-      .info-item-column {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
+        font-size: 1.5rem;
 
-        padding: $card-padding;
-        width: fit-content;
+        .primary-info-term {
+          font-weight: bold;
+        }
 
-        dt,
-        dd {
-          display: inline;
-          white-space: pre-wrap;
+        .skills-list {
+          width: 100%;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
         }
       }
 
-      .info-item {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
+      .secondary-info {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 0.5rem;
 
-        padding: $card-padding;
-        width: fit-content;
-
-        dt,
-        dd {
-          display: inline;
-          white-space: pre;
+        span {
+          display: flex;
+          flex-direction: column;
         }
+      }
+
+      .tertiary-info {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+
+        span {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .immunities-resistances {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .action-heading {
@@ -107,7 +121,7 @@
 
       .action-body {
         display: inline;
-        padding: 0.2ch 1.25ch;
+        padding: 0.2ch 0;
 
         .action-title {
           display: inline;

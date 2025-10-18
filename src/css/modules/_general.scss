@@ -18,6 +18,7 @@ body {
   margin: 0;
   padding: 0;
   min-width: 320px;
+
   font-family: $main-font;
   line-height: 1.25rem;
   background-color: $light-bg;
@@ -29,13 +30,17 @@ body {
 }
 
 .main-heading {
-  margin-block-start: 0.5em;
+  margin: 0.25em auto 0;
+  max-width: 800px;
+
+  display: block;
+
   font-family: $header-font;
   color: $dark-bg;
   font-size: 2.75rem;
   line-height: 1.75ch;
+  letter-spacing: 0.5px;
   text-align: center;
-  text-shadow: 0 2px 5px $dark-bg;
 }
 
 .filter-form {
@@ -49,6 +54,8 @@ body {
   }
 
   .input-and-select {
+    @include transition(background-color color);
+
     margin: 0.25rem 0.5rem;
     padding: 0.15rem 0.5rem;
     text-align: center;
@@ -60,7 +67,6 @@ body {
     box-shadow: 0 2px 3px $dark-bg;
     cursor: pointer;
 
-    @include transition(background-color color);
     &:hover {
       @include onHover($light-bg, $dark-bg);
     }
@@ -73,11 +79,13 @@ body {
   }
 
   .submit-button {
-    display: block;
+    @include transition(background-color color);
 
-    font-size: 1.2rem;
+    display: block;
     margin: 0 auto;
     padding: 0.75ch 2ch;
+
+    font-size: 1.2rem;
     font-family: $header-font;
     font-weight: 600;
     color: $dark-bg;
@@ -87,7 +95,6 @@ body {
     cursor: pointer;
     box-shadow: 0 0 5px $dark-bg;
 
-    @include transition(background-color color);
     &:hover {
       @include onHover($dark-bg, $light-bg);
     }

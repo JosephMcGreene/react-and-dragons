@@ -1,23 +1,27 @@
+import SkillsList from "./SkillsList";
+
 export default function PrimaryInfo({ monsterDetails }) {
+  const { hit_points, hit_dice, armor_class, challenge_rating } =
+    monsterDetails;
+
   return (
-    <>
-      <div className="info-block">
-        <span className="info-item">
-          <dt className="info-heading">Hit Points: </dt>
-          <dd>
-            {monsterDetails.hit_points + " (" + monsterDetails.hit_dice + ")"}
-          </dd>
-        </span>
-        <span className="info-item">
-          <dt className="info-heading">Armor Class: </dt>
-          {/* {console.log(monsterDetails.armor_class)} */}
-          <dd>{monsterDetails.armor_class[0].value}</dd>
-        </span>
-        <span className="info-item">
-          <dt className="info-heading">Challenge Rating: </dt>
-          <dd>{monsterDetails.challenge_rating}</dd>
-        </span>
-      </div>
-    </>
+    <dl className="primary-info">
+      <span>
+        <dt className="primary-info-term">Hit Points: </dt>
+        <dd>{`${hit_points} (${hit_dice})`}</dd>
+      </span>
+
+      <span>
+        <dt className="primary-info-term">AC: </dt>
+        <dd>{armor_class[0].value}</dd>
+      </span>
+
+      <span>
+        <dt className="primary-info-term">CR: </dt>
+        <dd>{challenge_rating}</dd>
+      </span>
+
+      <SkillsList monsterDetails={monsterDetails} />
+    </dl>
   );
 }
