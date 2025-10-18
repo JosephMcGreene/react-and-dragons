@@ -12,7 +12,9 @@ export default function Resistances({ monsterDetails }) {
     <div className="immunities-resistances">
       <span>
         <dt className="info-term">Damage Immunities: </dt>
-        <dd>{parseDOMText(damage_immunities)}</dd>
+        {damage_immunities.map((immunity) => (
+          <dd>{immunity}</dd>
+        ))}
       </span>
 
       <span>

@@ -1,40 +1,33 @@
-import { parseDOMText } from "../../helpers";
-
 export default function SecondaryInfo({ monsterDetails }) {
-  const { alignment, speed, senses, type, languages, size, proficiencies } =
-    monsterDetails;
-
-  const sensesFormatted = Object.entries(senses);
+  const { speed, senses, proficiencies } = monsterDetails;
 
   return (
     <div className="secondary-info">
       <span>
-        <dt className="info-term">Speed: </dt>
-        <dd>{parseDOMText(speed)}</dd>
+        <dt className="info-term">Speed</dt>
+        {Object.entries(speed).map((tuple) => (
+          <dd>
+            {tuple[0].replace("_", " ") || tuple[0]}: {tuple[1]}
+          </dd>
+        ))}
       </span>
 
       <span>
-        <dt className="info-term">Senses: </dt>
-        {sensesFormatted.map((array) => {
-          if (array[0].split("_").length > 1) {
-            // format key to remove underscore
-          }
-          return (
-            <dd>
-              {array[0]}: {array[1]}
-            </dd>
-          );
-        })}
+        <dt className="info-term">Senses</dt>
+        {Object.entries(senses).map((tuple) => (
+          <dd>
+            {tuple[0].replace("_", " ") || tuple[0]}: {tuple[1]}
+          </dd>
+        ))}
       </span>
 
       <span>
-        <dt className="info-term">Proficiences: </dt>
+        <dt className="info-term">Proficiences</dt>
         {proficiencies.length > 0 ? (
           <>
-            {proficiencies.map((pro) => (
+            {proficiencies.map((proficiency) => (
               <dd>
-                {pro.proficiency.name}: +{pro.value}
-                <br />
+                {proficiency.proficiency.name}: +{proficiency.value}
               </dd>
             ))}
           </>

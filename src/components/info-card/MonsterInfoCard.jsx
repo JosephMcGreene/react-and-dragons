@@ -20,7 +20,7 @@ export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
           <PrimaryInfo monsterDetails={monsterDetails} />
           <SecondaryInfo monsterDetails={monsterDetails} />
           <TertiaryInfo monsterDetails={monsterDetails} />
-          <Resistances monsterDetails={monsterDetails} />
+          {/* <Resistances monsterDetails={monsterDetails} /> */}
 
           <ActionsInfo monsterDetails={monsterDetails} />
         </div>
