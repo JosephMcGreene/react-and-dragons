@@ -4,13 +4,11 @@ import useMonsters from "./hooks/useMonsters";
 import "./css/App.scss";
 // Components
 import FilterForm from "./components/FilterForm";
-import LoadingSpinner from "./components/LoadingSpinner";
 import MonsterList from "./components/MonsterList";
 import MonsterInfoCard from "./components/info-card/MonsterInfoCard";
 
 export default function App() {
   const [
-    masterMonsterList,
     filteredMonsterList,
     monsterDetails,
     showMonsterCard,

@@ -1,5 +1,3 @@
-import { parseDOMText } from "../../helpers";
-
 export default function Resistances({ monsterDetails }) {
   const {
     damage_immunities,
@@ -8,40 +6,37 @@ export default function Resistances({ monsterDetails }) {
     condition_immunities,
   } = monsterDetails;
 
+  function displayResistance(resistanceType) {
+    if (resistanceType.length > 0) {
+      return resistanceType.map((resistance, index) => (
+        <dd key={`${resistance}${index}`}>{resistance}</dd>
+      ));
+    }
+
+    return <dd>None</dd>;
+  }
+
   return (
     <div className="immunities-resistances">
-      <span>
-        <dt className="info-term">Damage Immunities: </dt>
-        {damage_immunities.map((immunity) => (
-          <dd>{immunity}</dd>
-        ))}
-      </span>
+      <div>
+        <dt className="info-term">Damage Immunities:</dt>
+        {displayResistance(damage_immunities)}
+      </div>
 
-      <span>
-        <dt className="info-term">Resistances: </dt>
-        <dd>{parseDOMText(damage_resistances)}</dd>
-      </span>
+      <div>
+        <dt className="info-term">Resistances:</dt>
+        {displayResistance(damage_resistances)}
+      </div>
 
-      <span>
-        <dt className="info-term">Vulnerabilities: </dt>
-        <dd>{parseDOMText(damage_vulnerabilities)}</dd>
-      </span>
+      <div>
+        <dt className="info-term">Vulnerabilities:</dt>
+        {displayResistance(damage_vulnerabilities)}
+      </div>
 
-      <span>
-        <dt className="info-term">Condition Immunities: </dt>
-        {condition_immunities.length > 0 ? (
-          <>
-            {condition_immunities.map((immunity) => (
-              <dd>
-                {immunity.name}
-                <br />
-              </dd>
-            ))}
-          </>
-        ) : (
-          <dt>None</dt>
-        )}
-      </span>
+      <div>
+        <dt className="info-term">Condition Immunities:</dt>
+        {displayResistance(condition_immunities)}
+      </div>
     </div>
   );
 }

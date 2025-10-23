@@ -3,25 +3,25 @@ export default function SecondaryInfo({ monsterDetails }) {
 
   return (
     <div className="secondary-info">
-      <span>
+      <div>
         <dt className="info-term">Speed</dt>
         {Object.entries(speed).map((tuple) => (
           <dd>
             {tuple[0].replace("_", " ") || tuple[0]}: {tuple[1]}
           </dd>
         ))}
-      </span>
+      </div>
 
-      <span>
+      <div>
         <dt className="info-term">Senses</dt>
         {Object.entries(senses).map((tuple) => (
           <dd>
             {tuple[0].replace("_", " ") || tuple[0]}: {tuple[1]}
           </dd>
         ))}
-      </span>
+      </div>
 
-      <span>
+      <div>
         <dt className="info-term">Proficiences</dt>
         {proficiencies.length > 0 ? (
           <>
@@ -34,7 +34,7 @@ export default function SecondaryInfo({ monsterDetails }) {
         ) : (
           <dd>None</dd>
         )}
-      </span>
+      </div>
     </div>
   );
 }
