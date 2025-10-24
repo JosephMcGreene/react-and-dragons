@@ -1,15 +1,22 @@
 export default function Resistances({ monsterDetails }) {
   const {
+    condition_immunities,
     damage_immunities,
     damage_resistances,
     damage_vulnerabilities,
-    condition_immunities,
   } = monsterDetails;
 
+  /**
+   * Returns appropriate JSX concerning the monster's immunities, resistances, and vulnerabilities.
+   *
+   * @param {object[] || string[]} resistanceType The immunities, resistances, or vulnerabilities in question.
+   *
+   * @returns JSX <dd> element whose content is appropriate for the monster's immunities, resistances, or vulnerabilities.
+   */
   function displayResistance(resistanceType) {
     if (resistanceType.length > 0) {
       return resistanceType.map((resistance, index) => (
-        <dd key={`${resistance}${index}`}>{resistance}</dd>
+        <dd key={resistance + index}>{resistance?.name || resistance}</dd>
       ));
     }
 
@@ -18,6 +25,11 @@ export default function Resistances({ monsterDetails }) {
 
   return (
     <div className="immunities-resistances">
+      <div>
+        <dt className="info-term">Condition Immunities:</dt>
+        {displayResistance(condition_immunities)}
+      </div>
+
       <div>
         <dt className="info-term">Damage Immunities:</dt>
         {displayResistance(damage_immunities)}
@@ -31,11 +43,6 @@ export default function Resistances({ monsterDetails }) {
       <div>
         <dt className="info-term">Vulnerabilities:</dt>
         {displayResistance(damage_vulnerabilities)}
-      </div>
-
-      <div>
-        <dt className="info-term">Condition Immunities:</dt>
-        {displayResistance(condition_immunities)}
       </div>
     </div>
   );

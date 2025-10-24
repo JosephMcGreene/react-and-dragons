@@ -16,13 +16,14 @@ dl {
   font-size: 1.5rem;
 
   .monster-list-item {
+    @include transition(background-color color);
+
     border-radius: 5px;
     padding: 0.75rem 0.75rem;
     margin: 0 auto;
     cursor: pointer;
     width: fit-content;
 
-    @include transition(background-color color);
     &:hover {
       background-color: $dark-bg;
       color: $light-bg;

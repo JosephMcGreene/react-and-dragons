@@ -8,6 +8,7 @@ import EncounterPanel from "../encounter-panel/EncounterPanel";
 export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
   return (
     <div className="modal">
+      {console.log(monsterDetails)}
       <article className="modal-content">
         <header className="modal-header">
           <h2 className="monster-name">{monsterDetails.name}</h2>
@@ -18,7 +19,6 @@ export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
 
         <article className="modal-body">
           <PrimaryInfo monsterDetails={monsterDetails} />
-          <SkillsList monsterDetails={monsterDetails} />
           <SecondaryInfo monsterDetails={monsterDetails} />
           <TertiaryInfo monsterDetails={monsterDetails} />
           <ActionsInfo monsterDetails={monsterDetails} />

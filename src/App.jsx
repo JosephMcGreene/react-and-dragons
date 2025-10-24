@@ -19,33 +19,31 @@ export default function App() {
   ] = useMonsters();
 
   return (
-    <div className="App">
-      <main className="main-content">
-        <h1 className="main-heading">
-          Dungeons & Dragons 5<sup>th</sup> Edition Monster Guide
-        </h1>
+    <main className="main-content App">
+      <h1 className="main-heading">
+        Dungeons & Dragons 5<sup>th</sup> Edition Monster Guide
+      </h1>
 
-        <FilterForm
-          onSubmit={(filterType, filterValue) =>
-            filterMonsters(filterType, filterValue)
-          }
+      <FilterForm
+        onSubmit={(filterType, filterValue) =>
+          filterMonsters(filterType, filterValue)
+        }
+      />
+
+      <hr />
+
+      <MonsterList
+        loading={loading}
+        filteredMonsters={filteredMonsterList}
+        openDetails={(monsterURL) => getMonsterDetails(monsterURL)}
+      />
+
+      {showMonsterCard && (
+        <MonsterInfoCard
+          monsterDetails={monsterDetails}
+          closeMonsterCard={() => setShowMonsterCard(false)}
         />
-
-        <hr />
-
-        <MonsterList
-          loading={loading}
-          filteredMonsters={filteredMonsterList}
-          openDetails={(monsterURL) => getMonsterDetails(monsterURL)}
-        />
-
-        {showMonsterCard && (
-          <MonsterInfoCard
-            monsterDetails={monsterDetails}
-            closeMonsterCard={() => setShowMonsterCard(false)}
-          />
-        )}
-      </main>
-    </div>
+      )}
+    </main>
   );
 }

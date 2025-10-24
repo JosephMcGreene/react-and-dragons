@@ -12,7 +12,7 @@ export default function EncounterPanel({ monsterDetails }) {
     useEncounterFeatures(monsterDetails);
 
   return (
-    <>
+    <aside>
       <div
         className={
           panelExtended ? "encounter-panel extended" : "encounter-panel"
@@ -62,6 +62,6 @@ export default function EncounterPanel({ monsterDetails }) {
       >
         {panelExtended ? "<<" : "Encounter >>"}
       </button>
-    </>
+    </aside>
   );
 }

@@ -80,9 +80,9 @@ export default function useMonsters() {
         const response = await fetch(
           `https://www.dnd5eapi.co${monstersEndpoint}?${filterType}=${filterValue}`
         );
-        const gottenMonsters = await response.json();
+        const monsters = await response.json();
 
-        setFilteredMonsterList(gottenMonsters.results);
+        setFilteredMonsterList(monsters.results);
       } catch (err) {
         console.error(err);
       } finally {
