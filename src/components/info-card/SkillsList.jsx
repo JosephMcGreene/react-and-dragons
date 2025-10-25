@@ -30,35 +30,35 @@ export default function SkillsList({ monsterDetails }) {
       </div>
 
       <div>
-        <dt className="info-term">DEX: </dt>
+        <dt className="info-term">DEX:</dt>
         <dd>
           {dexterity} ({modifierFor(dexterity)})
         </dd>
       </div>
 
       <div>
-        <dt className="info-term">CON: </dt>
+        <dt className="info-term">CON:</dt>
         <dd>
           {constitution} ({modifierFor(constitution)})
         </dd>
       </div>
 
       <div>
-        <dt className="info-term">INT: </dt>
+        <dt className="info-term">INT:</dt>
         <dd>
           {intelligence} ({modifierFor(intelligence)})
         </dd>
       </div>
 
       <div>
-        <dt className="info-term">WIS: </dt>
+        <dt className="info-term">WIS:</dt>
         <dd>
           {wisdom} ({modifierFor(wisdom)})
         </dd>
       </div>
 
       <div>
-        <dt className="info-term">CHA: </dt>
+        <dt className="info-term">CHA:</dt>
         <dd>
           {charisma} ({modifierFor(charisma)})
         </dd>

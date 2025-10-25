@@ -9,10 +9,11 @@ export default function PrimaryInfo({ monsterDetails }) {
       <img
         src={`https://www.dnd5eapi.co${monsterDetails?.image}`}
         alt={`${monsterDetails.name}`}
+        className="monster-img"
       />
 
-      <div className="info-next-to-img">
-        <div>
+      <div className="hp-ac-cr">
+        <div className="hp">
           <dt className="primary-info-term">Hit Points: </dt>
           <dd>{`${hit_points} (${hit_dice})`}</dd>
         </div>

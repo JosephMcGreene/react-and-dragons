@@ -1,58 +1,58 @@
 export default function ActionsInfo({ monsterDetails }) {
+  const { actions, reactions, special_abilities, legendary_actions } =
+    monsterDetails;
+
   return (
-    <>
-      {/* Action component declared in this file, below */}
-      <Action
-        monsterDetails={monsterDetails}
-        title="Actions:"
-        index="actions"
-      />
+    <dl>
+      <dl className="action-list">
+        <dt className="action-heading">Actions:</dt>
 
-      {monsterDetails.reactions ? (
-        <Action
-          monsterDetails={monsterDetails}
-          title="Reactions:"
-          index="reactions"
-        />
-      ) : (
-        ""
-      )}
-
-      {monsterDetails.special_abilities.length > 0 ? (
-        <Action
-          monsterDetails={monsterDetails}
-          title="Special Abilities:"
-          index="special_abilities"
-        />
-      ) : (
-        ""
-      )}
-
-      {monsterDetails.legendary_actions.length > 0 ? (
-        <Action
-          monsterDetails={monsterDetails}
-          title="Legendary Actions:"
-          index="legendary_actions"
-        />
-      ) : (
-        ""
-      )}
-    </>
-  );
-}
-
-function Action({ monsterDetails, title, index }) {
-  return (
-    <>
-      <dt className="action-heading">{title} </dt>
-      {monsterDetails[index].map((action) => {
-        return (
-          <span key={action.name} className="action-body">
+        {actions.map((action) => (
+          <span key={action.name}>
             <dt className="action-title">{action.name}. </dt>
             <dd className="action-description">{action.desc}</dd>
           </span>
-        );
-      })}
-    </>
+        ))}
+      </dl>
+
+      {reactions.length > 0 && (
+        <dl className="action-list">
+          <dt className="action-heading">Reactions:</dt>
+
+          {reactions.map((action) => (
+            <span key={action.name}>
+              <dt className="action-title">{action.name}. </dt>
+              <dd className="action-description">{action.desc}</dd>
+            </span>
+          ))}
+        </dl>
+      )}
+
+      {special_abilities.length > 0 && (
+        <dl className="action-list">
+          <dt className="action-heading">Special Abilities:</dt>
+
+          {special_abilities.map((action) => (
+            <span key={action.name}>
+              <dt className="action-title">{action.name}. </dt>
+              <dd className="action-description">{action.desc}</dd>
+            </span>
+          ))}
+        </dl>
+      )}
+
+      {legendary_actions.length > 0 && (
+        <dl className="action-list">
+          <dt className="action-heading">Legendary Actions:</dt>
+
+          {legendary_actions.map((action) => (
+            <span key={action.name}>
+              <dt className="action-title">{action.name}. </dt>
+              <dd className="action-description">{action.desc}</dd>
+            </span>
+          ))}
+        </dl>
+      )}
+    </dl>
   );
 }
