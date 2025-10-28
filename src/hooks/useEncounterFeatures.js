@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { singleDieRoll } from "../dice-logic/rolls";
+import { singleDieRoll, rollDice, sumOfDiceRolls } from "../dice-logic/rolls";
 
 export default function useEncounterFeatures(monsterDetails) {
   const [currentHitPoints, setCurrentHitPoints] = useState(
@@ -56,16 +56,31 @@ export default function useEncounterFeatures(monsterDetails) {
       const rollFinal = rollResult + action.attack_bonus;
 
       console.log(
-        `${rollFinal} (${rollResult} + ${action.attack_bonus}) to hit`
+        `${action.name}: ${rollFinal} (${rollResult} + ${action.attack_bonus}) to hit`
       );
     }
 
     if (action.damage.length > 0) {
       for (const damageType of action.damage) {
-        console.log(damageType.damage_dice);
+        // example damageType.damage_dice: "3d6+4"
+        const damageDiceSplit = damageType.damage_dice.split("d"); // 3d6+4 --> ["3", "6+4"]
+
+        const damageDieSides = parseInt(damageDiceSplit[1].charAt(0)); // "6+4" --> 6
+
+        const damageMod = parseInt(damageDiceSplit[1]?.split("+")[1]) || 0; // "6+4" --> 4
+
+        const rollResults = rollDice(
+          parseInt(damageDiceSplit[0]),
+          damageDieSides
+        );
+
+        const resultBeforeMod = sumOfDiceRolls(rollResults);
+        const finalResult = resultBeforeMod + damageMod;
+
+        console.log(
+          `${action.name}: ${finalResult} (${resultBeforeMod} + ${damageMod}) ${damageType.damage_type.index} damage`
+        );
       }
-    } else {
-      console.log("no damage");
     }
   }
 
