@@ -2,7 +2,7 @@ import Resistances from "./Resistances";
 
 export default function TertiaryInfo({ monsterDetails }) {
   const { languages, alignment, type, size } = monsterDetails;
-  const languageList = languages.split(", ");
+  const languagesArray = languages.split(", ");
 
   return (
     <div className="tertiary-info">
@@ -11,8 +11,8 @@ export default function TertiaryInfo({ monsterDetails }) {
       <div className="other-info">
         <div>
           <dt className="info-term">Languages</dt>
-          {languageList.map((lang) => (
-            <dd>{lang}</dd>
+          {languagesArray.map((language) => (
+            <dd>{language}</dd>
           ))}
         </div>
 

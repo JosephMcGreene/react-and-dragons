@@ -1,5 +1,4 @@
 import PrimaryInfo from "./PrimaryInfo";
-import SkillsList from "./SkillsList";
 import SecondaryInfo from "./SecondaryInfo";
 import TertiaryInfo from "./TertiaryInfo";
 import ActionsInfo from "./ActionsInfo";
@@ -8,7 +7,6 @@ import EncounterPanel from "../encounter-panel/EncounterPanel";
 export default function MonsterInfoCard({ monsterDetails, closeMonsterCard }) {
   return (
     <div className="modal">
-      {console.log(monsterDetails)}
       <article className="modal-content">
         <header className="modal-header">
           <h2 className="monster-name">{monsterDetails.name}</h2>
