@@ -11,14 +11,25 @@ export default function EncounterPanel({ monsterDetails }) {
   const [currentHitPoints, setCurrentHitPoints, dealDamage, monsterAction] =
     useEncounterFeatures(monsterDetails);
 
+  const filteredActions = monsterDetails.actions.filter(
+    (action) => action.attack_bonus
+  );
+
   return (
     <aside>
-      <div
-        className={
-          panelExtended ? "encounter-panel extended" : "encounter-panel"
-        }
+      {/* prettier-ignore */}
+      <button
+        className={panelExtended ? "panel-extender extender-extended" : "panel-extender"}
+        onClick={() => setPanelExtended(!panelExtended)}
       >
-        <h2 className="encounter-monster-name">{monsterDetails.name}</h2>
+        {panelExtended ? "<<" : "Encounter >>"}
+      </button>
+
+      {/* prettier-ignore */}
+      <div className={panelExtended ? "encounter-panel extended" : "encounter-panel"}>
+        <h2 className="encounter-monster-name">
+          {monsterDetails.name}
+        </h2>
 
         <h3
           className="encounter-hit-points"
@@ -40,9 +51,11 @@ export default function EncounterPanel({ monsterDetails }) {
           />
         )}
 
-        <h3 className="encounter-actions-heading">Actions:</h3>
+        <h3 className="encounter-actions-heading">
+          Action Rolls:
+        </h3>
         <ul className="encounter-action-list">
-          {monsterDetails.actions.map((action, index) => (
+          {filteredActions.map((action, index) => (
             <li key={action + index}>
               {action.name !== "Multiattack" && (
                 <button
@@ -58,15 +71,6 @@ export default function EncounterPanel({ monsterDetails }) {
 
         {monsterDetails.legendary_actions.length > 0 && <LegendaryActions />}
       </div>
-
-      <button
-        className={
-          panelExtended ? "panel-extender extender-extended" : "panel-extender"
-        }
-        onClick={() => setPanelExtended(!panelExtended)}
-      >
-        {panelExtended ? "<<" : "Encounter >>"}
-      </button>
     </aside>
   );
 }
