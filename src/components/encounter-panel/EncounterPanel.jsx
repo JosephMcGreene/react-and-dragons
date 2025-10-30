@@ -22,9 +22,10 @@ export default function EncounterPanel({ monsterDetails }) {
 
   return (
     <aside>
-      {/* prettier-ignore */}
       <button
-        className={panelExtended ? "panel-extender extender-extended" : "panel-extender"}
+        className={
+          panelExtended ? "panel-extender extender-extended" : "panel-extender"
+        }
         onClick={() => setPanelExtended(!panelExtended)}
       >
         {panelExtended ? "<<" : "Encounter >>"}
@@ -80,7 +81,7 @@ export default function EncounterPanel({ monsterDetails }) {
           {encounterLogContent.map((content) => (
             <li>
               <span>
-                {content.toHit !== 20
+                {content.toHit === 20
                   ? `${content.actionName}: Nat 20 to hit!`
                   : `${content.actionName}: ${content.toHit} to hit`}
               </span>
