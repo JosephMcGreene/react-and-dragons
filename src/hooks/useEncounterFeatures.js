@@ -5,6 +5,7 @@ export default function useEncounterFeatures(monsterDetails) {
   const [currentHitPoints, setCurrentHitPoints] = useState(
     monsterDetails.hit_points
   );
+  const [encounterLogContent, setEncounterLogContent] = useState([]);
 
   function isDamageModified(modifierType, damageType, weaponIsMagical) {
     for (let i = 0; i < modifierType.length; i++) {
@@ -50,39 +51,48 @@ export default function useEncounterFeatures(monsterDetails) {
     return setCurrentHitPoints((prevHitPoints) => prevHitPoints - damageInfo.damage);
   }
 
-  function monsterAction(action) {
-    if (action.attack_bonus) {
-      const rollResult = singleDieRoll(20);
-      const rollFinal = rollResult + action.attack_bonus;
+  function rollDamage(damage) {
+    const damageArray = [];
 
-      console.log(
-        `${action.name}: ${rollFinal} (${rollResult} + ${action.attack_bonus}) to hit`
+    for (const damageType of damage) {
+      // example damageType.damage_dice: "3d6+4"
+      const damageDiceSplit = damageType.damage_dice.split("d"); // 3d6+4 --> ["3", "6+4"]
+      const damageDieSides = parseInt(damageDiceSplit[1].charAt(0)); // "6+4" --> 6
+      const damageMod = parseInt(damageDiceSplit[1]?.split("+")[1]) || 0; // "6+4" --> 4
+
+      const rollResults = rollDice(
+        parseInt(damageDiceSplit[0]),
+        damageDieSides
       );
+
+      const finalResult = sumOfDiceRolls(rollResults) + damageMod;
+
+      damageArray.push({
+        finalDamage: finalResult,
+        damageDice: damageType.damage_dice,
+        damageType: damageType.damage_type.index,
+      });
     }
 
-    if (action.damage.length > 0) {
-      for (const damageType of action.damage) {
-        // example damageType.damage_dice: "3d6+4"
-        const damageDiceSplit = damageType.damage_dice.split("d"); // 3d6+4 --> ["3", "6+4"]
-
-        const damageDieSides = parseInt(damageDiceSplit[1].charAt(0)); // "6+4" --> 6
-
-        const damageMod = parseInt(damageDiceSplit[1]?.split("+")[1]) || 0; // "6+4" --> 4
-
-        const rollResults = rollDice(
-          parseInt(damageDiceSplit[0]),
-          damageDieSides
-        );
-
-        const resultBeforeMod = sumOfDiceRolls(rollResults);
-        const finalResult = resultBeforeMod + damageMod;
-
-        console.log(
-          `${action.name}: ${finalResult} (${resultBeforeMod} + ${damageMod}) ${damageType.damage_type.index} damage`
-        );
-      }
-    }
+    return damageArray;
   }
 
-  return [currentHitPoints, setCurrentHitPoints, dealDamage, monsterAction];
+  function monsterAction({ attack_bonus, damage, name }) {
+    setEncounterLogContent((prevContent) => [
+      ...prevContent,
+      {
+        actionName: name,
+        toHit: singleDieRoll(20) + attack_bonus,
+        damage: rollDamage(damage),
+      },
+    ]);
+  }
+
+  return [
+    currentHitPoints,
+    setCurrentHitPoints,
+    dealDamage,
+    monsterAction,
+    encounterLogContent,
+  ];
 }

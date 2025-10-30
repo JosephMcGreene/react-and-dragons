@@ -8,11 +8,16 @@ import LegendaryActions from "./LegendaryActions";
 export default function EncounterPanel({ monsterDetails }) {
   const [panelExtended, setPanelExtended] = useState(false);
   const [damageModalShown, setDamageModalShown] = useState(false);
-  const [currentHitPoints, setCurrentHitPoints, dealDamage, monsterAction] =
-    useEncounterFeatures(monsterDetails);
+  const [
+    currentHitPoints,
+    setCurrentHitPoints,
+    dealDamage,
+    monsterAction,
+    encounterLogContent,
+  ] = useEncounterFeatures(monsterDetails);
 
   const filteredActions = monsterDetails.actions.filter(
-    (action) => action.attack_bonus
+    (action) => action.damage.length > 0
   );
 
   return (
@@ -25,11 +30,12 @@ export default function EncounterPanel({ monsterDetails }) {
         {panelExtended ? "<<" : "Encounter >>"}
       </button>
 
-      {/* prettier-ignore */}
-      <div className={panelExtended ? "encounter-panel extended" : "encounter-panel"}>
-        <h2 className="encounter-monster-name">
-          {monsterDetails.name}
-        </h2>
+      <div
+        className={
+          panelExtended ? "encounter-panel extended" : "encounter-panel"
+        }
+      >
+        <h2 className="encounter-monster-name">{monsterDetails.name}</h2>
 
         <h3
           className="encounter-hit-points"
@@ -51,25 +57,36 @@ export default function EncounterPanel({ monsterDetails }) {
           />
         )}
 
-        <h3 className="encounter-actions-heading">
-          Action Rolls:
-        </h3>
+        <h3 className="encounter-actions-heading">Action Rolls:</h3>
         <ul className="encounter-action-list">
           {filteredActions.map((action, index) => (
             <li key={action + index}>
-              {action.name !== "Multiattack" && (
-                <button
-                  className="action-btn"
-                  onClick={() => monsterAction(action)}
-                >
-                  Use {action.name}
-                </button>
-              )}
+              <button
+                className="action-btn"
+                onClick={() => {
+                  monsterAction(action);
+                  console.log(action);
+                }}
+              >
+                Use {action.name}
+              </button>
             </li>
           ))}
         </ul>
 
         {monsterDetails.legendary_actions.length > 0 && <LegendaryActions />}
+
+        <ul className="encounter-log">
+          {encounterLogContent.map((content) => (
+            <li>
+              <span>
+                {content.toHit !== 20
+                  ? `${content.actionName}: Nat 20 to hit!`
+                  : `${content.actionName}: ${content.toHit} to hit`}
+              </span>
+            </li>
+          ))}
+        </ul>
       </div>
     </aside>
   );
