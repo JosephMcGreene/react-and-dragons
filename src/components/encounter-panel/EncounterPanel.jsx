@@ -70,7 +70,6 @@ export default function EncounterPanel({ monsterDetails }) {
                   className="action-btn"
                   onClick={() => {
                     monsterAction(action);
-                    console.log(action);
                   }}
                 >
                   {action.name}
@@ -80,7 +79,7 @@ export default function EncounterPanel({ monsterDetails }) {
           </ul>
         </div>
 
-        {monsterDetails?.legendary_actions.length > 0 && (
+        {monsterDetails.legendary_actions.length > 0 && (
           <LegendaryActions monsterDetails={monsterDetails} />
         )}
 
