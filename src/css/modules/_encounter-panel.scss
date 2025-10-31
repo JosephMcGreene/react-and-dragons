@@ -1,5 +1,40 @@
 @use "../abstracts/index" as *;
 
+.panel-extender {
+  position: fixed;
+  top: 0.75rem;
+  left: $extender-pos-left;
+
+  cursor: pointer;
+  font-family: $header-font;
+  color: $dark-bg;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border: none;
+  box-shadow: 0 0 5px black;
+  border-radius: 100vw;
+  padding: 0.75rem 1rem;
+
+  transition-property: left;
+  transition-duration: 250ms;
+
+  @include transition(background-color color);
+  &:hover {
+    @include onHover($dark-bg, $light-bg);
+  }
+}
+
+.extender-extended {
+  left: calc($extender-pos-left + $encounter-width);
+
+  background-color: $dark-bg;
+  color: $light-bg;
+
+  &:hover {
+    @include onHover($light-bg, $dark-bg);
+  }
+}
+
 .encounter-panel {
   z-index: $z-encounter-panel;
 
@@ -9,12 +44,16 @@
   width: $encounter-width;
   left: calc($encounter-width - (2 * $encounter-width) - 1px);
 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  height: 100vh;
+
   font-family: $main-font;
   color: $light-bg;
   background-color: $dark-bg;
-  padding: 0.75rem;
-  box-shadow: 0 0 5px $dark-bg;
-  overflow-y: scroll;
+  padding: 1rem;
+  box-shadow: 0 0 15px $dark-bg;
 
   transition-property: left;
   transition-duration: 250ms;
@@ -24,24 +63,16 @@
     letter-spacing: 1px;
     text-decoration: underline;
     text-align: center;
-    margin-bottom: 1.5rem;
   }
 
   .encounter-hit-points {
-    @include transition(transform filter);
-
-    letter-spacing: 1px;
-    margin-bottom: 1.5rem;
-    cursor: pointer;
-
-    &:hover {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 5px $light-bg);
-    }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .damage-modal {
-    top: 15%;
+    top: 10%;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -86,25 +117,23 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
-    margin-bottom: 1.5rem;
   }
 
   .action-btn {
     @include transition(transform box-shadow);
 
     font-family: $main-font;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: $dark-bg;
-    padding: 0.35ch 1.75ch;
+    padding: 0.25ch 1.5ch;
+    letter-spacing: 0.3px;
     border: none;
-    box-shadow: 0 0 10px inset $dark-bg;
     border-radius: calc($border-radius / 2);
     cursor: pointer;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
     &:active {
       transform: scale(1);
@@ -113,58 +142,42 @@
 
   .encounter-legendary-actions {
     display: flex;
-    margin-bottom: 1.5rem;
+    justify-content: space-between;
+    align-items: center;
 
     .leg-actions-heading {
-      @include transition(transform filter);
-
+      width: min-content;
       letter-spacing: 1px;
-      cursor: pointer;
-
-      &:hover {
-        transform: scale(1.1);
-        filter: drop-shadow(0 0 5px $light-bg);
-      }
+    }
+    .action-btn {
+      letter-spacing: 2px;
     }
   }
 
   .encounter-log {
-    list-style: none;
-  }
-}
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    height: stretch;
+    padding: 0.75rem;
+    background-color: $light-bg;
+    overflow-y: scroll;
 
-.panel-extender {
-  position: fixed;
-  top: 0.75rem;
-  left: $extender-pos-left;
+    box-shadow: 0 0 12px inset $dark-bg;
+    color: $dark-bg;
+    font-size: 1.1rem;
 
-  cursor: pointer;
-  font-family: $header-font;
-  color: $dark-bg;
-  font-size: 1.25rem;
-  font-weight: bold;
-  border: none;
-  box-shadow: 0 0 5px black;
-  border-radius: 100vw;
-  padding: 0.75rem 1rem;
-
-  transition-property: left;
-  transition-duration: 250ms;
-
-  @include transition(background-color color);
-  &:hover {
-    @include onHover($dark-bg, $light-bg);
-  }
-}
-
-.extender-extended {
-  left: calc($extender-pos-left + $encounter-width);
-
-  background-color: $dark-bg;
-  color: $light-bg;
-
-  &:hover {
-    @include onHover($light-bg, $dark-bg);
+    .log-item {
+      p {
+        line-height: 1.9ch;
+        margin-left: 0.5rem;
+        font-weight: inherit;
+      }
+      h4 {
+        margin-left: 0;
+        font-weight: bold;
+      }
+    }
   }
 }
 

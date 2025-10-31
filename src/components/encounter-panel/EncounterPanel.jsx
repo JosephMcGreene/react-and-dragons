@@ -38,56 +38,71 @@ export default function EncounterPanel({ monsterDetails }) {
       >
         <h2 className="encounter-monster-name">{monsterDetails.name}</h2>
 
-        <h3
-          className="encounter-hit-points"
-          onClick={() => setDamageModalShown(!damageModalShown)}
-        >
-          Hit Points: {currentHitPoints} / {monsterDetails.hit_points}
-        </h3>
+        <div className="encounter-hit-points">
+          <h3>Hit Points:</h3>
+          <button
+            className="action-btn"
+            onClick={() => setDamageModalShown(!damageModalShown)}
+          >
+            {currentHitPoints}/{monsterDetails.hit_points}
+          </button>
 
-        {damageModalShown && (
-          <DamageModal
-            onDamage={(damageInfo) => {
-              dealDamage(damageInfo);
-              setDamageModalShown(!damageModalShown);
-            }}
-            onResetHP={() => {
-              setCurrentHitPoints(monsterDetails.hit_points);
-              setDamageModalShown(!damageModalShown);
-            }}
-          />
+          {damageModalShown && (
+            <DamageModal
+              onDamage={(damageInfo) => {
+                dealDamage(damageInfo);
+                setDamageModalShown(!damageModalShown);
+              }}
+              onResetHP={() => {
+                setCurrentHitPoints(monsterDetails.hit_points);
+                setDamageModalShown(!damageModalShown);
+              }}
+            />
+          )}
+        </div>
+
+        <div className="actions">
+          <h3 className="encounter-actions-heading">Action Rolls:</h3>
+          <ul className="encounter-action-list">
+            {filteredActions.map((action, index) => (
+              <li key={action + index}>
+                <button
+                  className="action-btn"
+                  onClick={() => {
+                    monsterAction(action);
+                    console.log(action);
+                  }}
+                >
+                  {action.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {monsterDetails?.legendary_actions.length > 0 && (
+          <LegendaryActions monsterDetails={monsterDetails} />
         )}
 
-        <h3 className="encounter-actions-heading">Action Rolls:</h3>
-        <ul className="encounter-action-list">
-          {filteredActions.map((action, index) => (
-            <li key={action + index}>
-              <button
-                className="action-btn"
-                onClick={() => {
-                  monsterAction(action);
-                  console.log(action);
-                }}
-              >
-                Use {action.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-
-        {monsterDetails.legendary_actions.length > 0 && <LegendaryActions />}
-
-        <ul className="encounter-log">
+        <div className="encounter-log">
           {encounterLogContent.map((content) => (
-            <li>
-              <span>
-                {content.toHit === 20
+            <article className="log-item">
+              <h4>
+                {content?.toHit === 20
                   ? `${content.actionName}: Nat 20 to hit!`
                   : `${content.actionName}: ${content.toHit} to hit`}
-              </span>
-            </li>
+              </h4>
+
+              {content.damage?.map(
+                ({ finalDamage, damageDice, damageType }) => (
+                  <p>
+                    {finalDamage} ({damageDice}) {damageType} damage
+                  </p>
+                )
+              )}
+            </article>
           ))}
-        </ul>
+        </div>
       </div>
     </aside>
   );
