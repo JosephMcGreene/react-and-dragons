@@ -59,7 +59,7 @@ export default function useEncounterFeatures(monsterDetails) {
    */
   function parseDamageDice(damageDice) {
     // example damageDice: "3d6+4"
-    const damageDiceSplit = damageDice.damage_dice.split("d"); // 3d6+4 --> ["3", "6+4"]
+    const damageDiceSplit = damageDice.split("d"); // 3d6+4 --> ["3", "6+4"]
     const damageDieSides = parseInt(damageDiceSplit[1].charAt(0)); // "6+4" --> 6
     const damageMod = parseInt(damageDiceSplit[1]?.split("+")[1]) || 0; // "6+4" --> 4  OR  0 if no "+"
     return { damageDiceSplit, damageDieSides, damageMod };
