@@ -1,0 +1,74 @@
+@use "../abstracts/index" as *;
+
+.damage-modal {
+  top: 2rem;
+
+  padding: 1rem;
+
+  label,
+  input,
+  select,
+  button {
+    padding: 0.25rem;
+    font-family: inherit;
+    text-align: center;
+    color: $dark-bg;
+    font-size: 1rem;
+  }
+  input[type="number"],
+  select,
+  button {
+    border: 1px solid $dark-bg;
+    border-radius: calc($border-radius / 2);
+    box-shadow: 0 0 7px $dark-bg;
+    width: 100%;
+  }
+  button {
+    @include transition(background-color color);
+
+    cursor: pointer;
+
+    &:hover {
+      background-color: $dark-bg;
+      color: $light-bg;
+    }
+  }
+
+  .damage-number,
+  .damage-type,
+  .magic-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .damage-number {
+    justify-content: space-evenly;
+
+    input {
+      width: 50%;
+      padding: 0.25rem;
+    }
+  }
+
+  .damage-type {
+    flex-direction: column;
+  }
+
+  .magic-checkbox {
+    justify-content: center;
+
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+    }
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}

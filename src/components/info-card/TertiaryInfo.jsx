@@ -12,7 +12,7 @@ export default function TertiaryInfo({ monsterDetails }) {
         <div>
           <dt className="info-term">Languages</dt>
           {languagesArray.map((language) => (
-            <dd>{language}</dd>
+            <dd key={language}>{language}</dd>
           ))}
         </div>
 

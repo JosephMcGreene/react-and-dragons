@@ -1,30 +1,17 @@
 import { useState } from "react";
 
-export default function DamageModal({ onDamage, onResetHP }) {
+export default function DamageModal({ takeDamage, resetHP, cancelDamage }) {
   const [damage, setDamage] = useState("");
   const [damageType, setDamageType] = useState("");
   const [isMagical, setIsMagical] = useState(false);
 
-  const damageTypes = [
-    "acid",
-    "bludgeoning",
-    "cold",
-    "fire",
-    "force",
-    "lightning",
-    "necrotic",
-    "piercing",
-    "poison",
-    "psychic",
-    "radiant",
-    "slashing",
-    "thunder",
-  ];
+  // prettier-ignore
+  const damageTypes = ["acid", "bludgeoning", "cold", "fire", "force", "lightning", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"];
 
-  function handleDamageSubmit(e) {
-    e.preventDefault();
-    if (damageType === "") return alert("Don't forget a damage type");
-    onDamage({ damage, damageType, weaponIsMagical: isMagical });
+  function handleDamageSubmit(event) {
+    event.preventDefault();
+    if (damageType === "") return alert("Don't forget a damage type!");
+    takeDamage({ damage, damageType, weaponIsMagical: isMagical });
   }
 
   return (
@@ -32,19 +19,19 @@ export default function DamageModal({ onDamage, onResetHP }) {
       className="modal-content damage-modal"
       onSubmit={(e) => handleDamageSubmit(e)}
     >
-      <label htmlFor="damageNumber">
-        Damage Given:
+      <div className="damage-number">
+        <label htmlFor="damageNumber">Damage Given:</label>
         <input
           value={damage}
           onChange={(e) => setDamage(e.target.value)}
           type="number"
           id="damageNumber"
-          placeholder="Negative Numbers Heal"
+          placeholder="Negatives heal"
         />
-      </label>
+      </div>
 
-      <label htmlFor="damageType">
-        Damage Type:
+      <div className="damage-type">
+        <label htmlFor="damageType">Damage Type:</label>
         <select
           value={damageType}
           onChange={(e) => setDamageType(e.target.value)}
@@ -59,9 +46,9 @@ export default function DamageModal({ onDamage, onResetHP }) {
             );
           })}
         </select>
-      </label>
+      </div>
 
-      <label htmlFor="magical">
+      <div className="magic-checkbox">
         <input
           type="checkbox"
           checked={isMagical}
@@ -69,13 +56,20 @@ export default function DamageModal({ onDamage, onResetHP }) {
           name="magical"
           id="magical"
         />{" "}
-        Magical Weapon
-      </label>
+        <label htmlFor="magical">Magical Weapon</label>
+      </div>
 
-      <button type="submit">Apply Damage/Heal</button>
-      <button type="button" onClick={() => onResetHP()}>
-        Reset Hit Points
-      </button>
+      <div className="buttons">
+        <button type="submit">Apply Damage/Heal</button>
+
+        <button type="button" onClick={resetHP}>
+          Reset Hit Points
+        </button>
+
+        <button type="button" onClick={cancelDamage}>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

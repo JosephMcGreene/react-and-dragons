@@ -8,7 +8,6 @@ export default function LegendaryActions({ monsterDetails }) {
   return (
     <div className="encounter-legendary-actions">
       <h3 className="leg-actions-heading">Legendary Actions:</h3>
-
       <button
         className="action-btn"
         onClick={() =>

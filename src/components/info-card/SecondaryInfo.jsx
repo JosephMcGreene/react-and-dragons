@@ -6,8 +6,8 @@ export default function SecondaryInfo({ monsterDetails }) {
       <div className="speed-senses">
         <div className="speed">
           <dt className="info-term">Speed</dt>
-          {Object.entries(speed).map((keyValPair) => (
-            <dd>
+          {Object.entries(speed).map((keyValPair, index) => (
+            <dd key={keyValPair[0] + index}>
               {keyValPair[0].replace("_", " ") || keyValPair[0]},{" "}
               {keyValPair[1]}
             </dd>
@@ -16,8 +16,8 @@ export default function SecondaryInfo({ monsterDetails }) {
 
         <div className="senses">
           <dt className="info-term">Senses</dt>
-          {Object.entries(senses).map((keyValPair) => (
-            <dd>
+          {Object.entries(senses).map((keyValPair, index) => (
+            <dd key={keyValPair[0] + index}>
               {keyValPair[0].replace("_", " ") || keyValPair[0]},{" "}
               {keyValPair[1]}
             </dd>
@@ -29,8 +29,8 @@ export default function SecondaryInfo({ monsterDetails }) {
         <dt className="info-term">Proficiences</dt>
         {proficiencies.length > 0 ? (
           <>
-            {proficiencies.map((proficiency) => (
-              <dd>
+            {proficiencies.map((proficiency, index) => (
+              <dd key={proficiency + index}>
                 {proficiency.proficiency.name}: +{proficiency.value}
               </dd>
             ))}

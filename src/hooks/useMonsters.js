@@ -7,7 +7,7 @@ export default function useMonsters() {
   const [monsterDetails, setMonsterDetails] = useState({});
   const [showMonsterCard, setShowMonsterCard] = useState(false);
 
-  const monstersEndpoint = "/api/monsters";
+  const monstersEndpoint = "/api/2014/monsters";
 
   useEffect(() => {
     getMonsterList();
@@ -15,7 +15,6 @@ export default function useMonsters() {
 
   /**
    * Retrieves an array of JSON objects with basic data on all DnD 5th edition base rulebook monsters. Each object's key-value pairs include
-   *
    * index: {string} monster name, but all lower case
    * name: {string} monster name
    * url: {string} endpoint extension used to retrieve further details on the monster
@@ -47,6 +46,7 @@ export default function useMonsters() {
       setLoading(true);
       const response = await fetch(`https://www.dnd5eapi.co${monsterURL}`);
       const details = await response.json();
+
       setMonsterDetails(details);
       setShowMonsterCard(true);
     } catch (err) {
@@ -57,7 +57,7 @@ export default function useMonsters() {
   }
 
   /**
-   * Takes in user-specified details about the monsters they want and filters the monsters that correspond to those details out of the master list of monsters.
+   * Takes user-specified details about the monsters they want and filters the monsters that correspond to those details out of the master list of monsters.
    * @param {string}           filterType   Type of filter the user is searching, either alphabetical or challenge rating.
    * @param {string | number}  filterValue  Value of the filter type, a letter for alphabetical or number for challenge rating.
    * @returns
@@ -78,7 +78,7 @@ export default function useMonsters() {
       try {
         setLoading(true);
         const response = await fetch(
-          `https://www.dnd5eapi.co${monstersEndpoint}?${filterType}=${filterValue}`
+          `https://www.dnd5eapi.co/api/2014/monsters?${filterType}=${filterValue}`
         );
         const monsters = await response.json();
 

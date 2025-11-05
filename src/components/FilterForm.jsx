@@ -5,40 +5,12 @@ export default function FilterForm({ onSubmit }) {
   const [filterValue, setFilterValue] = useState("");
 
   const [selectedLetter, setSelectedLetter] = useState("");
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
+  // prettier-ignore
+  const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const [challengeRating, setChallengeRating] = useState("");
-  const challengeRatings = [
-    0, 0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,
-    17, 19, 20, 21, 22, 23, 24, 30,
-  ];
+  // prettier-ignore
+  const challengeRatings = [0, 0.125, 0.25, 0.5, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 30];
 
   return (
     <form
@@ -50,7 +22,7 @@ export default function FilterForm({ onSubmit }) {
     >
       <div className="filter-container">
         <FilterSelect
-          filterName="Alphabetical"
+          name="Alphabetical"
           placeholder="--Alphabetical--"
           options={alphabet}
           value={selectedLetter}
@@ -61,7 +33,7 @@ export default function FilterForm({ onSubmit }) {
           }}
         />
         <FilterSelect
-          filterName="Challenge Rating"
+          name="Challenge Rating"
           placeholder="--Challenge Rating--"
           options={challengeRatings}
           value={challengeRating}
@@ -80,13 +52,13 @@ export default function FilterForm({ onSubmit }) {
   );
 }
 
-function FilterSelect({ filterName, options, value, onChange }) {
+function FilterSelect({ name, options, value, onChange }) {
   return (
     <select value={value} onChange={onChange} className="input-and-select">
-      <option value=""> -- {filterName} -- </option>
+      <option value=""> -- {name} -- </option>
 
-      {options.map((filterItem) => (
-        <option key={filterItem} value={filterItem}>
+      {options.map((filterItem, index) => (
+        <option key={filterItem + index} value={filterItem}>
           {filterItem}
         </option>
       ))}
