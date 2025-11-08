@@ -25,9 +25,8 @@ export default function App() {
       </h1>
 
       <FilterForm
-        onSubmit={(filterType, filterValue) =>
-          filterMonsters(filterType, filterValue)
-        }
+        // prettier-ignore
+        onSubmit={(filterType, filterValue) => filterMonsters(filterType, filterValue)}
       />
 
       <hr />
