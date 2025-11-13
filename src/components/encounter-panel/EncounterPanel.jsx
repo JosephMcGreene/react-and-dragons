@@ -1,17 +1,17 @@
 import { useState } from "react";
-//Hooks
-import useEncounterFeatures from "../../hooks/useEncounterFeatures";
 //Components
 import Actions from "./Actions";
 import EncounterHitPoints from "./EncounterHitPoints";
+import EncounterLog from "./EncounterLog";
 import ExtenderButton from "./ExtenderButton";
 import LegendaryActions from "./LegendaryActions";
-import EncounterLog from "./EncounterLog";
+//Hooks
+import useEncounterFeatures from "../../hooks/useEncounterFeatures";
 
 export default function EncounterPanel({ monsterDetails }) {
   const [panelExtended, setPanelExtended] = useState(false);
   const [damageModalShown, setDamageModalShown] = useState(false);
-  const [, , , monsterAction, encounterLogContent] =
+  const [, , , monsterAction, encounterLogContent, setEncounterLogContent] =
     useEncounterFeatures(monsterDetails);
 
   return (
@@ -42,7 +42,10 @@ export default function EncounterPanel({ monsterDetails }) {
           <LegendaryActions monsterDetails={monsterDetails} />
         )}
 
-        <EncounterLog encounterLogContent={encounterLogContent} />
+        <EncounterLog
+          encounterLogContent={encounterLogContent}
+          setEncounterLogContent={() => setEncounterLogContent([])}
+        />
       </aside>
     </div>
   );

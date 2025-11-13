@@ -10,7 +10,7 @@ export default function DamageModal({ takeDamage, resetHP, cancelDamage }) {
 
   function handleDamageSubmit(event) {
     event.preventDefault();
-    if (damageType === "") return alert("Don't forget a damage type!");
+
     takeDamage({ damage, damageType, weaponIsMagical: isMagical });
   }
 

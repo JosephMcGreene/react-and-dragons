@@ -6,6 +6,7 @@ export default function MonsterList({
   openDetails,
 }) {
   if (loading) return <LoadingSpinner />;
+
   return (
     <article>
       <ul className="monster-list">

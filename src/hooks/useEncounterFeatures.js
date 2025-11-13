@@ -73,7 +73,7 @@ export default function useEncounterFeatures(monsterDetails) {
    * @param {Object[]} actionDamageArray An array of objects, each object containing information concerning the amount and type of damage a monster's action is capable of.
    * @returns {Object[]} An array of objects, each object containing (1) the final damage the action deals, (2) the dice rolled to find that damage and, (3) the in-game type of damage it deals (ie, piercing, bludgeoning)
    */
-  function rollActionDamage(actionDamageArray) {
+  function rollDamage(actionDamageArray) {
     const damageArray = [];
 
     // Sometimes a monster's action deals more than one type of damage, so we need to iterate over all of them
@@ -106,12 +106,16 @@ export default function useEncounterFeatures(monsterDetails) {
    * @param {{number, number | string, string}} action A destructured action object that matches the shape of the API's action monster attribute, destructured because we only need the attack bonus, damage, and name of the action.
    */
   function monsterAction({ attack_bonus, damage, name }) {
+    const d20Roll = singleDieRoll(20);
+
     setEncounterLogContent((prevContent) => [
       ...prevContent,
       {
-        actionName: name,
-        toHit: singleDieRoll(20) + attack_bonus || "Guaranteed", // Might return NaN
-        damage: rollActionDamage(damage),
+        attackBonus: attack_bonus,
+        d20ToHit: d20Roll,
+        damage: rollDamage(damage),
+        finalToHit: d20Roll + attack_bonus || "Guaranteed", // Might return NaN
+        name: name,
       },
     ]);
   }
@@ -122,5 +126,6 @@ export default function useEncounterFeatures(monsterDetails) {
     dealDamage,
     monsterAction,
     encounterLogContent,
+    setEncounterLogContent,
   ];
 }

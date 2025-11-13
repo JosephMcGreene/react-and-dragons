@@ -8,7 +8,7 @@ export default function EncounterHitPoints({
 }) {
   const { hit_points } = monsterDetails;
 
-  const [currentHitPoints, setCurrentHitPoints, dealDamage, , ,] =
+  const [currentHitPoints, setCurrentHitPoints, dealDamage, , , ,] =
     useEncounterFeatures(monsterDetails);
 
   function takeDamage(damageInfo) {

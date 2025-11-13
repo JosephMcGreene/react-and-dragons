@@ -33,7 +33,7 @@ export default function FilterForm({ onSubmit }) {
           options={alphabet}
           value={selectedLetter}
           // prettier-ignore
-          onChange={(event) => handleFilterChange(event.target.value, "alphabet", setSelectedLetter)}
+          onChange={(e) => handleFilterChange(e.target.value, "alphabet", setSelectedLetter)}
         />
         <FilterSelect
           name="Challenge Rating"
@@ -41,7 +41,7 @@ export default function FilterForm({ onSubmit }) {
           options={challengeRatings}
           value={challengeRating}
           // prettier-ignore
-          onChange={(event) => handleFilterChange(event.target.value, "challenge_rating", setChallengeRating)}
+          onChange={(e) => handleFilterChange(e.target.value, "challenge_rating", setChallengeRating)}
         />
       </div>
 
