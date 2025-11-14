@@ -16,9 +16,11 @@ export default function EncounterLog({
         {encounterLogContent.map((action, index) => (
           <article className="log-item" key={action.name + index}>
             <h4 key={action.finalToHit + index}>
-              {action?.d20ToHit === 20
+              {action?.nakedAttackRoll === 20
                 ? `${action.name}: Nat 20 to hit!`
-                : `${action.name}: ${action.finalToHit} to hit (${action.d20ToHit} + ${action.attackBonus})`}
+                : `${action.name}: ${action.finalToHit} to hit`}{" "}
+              {action.finalToHit !== "Saving throw" &&
+                `(${action.nakedAttackRoll} + ${action.attackBonus})`}
             </h4>
 
             {action.damage?.map(({ finalDamage, damageDice, damageType }) => (

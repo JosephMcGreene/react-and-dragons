@@ -62,14 +62,21 @@ export default function useEncounterFeatures(monsterDetails) {
     // example damageDice: "3d12+4"
     const damageDiceSplit = damageDice.split("d"); // "3d12+4" --> ["3", "12+4"]
 
+    const numOfDamageDice = parseInt(damageDiceSplit[0]);
+
+    // Sometimes the damage doesn't require a die roll, so the split() array only returns one number: the damage the attack does. The number of damage dice becomes the damage itself.
     if (damageDiceSplit.length === 1) {
-      return { damageDiceSplit, damageDieSides: 1, damageMod: 0 };
+      return {
+        numOfDamageDice,
+        damageDieSides: 1,
+        damageMod: 0,
+      };
     }
 
     const damageDieSides = parseInt(damageDiceSplit[1].split("+")[0]); // "12+4" --> 12
     const damageMod = parseInt(damageDiceSplit[1]?.split("+")[1]) || 0; // "12+4" --> 4  OR  0 if no "+"
 
-    return { damageDiceSplit, damageDieSides, damageMod };
+    return { numOfDamageDice, damageDieSides, damageMod };
   }
 
   /**
@@ -85,16 +92,15 @@ export default function useEncounterFeatures(monsterDetails) {
     for (const damageType of actionDamageArray) {
       const damageDice = parseDamageDice(damageType.damage_dice);
 
-      // Make an array of dice rolls
-      const rollResults = rollDice(
-        parseInt(damageDice.damageDiceSplit[0]), // "3" --> 3
+      const damageDiceRolls = rollDice(
+        damageDice.numOfDamageDice,
         damageDice.damageDieSides
       );
 
       // Add up the damage of the dice rolls
-      const finalResult = sumOfDiceRolls(rollResults) + damageDice.damageMod;
+      const finalResult =
+        sumOfDiceRolls(damageDiceRolls) + damageDice.damageMod;
 
-      // Add all the dice rolling info above to the list of existing damage info
       damageArray.push({
         finalDamage: finalResult,
         damageDice: damageType.damage_dice,
@@ -111,15 +117,16 @@ export default function useEncounterFeatures(monsterDetails) {
    * @param {{number, number | string, string}} action A destructured action object that matches the shape of the API's action monster attribute, destructured because we only need the attack bonus, damage, and name of the action.
    */
   function monsterAction({ attack_bonus, damage, name }) {
-    const d20Roll = singleDieRoll(20);
+    // Attack roll before attack bonus or modifiers
+    const nakedAttackRoll = singleDieRoll(20);
 
     setEncounterLogContent((prevContent) => [
       ...prevContent,
       {
-        attackBonus: attack_bonus,
-        d20ToHit: d20Roll,
+        attackBonus: attack_bonus || 0, // attack_bonus could be undefined
         damage: rollDamage(damage),
-        finalToHit: d20Roll + attack_bonus || "Guaranteed", // Might return NaN
+        finalToHit: nakedAttackRoll + attack_bonus || "Saving throw",
+        nakedAttackRoll: nakedAttackRoll,
         name: name,
       },
     ]);
